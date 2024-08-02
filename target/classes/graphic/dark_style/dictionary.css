@@ -1,0 +1,145 @@
+.search-icon{
+    -fx-image:url(icon/search.png);
+}
+
+.remove-icon{
+    -fx-image:url(icon/remove.png);
+}
+
+.save-icon{
+    -fx-image:url(icon/save.png);
+}
+
+.saved-icon{
+    -fx-image:url(icon/saved.png);
+}
+
+.sound-icon{
+    -fx-image:url(icon/sound.png);
+}
+
+.search-bar{
+    -fx-border-width:1;
+    -fx-border-color:white;
+    -fx-border-radius:5;
+    -fx-background-color:transparent;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-font-size:15;
+}
+
+.search-bar:focused{
+    -fx-border-width:1;
+    -fx-border-color:white;
+    -fx-border-radius:5;
+    -fx-background-color:transparent;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-font-size:15;
+}
+
+
+.word-list{
+    -fx-border-width:1;
+    -fx-border-color:white;
+    -fx-border-radius:5;
+    -fx-background-color:black;
+}
+
+.word-list .list-cell{
+    -fx-background-color:transparent;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-font-size:13;
+    -fx-cursor:hand;
+}
+
+.word-list .list-cell:hover {
+    -fx-background-color:#474747; 
+    -fx-text-fill: white; 
+}
+
+.explain-text-area {
+    -fx-background-color:transparent;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-line-spacing:5;
+}
+
+.explain-text-area:focused {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins";
+    -fx-line-spacing: 5;
+    -fx-font-size:15;
+}
+
+.explain-text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.explain-text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.explain-text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.syn-ant-list{
+    -fx-background-color:transparent;
+    -fx-border-radius:5;
+}
+
+.syn-ant-list .list-cell{
+    -fx-background-color:transparent;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-font-size:13;
+    -fx-cursor:hand;
+}
+
+.syn-ant-list .list-cell:hover {
+    -fx-background-color:#474747; 
+    -fx-text-fill: white; 
+}
+
+.save-button{
+    -fx-background-color:black;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:14; 
+    -fx-font-weight:bold;
+    -fx-border-radius:20;
+    -fx-border-color: white; 
+}
+
+.save-button:hover{
+    -fx-background-color:#474747;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:14; 
+    -fx-font-weight:bold;
+    -fx-border-radius:20;
+    -fx-border-color: white; 
+}
+
+.saved-button{
+    -fx-background-color:#8A2BE2;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:14; 
+    -fx-background-radius:20;
+    -fx-font-weight:bold;
+}
+
+.saved-button:hover{
+    -fx-background-color:#a75cec;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:14; 
+    -fx-border-radius:20;
+    -fx-background-radius:20;
+    -fx-font-weight:bold;
+}
+

@@ -1,0 +1,88 @@
+.main-pane{
+    -fx-background-color:white;
+}
+
+.controll-pane{
+    -fx-background-color:#5053E2;
+
+}
+
+.function-screen-pane{
+    -fx-background-color:white;
+}
+
+.logo-pane{
+    -fx-border-radius:15;
+    -fx-background-radius:15;
+    -fx-border-color:white;
+    -fx-background-color:#5053E2;
+}
+
+.controll-button{
+    -fx-background-color:#5053E2;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:14; 
+    -fx-font-weight:bold;
+}
+
+.controll-button:hover{
+    -fx-background-color:#777AFF;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:14; 
+    -fx-font-weight:bold;
+    -fx-border-color: white; 
+    -fx-border-width: 0 0 0 2px; 
+}
+
+.controll-button-clicked{
+    -fx-background-color:#777AFF;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:14; 
+    -fx-font-weight:bold;
+    -fx-border-color: white; 
+    -fx-border-width: 0 0 0 2px; 
+}
+
+.general-button{
+    -fx-background-color:transparent;
+    -fx-background-radius:70;
+    -fx-border-radius:70;
+    -fx-text-fill:black;
+}
+
+.general-button:hover{
+    -fx-background-color:#dbdbdb;
+    -fx-background-radius:70;
+    -fx-border-radius:70;
+}
+
+.general-text{
+    -fx-font-family:"Poppins";
+    -fx-text-fill:black;
+    -fx-text-weight:bold;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent; 
+    -fx-background-insets: 0; 
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #afafaf; 
+    -fx-background-radius: 3px; 
+}
+
+.list-cell:empty:hover {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-cursor: default; 
+}
+
+.progress-indicator {
+    -fx-pref-height: 26;
+    -fx-progress-color: #e0e0e0; 
+    -fx-background-color: transparent; 
+}

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="605.0" prefWidth="742.0" styleClass="function-screen-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Dictionary">
+   <children>
+      <Pane fx:id="explainPane" focusTraversable="true" layoutX="29.0" layoutY="80.0" prefHeight="495.0" prefWidth="519.0" styleClass="setting-pane">
+         <children>
+            <Button fx:id="saved" layoutX="427.0" layoutY="13.0" mnemonicParsing="false" onAction="#unsaveWord" styleClass="saved-button" text="%button.saved">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="saved-icon" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="pronounceLabel" layoutX="4.0" layoutY="32.0" styleClass="general-text" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Italic" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <padding>
+                  <Insets left="16.0" right="16.0" />
+               </padding>
+            </Label>
+            <TextArea fx:id="explainArea" editable="false" focusTraversable="false" layoutY="58.0" prefHeight="437.0" prefWidth="519.0" styleClass="explain-text-area" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" right="5.0" />
+               </padding>
+            </TextArea>
+            <HBox layoutX="4.0" layoutY="13.0" spacing="10.0">
+               <children>
+                  <Label fx:id="wordLabel" styleClass="general-text">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <padding>
+                        <Insets left="16.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="usSound" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#playUSPronounceSound" styleClass="general-button" text="US">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" styleClass="sound-icon" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="ukSound" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#playUKPronounceSound" styleClass="general-button" text="UK">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" styleClass="sound-icon" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="save" layoutX="431.0" layoutY="12.0" mnemonicParsing="false" onAction="#saveWord" style="-fx-background-radius: 20;" styleClass="save-button" text="%button.save">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="save-icon" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="6.0" left="16.0" right="16.0" top="6.0" />
+         </padding>
+      </Pane>
+      <Pane layoutX="29.0" layoutY="26.0" prefHeight="32.0" prefWidth="685.0">
+         <children>
+            <TextField fx:id="search" layoutY="2.0" prefHeight="32.0" prefWidth="685.0" promptText="%text.search">
+               <padding>
+                  <Insets bottom="6.0" left="16.0" right="16.0" top="6.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Button fx:id="searchButton" layoutX="638.0" layoutY="5.0" mnemonicParsing="false" onAction="#searchWord" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="search-icon" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="remove" layoutX="604.0" layoutY="6.0" mnemonicParsing="false" onAction="#removeAllCharacter" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" styleClass="remove-icon" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="synonymsPane" layoutX="566.0" layoutY="80.0" prefHeight="233.0" prefWidth="149.0" styleClass="setting-pane">
+         <children>
+            <Label alignment="CENTER" layoutY="6.0" prefHeight="17.0" prefWidth="149.0" styleClass="general-text" text="%label.synonyms">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Label>
+            <ListView fx:id="synonyms" layoutY="26.0" prefHeight="203.0" prefWidth="149.0" styleClass="syn-ant-list" />
+            <ProgressIndicator fx:id="synProgress" layoutX="14.0" layoutY="33.0" prefHeight="26.0" prefWidth="22.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="antonymsPane" layoutX="566.0" layoutY="343.0" prefHeight="233.0" prefWidth="149.0" styleClass="setting-pane">
+         <children>
+            <Label alignment="CENTER" layoutY="6.0" prefHeight="17.0" prefWidth="149.0" styleClass="general-text" text="%label.antonyms">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Label>
+            <ListView fx:id="antonyms" layoutY="26.0" prefHeight="203.0" prefWidth="149.0" styleClass="syn-ant-list" />
+            <ProgressIndicator fx:id="antProgress" layoutX="14.0" layoutY="33.0" prefHeight="26.0" prefWidth="22.0" />
+         </children>
+      </Pane>
+      <ListView fx:id="wordListView" fixedCellSize="32.0" layoutX="29.0" layoutY="61.0" prefHeight="0.0" prefWidth="685.0" styleClass="word-list" visible="false">
+         <opaqueInsets>
+            <Insets top="20.0" />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ListView>
+      <Label fx:id="notFound" layoutX="29.0" layoutY="60.0" opacity="0.6" prefHeight="32.0" prefWidth="685.0" styleClass="general-text" text="%label.notfound" visible="false">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+         <padding>
+            <Insets bottom="6.0" left="16.0" right="16.0" top="6.0" />
+         </padding>
+      </Label>
+   </children>
+</Pane>

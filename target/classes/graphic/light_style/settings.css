@@ -1,0 +1,58 @@
+.send-feedback-icon{
+    -fx-image:url(icon/send.png);
+}
+
+.sound-icon{
+    -fx-image:url(icon/sound.png);
+}
+
+.switch-theme-icon{
+    -fx-image:url(icon/switch_theme.png);
+}
+
+.setting-pane{
+    -fx-border-width:1;
+    -fx-border-color:black;
+    -fx-border-radius:8;
+}
+.volume-slider{
+    -fx-background-color:transparent;
+    -fx-background-radius:5;
+}
+
+.volume-slider .track{
+    -fx-background-color:black;
+}
+
+.setting-menu{
+    -fx-background-color:transparent;
+}
+
+.setting-menu:hover{
+    -fx-background-color:#dbdbdb;
+}
+
+.setting-menu .label{
+    -fx-text-fill:black;
+    -fx-font-family:"Poppins";
+    -fx-font-size:13px;
+}
+
+.setting-menu .arrow{
+    -fx-background-color:black;
+}
+
+.setting-menu .menu-item{
+    -fx-background-color:#e0e0e0;
+    -fx-pref-width:197;
+    -fx-cursor: hand;
+}
+
+.setting-menu .menu-item:hover{
+    -fx-background-color:#dbdbdb;
+}
+
+.setting-menu .context-menu{
+    -fx-background-color:#e0e0e0;
+}
+
