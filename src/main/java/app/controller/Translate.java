@@ -7,6 +7,7 @@ import java.net.URL;
 
 import app.api.GoogleTranslate;
 import app.api.ImageToText;
+import app.api.TextToSpeech;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -219,12 +220,21 @@ public class Translate {
 
     @FXML
     private void playUserTextSound(ActionEvent event){
-
+        TextToSpeech.speakText(userText.getText(), voice(sourceLanguage));
     }
 
     @FXML
     private void playTransTextSound(ActionEvent event){
+        TextToSpeech.speakText(translateText.getText(), voice(targetLanguage));
+    }
 
+    private String voice(String language){
+        if (language == "en"){
+            return "en-us";
+        }
+        else {
+            return "vi-vn";
+        }
     }
     
     @FXML

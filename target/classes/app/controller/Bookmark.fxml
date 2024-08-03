@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 
 
-<Pane prefHeight="605.0" prefWidth="742.0" styleClass="function-screen-pane" stylesheets="@../../graphic/dark_style/dark_style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Bookmark" />
+<Pane prefHeight="605.0" prefWidth="742.0" styleClass="function-screen-pane" stylesheets="@../../graphic/dark_style/dark_style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Bookmark">
+   <children>
+      <ListView layoutX="28.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</Pane>

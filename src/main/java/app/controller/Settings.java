@@ -11,13 +11,10 @@ import app.main.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 
 public class Settings {
+    
     @FXML
     private Button changeThemeButton;
 
@@ -32,34 +29,10 @@ public class Settings {
     private boolean chooseEng;
 
     @FXML
-    private Slider changeVolumeSlider;
-
-    @FXML
-    private Label volumeValueLabel;
-
-    @FXML
-    private MenuButton changeEnglishVoice;
-
-    @FXML
-    private MenuItem femaleUK;
-
-    @FXML
-    private MenuItem femaleUSA;
-
-    @FXML
-    private MenuItem maleUK;
-
-    @FXML
-    private MenuItem maleUSA;
-
-    @FXML
     private TextArea feedbackArea;
 
     @FXML
     private Button feedbackSendButton;
-
-    @FXML
-    private Button testSound;
 
     @FXML
     private void initialize(){
@@ -83,7 +56,6 @@ public class Settings {
             viButton.getStyleClass().add("button-choosed-language");
         }
     }
-
     @FXML
     private void changeTheme(ActionEvent event){
         isDarkTheme = !isDarkTheme;
@@ -111,37 +83,12 @@ public class Settings {
     }
 
     @FXML
-    private void changeToMaleUSAVoice(ActionEvent event){
-
-    }
-
-    @FXML
-    private void changeToFemaleUSAVoice(ActionEvent event){
-        
-    }
-
-    @FXML
-    private void changeToMaleUKVoice(ActionEvent event){
-        
-    }
-
-    @FXML
-    private void changeToFemaleUKVoice(ActionEvent event){
-        
-    }
-
-    @FXML
     private void sendFeedback(ActionEvent event){
         String userFeedback = feedbackArea.getText();
         if(userFeedback != ""){
             System.out.println("Feedback: " + userFeedback);
             GoogleFormFeedback.sendFeedback(userFeedback);
         }
-    }
-
-    @FXML
-    private void playTestSound(ActionEvent event){
-        
     }
 
     private void setEnglish(boolean choosed){

@@ -4,9 +4,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -16,7 +13,7 @@
 
 <Pane prefHeight="605.0" prefWidth="742.0" styleClass="function-screen-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Settings">
    <children>
-      <HBox layoutX="109.0" layoutY="73.0" prefHeight="459.0" prefWidth="524.0" styleClass="setting-pane">
+      <HBox layoutX="109.0" layoutY="106.0" prefHeight="388.0" prefWidth="524.0" styleClass="setting-pane">
          <children>
             <VBox prefHeight="440.0" prefWidth="133.0" spacing="20.0">
                <children>
@@ -26,16 +23,6 @@
                      </font>
                   </Label>
                   <Label contentDisplay="RIGHT" prefHeight="34.0" prefWidth="207.0" styleClass="general-text" text="%label.language">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label contentDisplay="RIGHT" prefHeight="26.0" prefWidth="222.0" styleClass="general-text" text="%label.volume">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label contentDisplay="RIGHT" prefHeight="38.0" prefWidth="214.0" styleClass="general-text" text="%label.voice">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -50,24 +37,8 @@
                   <Insets bottom="16.0" left="16.0" top="16.0" />
                </HBox.margin>
             </VBox>
-            <Pane prefHeight="425.0" prefWidth="374.0">
+            <Pane prefHeight="380.0" prefWidth="374.0">
                <children>
-                  <Slider fx:id="changeVolumeSlider" layoutX="5.0" layoutY="117.0" majorTickUnit="10.0" minorTickCount="10" styleClass="volume-slider" value="10.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Slider>
-                  <Label fx:id="volumeValueLabel" layoutX="156.0" layoutY="116.0" styleClass="general-text" text="10" />
-                  <MenuButton fx:id="changeEnglishVoice" contentDisplay="BOTTOM" layoutX="1.0" layoutY="159.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="197.0" styleClass="setting-menu" text="%menubutton.chooseengvoice">
-                     <items>
-                        <MenuItem fx:id="maleUSA" mnemonicParsing="false" onAction="#changeToMaleUSAVoice" text="%menuitem.maleusa" />
-                        <MenuItem fx:id="femaleUSA" mnemonicParsing="false" onAction="#changeToFemaleUSAVoice" text="%menuitem.femaleusa" />
-                        <MenuItem fx:id="maleUK" mnemonicParsing="false" onAction="#changeToMaleUKVoice" text="%menuitem.maleuk" />
-                        <MenuItem fx:id="femaleUK" mnemonicParsing="false" onAction="#changeToFemaleUKVoice" text="%menuitem.femaleuk" />
-                     </items>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </MenuButton>
                   <Button fx:id="changeThemeButton" mnemonicParsing="false" onAction="#changeTheme" prefHeight="7.0" prefWidth="0.0" styleClass="general-button">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="60.0" onMouseClicked="#changeTheme" pickOnBounds="true" preserveRatio="true" styleClass="switch-theme-icon" />
@@ -76,7 +47,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TextArea fx:id="feedbackArea" layoutY="217.0" prefHeight="200.0" prefWidth="325.0" promptText="%prompttext.feedback" styleClass="user-text-area" wrapText="true">
+                  <TextArea fx:id="feedbackArea" layoutX="2.0" layoutY="116.0" prefHeight="246.0" prefWidth="325.0" promptText="%prompttext.feedback" styleClass="user-text-area" wrapText="true">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -84,14 +55,6 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextArea>
-                  <Button fx:id="testSound" layoutX="181.0" layoutY="107.0" mnemonicParsing="false" onAction="#playTestSound" prefHeight="26.0" prefWidth="32.0" styleClass="general-button">
-                     <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" styleClass="sound-icon" />
-                     </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                   <Button fx:id="viButton" layoutX="128.0" layoutY="59.0" mnemonicParsing="false" onAction="#changeToVi" styleClass="button-choose-language" text="%button.vi">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -100,7 +63,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="feedbackSendButton" layoutX="328.0" layoutY="388.0" mnemonicParsing="false" onAction="#sendFeedback" styleClass="general-button">
+                  <Button fx:id="feedbackSendButton" layoutX="331.0" layoutY="329.0" mnemonicParsing="false" onAction="#sendFeedback" styleClass="general-button">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" onMouseClicked="#sendFeedback" pickOnBounds="true" preserveRatio="true" styleClass="send-feedback-icon" />
                      </graphic>

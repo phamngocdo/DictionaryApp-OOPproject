@@ -1,31 +1,27 @@
 package app.controller;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import app.api.TextToSpeech;
 import app.api.WordRelations;
-import app.base.Example;
-import app.base.Explain;
-import app.base.Word;
 import app.database.DictionaryDatabase;
+import app.main.App;
 import app.trie.Trie;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -33,10 +29,11 @@ import javafx.util.Pair;
 
 public class Dictionary {
     private static Trie trie = new Trie();
+
     private static DictionaryDatabase data;
 
     @FXML
-    private Pane explainPane;
+    private Pane explain;
 
     @FXML
     private Pane synonymsPane;
@@ -54,28 +51,7 @@ public class Dictionary {
     private Button remove;
 
     @FXML
-    private Label wordLabel;
-
-    @FXML
-    private Label pronounceLabel;
-
-    @FXML
     private Label notFound;
-
-    @FXML
-    private TextArea explainArea;
-
-    @FXML
-    private Button usSound;
-
-    @FXML
-    private Button ukSound;
-
-    @FXML
-    private Button save;
-
-    @FXML
-    private Button saved;
 
     @FXML
     private ListView<Pair<Integer, String>> wordListView;
@@ -94,13 +70,20 @@ public class Dictionary {
 
     private String currentWord;
 
-    private final String BOOKMARK_PATH = "src/main/resources/bookmark/bookmark.txt";
-
     @FXML
     private void initialize() {
         currentWord = null;
         setVisibility(false, false, false, false, false);
         search.getStyleClass().add("search-bar");
+        search.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case ENTER:
+                    searchWord(new ActionEvent());
+                    break;
+                default:
+                    break;
+            }
+        });
         setupEventHandlers();
     }
 
@@ -127,44 +110,6 @@ public class Dictionary {
     @FXML
     private void playUKPronounceSound(ActionEvent event) {
         TextToSpeech.speakText(currentWord, "en-gb");
-    }
-
-    @FXML
-    private void saveWord(ActionEvent event) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BOOKMARK_PATH))){
-            writer.write(currentWord);
-            writer.newLine();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        handleSaveButton(true);
-        search.requestFocus();
-    }
-
-    @FXML
-    private void unsaveWord(ActionEvent event) {
-        ArrayList<String> lines = new ArrayList<>();
-        
-        try (BufferedReader reader = new BufferedReader(new FileReader(BOOKMARK_PATH))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (!line.equals(currentWord)) {
-                    lines.add(line);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(BOOKMARK_PATH))) {
-            for (String line : lines) {
-                writer.write(line);
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        handleSaveButton(false);
     }
 
     public static void loadTrie() {
@@ -226,6 +171,7 @@ public class Dictionary {
         cell.setOnMouseClicked(event -> {
             if (event.getClickCount() == 1 && !cell.isEmpty()) {
                 currentWord = item.getValue();
+                wordListView.setVisible(false);
                 handleExplainPane(item);
                 handleSynAnt(currentWord);
             }
@@ -253,20 +199,16 @@ public class Dictionary {
     }
 
     private void handleExplainPane(Pair<Integer, String> item) {
-        wordListView.setVisible(false);
-        Word word = data.getWord(item.getKey());
-        wordLabel.setText(word.getWord());
-        pronounceLabel.setText("/" + word.getPronounce() + "/");
-        StringBuilder explainText = new StringBuilder();
-        for (Explain explain : data.getAllExplainsFromWord(item.getKey())) {
-            explainText.append(explain.getType()).append("\n\t■ ").append(explain.getMeaning()).append("\n");
-            for (Example example : data.getAllExamplesFromExplain(explain.getId())) {
-                explainText.append("\t\t- ").append(example.getExample()).append("\n\t\t  ").append(example.getTranslate()).append("\n");
-            }
+        Parent page;
+        ResourceBundle bundle = App.getBundle();
+        try {
+            WordExplain.item = item;
+            page = FXMLLoader.load(Dictionary.class.getResource("/app/controller/WordExplain.fxml"), bundle);
+            explain.getChildren().clear();
+            explain.getChildren().add(page);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        explainArea.setText(explainText.toString());
-        explainPane.setVisible(true);
-        handleSaveButton(isSaved(item.getValue()));
     }
 
     private void handleSynAnt(String word) {
@@ -316,38 +258,11 @@ public class Dictionary {
     
     
     private void setVisibility(boolean explain, boolean synonyms, boolean antonyms, boolean wordList, boolean notFound) {
-        explainPane.setVisible(explain);
+        this.explain.setVisible(explain);
         this.synonymsPane.setVisible(synonyms);
         this.antonymsPane.setVisible(antonyms);
         wordListView.setVisible(wordList);
         this.notFound.setVisible(notFound);
-    }
-
-    private boolean isSaved(String word){
-       try (BufferedReader reader = new BufferedReader(new FileReader(BOOKMARK_PATH))){
-        String line;
-        while ((line = reader.readLine()) != null) {
-            if (line.trim().equals(word)) { 
-                return true;
-            }
-        }
-        } 
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        return false;
-    }
-
-    private void handleSaveButton(boolean isSaved){
-        if (isSaved) {
-            saved.setVisible(true);
-            save.setVisible(false);
-        }
-        else {
-            saved.setVisible(false);
-            save.setVisible(true);
-        }
     }
 
     @FunctionalInterface

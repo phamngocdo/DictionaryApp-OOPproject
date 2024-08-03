@@ -71,7 +71,7 @@
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: #afafaf; 
+    -fx-background-color: #e0e0e0; 
     -fx-background-radius: 3px; 
 }
 
@@ -83,6 +83,6 @@
 
 .progress-indicator {
     -fx-pref-height: 26;
-    -fx-progress-color: #e0e0e0; 
+    -fx-progress-color: #c0c0c0; 
     -fx-background-color: transparent; 
 }

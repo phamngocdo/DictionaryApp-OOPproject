@@ -21,25 +21,19 @@ public class TextToSpeech {
     private static HashMap<String, String> voices = new HashMap<>();
     private static String format = "44khz_16bit_stereo"; 
     private static String codec = "MP3";
-    private static double volume = 10;
     private static Player currentPlayer; 
-
-    public static void setVolume(double vol){
-        String command = String.format("nircmd.exe setsysvolume %d", volume * 65535 / 100);
-        try {
-            Runtime.getRuntime().exec(command);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private static final Object playerLock = new Object(); 
 
     public static synchronized void speakText(String text, String language) {
-        if (text == null){
+        if (text == null) {
             return;
         }
-        if (currentPlayer != null) {
-            currentPlayer.close(); 
+        synchronized (playerLock) {
+            if (currentPlayer != null) {
+                currentPlayer.close();
+            }
         }
+
         byte[] audio;
         String voice = voices.get(language);
         String encodedText;
@@ -55,27 +49,25 @@ public class TextToSpeech {
             HttpGet request = new HttpGet(urlStr);
             HttpResponse response = httpClient.execute(request);
             audio = EntityUtils.toByteArray(response.getEntity());
-            
-            try {
-                playAudio(audio);
-            } catch (IOException | JavaLayerException e) {
-                e.printStackTrace();
-            }
-        } 
-        catch (IOException e) {
+            new Thread(() -> {
+                try {
+                    playAudio(audio);
+                } catch (IOException | JavaLayerException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        } catch (IOException e) {
             e.printStackTrace();
-        } 
-        finally {
+        } finally {
             try {
                 httpClient.close();
-            } 
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    }    
+    }
 
-    public static void addVoice(){
+    public static void addVoice() {
         voices.put("en-us", "Linda");
         voices.put("en-gb", "Harry");
         voices.put("vi-vn", "Chi");
@@ -85,7 +77,9 @@ public class TextToSpeech {
         Path tempFile = Files.createTempFile("audio", "." + codec.toLowerCase());
         Files.write(tempFile, audio);
         try (FileInputStream fis = new FileInputStream(tempFile.toFile())) {
-            currentPlayer = new Player(fis);
+            synchronized (playerLock) {
+                currentPlayer = new Player(fis);
+            }
             currentPlayer.play();
         } finally {
             Files.deleteIfExists(tempFile);
