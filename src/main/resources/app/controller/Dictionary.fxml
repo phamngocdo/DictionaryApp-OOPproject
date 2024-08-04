@@ -49,7 +49,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="synonymsPane" layoutX="566.0" layoutY="76.0" prefHeight="233.0" prefWidth="149.0" styleClass="setting-pane">
+      <Pane fx:id="synonymsPane" layoutX="566.0" layoutY="66.0" prefHeight="233.0" prefWidth="149.0" styleClass="setting-pane">
          <children>
             <Label alignment="CENTER" layoutY="6.0" prefHeight="17.0" prefWidth="149.0" styleClass="general-text" text="%label.synonyms">
                <font>
@@ -77,7 +77,7 @@
             <ProgressIndicator fx:id="antProgress" layoutX="64.0" layoutY="91.0" prefHeight="26.0" prefWidth="22.0" />
          </children>
       </Pane>
-      <ListView fx:id="wordListView" fixedCellSize="32.0" layoutX="29.0" layoutY="49.0" prefHeight="0.0" prefWidth="685.0" styleClass="word-list" visible="false">
+      <ListView fx:id="wordListView" fixedCellSize="32.0" layoutX="29.0" layoutY="49.0" prefHeight="0.0" prefWidth="685.0" styleClass="word-list">
          <opaqueInsets>
             <Insets top="20.0" />
          </opaqueInsets>

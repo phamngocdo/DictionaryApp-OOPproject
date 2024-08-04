@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
-
+<?import javafx.scene.text.Font?>
 
 <Pane prefHeight="605.0" prefWidth="742.0" styleClass="function-screen-pane" stylesheets="@../../graphic/dark_style/dark_style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Bookmark">
    <children>
-      <ListView layoutX="28.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
+      <Pane fx:id="explain" layoutX="209.0" layoutY="43.0" prefHeight="519.0" prefWidth="515.0" />
+      <Pane layoutX="22.0" layoutY="43.0" prefHeight="519.0" prefWidth="174.0" styleClass="setting-pane">
+         <children>
+            <ListView fx:id="wordList" layoutY="25.0" prefHeight="484.0" prefWidth="174.0" styleClass="syn-ant-list" />
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="174.0" styleClass="general-text" text="Label">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>

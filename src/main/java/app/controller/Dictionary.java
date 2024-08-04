@@ -21,6 +21,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
@@ -102,16 +103,6 @@ public class Dictionary {
         wordListView.setVisible(false);
     }
 
-    @FXML
-    private void playUSPronounceSound(ActionEvent event) {
-        TextToSpeech.speakText(currentWord, "en-us");
-    }
-
-    @FXML
-    private void playUKPronounceSound(ActionEvent event) {
-        TextToSpeech.speakText(currentWord, "en-gb");
-    }
-
     public static void loadTrie() {
         data = new DictionaryDatabase(Dictionary.class.getResource("/database/dictionary.db").getPath());
         data.getAllWords().forEach(word -> trie.insertWord(word.getKey(), word.getValue()));
@@ -126,7 +117,8 @@ public class Dictionary {
         Platform.runLater(() -> {
             search.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
                 if (!search.getBoundsInParent().contains(event.getSceneX(), event.getSceneY()) &&
-                    !wordListView.getBoundsInParent().contains(event.getSceneX(), event.getSceneY())) {
+                    !wordListView.getBoundsInParent().contains(event.getSceneX(), event.getSceneY()) &&
+                    !isChildOf(wordListView, (Node) event.getTarget())) {
                     wordListView.setVisible(false);
                     notFound.setVisible(false);
                 }
@@ -136,15 +128,23 @@ public class Dictionary {
             boolean isEmpty = newValue == null || newValue.trim().isEmpty();
             remove.setVisible(!isEmpty);
             notFound.setVisible(false);
+            wordListView.setVisible(!isEmpty);
             if (!isEmpty) {
-                wordListView.setVisible(true);
                 handleWordListView(newValue.toLowerCase());
-            } 
-            else {
-                wordListView.setVisible(false);
             }
         });
     }
+
+    private boolean isChildOf(Node parent, Node child) {
+        while (child != null) {
+            if (child.equals(parent)) {
+                return true;
+            }
+            child = child.getParent();
+        }
+        return false;
+    }
+
     private void handleWordSearch(String word) {
         Pair<Integer, String> result = trie.getWord(word);
         if (result == null) {
@@ -153,7 +153,8 @@ public class Dictionary {
                 "Not Found",
                 "Your word is not in dictionary\nTừ của bạn không có trong từ điển");
             setVisibility(false, false, false, true, false);
-        } else {
+        } 
+        else {
             handleExplainPane(result);
             handleSynAnt(word);
         }
@@ -163,37 +164,33 @@ public class Dictionary {
         ObservableList<Pair<Integer, String>> items = FXCollections.observableArrayList(trie.getAllVocabStartWith(prefix));
         wordListView.setItems(items);
         notFound.setVisible(items.isEmpty());
-        setupListViewCellFactory(wordListView, this::handleListItem);
+        setupListViewCellFactory(wordListView);
         adjustListViewHeight(wordListView, 514, 30);
     }
 
-    private void handleListItem(ListCell<Pair<Integer, String>> cell, Pair<Integer, String> item) {
-        cell.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 1 && !cell.isEmpty()) {
-                currentWord = item.getValue();
-                wordListView.setVisible(false);
-                handleExplainPane(item);
-                handleSynAnt(currentWord);
-            }
-        });
-        cell.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
-            if (event.isPrimaryButtonDown()) {
-                wordListView.getSelectionModel().clearSelection();
-                event.consume();
-            }
-        });
-    }
-
-    private void setupListViewCellFactory(ListView<Pair<Integer, String>> listView, ListCellHandler handler) {
+    private void setupListViewCellFactory(ListView<Pair<Integer, String>> listView) {
         listView.setCellFactory(view -> new ListCell<>() {
+            {
+                setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 1 && !isEmpty()) {
+                        Pair<Integer, String> item = getItem();
+                        currentWord = item.getValue();
+                        wordListView.setVisible(false);
+                        handleExplainPane(item);
+                        handleSynAnt(currentWord);
+                    }
+                });
+                addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
+                    if (event.isPrimaryButtonDown()) {
+                        wordListView.getSelectionModel().clearSelection();
+                        event.consume();
+                    }
+                });
+            }
             @Override
             protected void updateItem(Pair<Integer, String> item, boolean empty) {
                 super.updateItem(item, empty);
                 setText(item == null ? null : item.getValue());
-                if (item != null) 
-                {
-                    handler.handle(this, item);
-                }
             }
         });
     }
@@ -202,7 +199,7 @@ public class Dictionary {
         Parent page;
         ResourceBundle bundle = App.getBundle();
         try {
-            WordExplain.item = item;
+            WordExplain.setItem(item);
             page = FXMLLoader.load(Dictionary.class.getResource("/app/controller/WordExplain.fxml"), bundle);
             explain.getChildren().clear();
             explain.getChildren().add(page);
@@ -238,7 +235,7 @@ public class Dictionary {
     private void updateListView(ListView<Pair<Integer, String>> listView, ArrayList<Pair<Integer, String>> items) {
         ObservableList<Pair<Integer, String>> observableItems = FXCollections.observableArrayList(items);
         listView.setItems(observableItems);
-        setupListViewCellFactory(listView, this::handleListItem);
+        setupListViewCellFactory(listView);
         adjustListViewHeight(listView, 200, 0);
     }
 
@@ -246,7 +243,7 @@ public class Dictionary {
         Platform.runLater(() -> {
             int itemCount = listView.getItems().size();
             if (itemCount > 0) {
-                double itemHeight = 30;
+                double itemHeight = 26;
                 double totalHeight = itemCount * itemHeight;
                 listView.setPrefHeight(Math.min(totalHeight, maxHeight));
             } 
@@ -255,7 +252,6 @@ public class Dictionary {
             }
         });
     }
-    
     
     private void setVisibility(boolean explain, boolean synonyms, boolean antonyms, boolean wordList, boolean notFound) {
         this.explain.setVisible(explain);

@@ -74,6 +74,7 @@
 .scroll-bar .thumb {
     -fx-background-color: rgb(41, 41, 41); 
     -fx-background-radius: 3px; 
+    -fx-cursor:hand;
 }
 
 .list-cell:empty:hover {
