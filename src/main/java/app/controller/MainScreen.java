@@ -3,6 +3,7 @@ package app.controller;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+import app.api.TextToSpeech;
 import app.main.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -103,6 +104,7 @@ public class MainScreen {
     }
 
     private void goToFunction(String name, Button button) {
+        TextToSpeech.stopSpeaking();
         Parent page;
         try {
             ResourceBundle bundle = App.getBundle();

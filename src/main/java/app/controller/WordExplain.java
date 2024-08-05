@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 import app.base.Explain;
 import app.database.DictionaryDatabase;
@@ -70,17 +68,19 @@ public class WordExplain {
 
     @FXML
     private void playUSPronounceSound(ActionEvent event) {
+        TextToSpeech.stopSpeaking();
         TextToSpeech.speakText(wordLabel.getText(), "en-us");
     }
 
     @FXML
     private void playUKPronounceSound(ActionEvent event) {
+        TextToSpeech.stopSpeaking();
         TextToSpeech.speakText(wordLabel.getText(), "en-gb");
     }
 
     @FXML
     private void saveWord(ActionEvent event) {
-        Set<String> words = new HashSet<>();
+        ArrayList<String> words = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(BOOKMARK_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {

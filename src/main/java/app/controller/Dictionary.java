@@ -3,8 +3,6 @@ package app.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import app.api.TextToSpeech;
 import app.api.WordRelations;
 import app.database.DictionaryDatabase;
 import app.main.App;

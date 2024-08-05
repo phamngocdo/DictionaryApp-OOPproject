@@ -186,6 +186,7 @@ public class Translate {
     }
 
     private void changeStyleLanguageButton(){
+        TextToSpeech.stopSpeaking();
         userChoosedButton.getStyleClass().remove("button-choose-language");
         userChoosedButton.getStyleClass().add("button-choosed-language");
         userNotChooseButton.getStyleClass().remove("button-choosed-language");
@@ -202,29 +203,26 @@ public class Translate {
         String temp = sourceLanguage;
         sourceLanguage = targetLanguage;
         targetLanguage = temp;
-
         temp = userText.getText();
         userText.setText(translateText.getText());
         translateText.setText(temp);
-
         Button temp2 = transChoosedButton;
         transChoosedButton = transNotChooseButton;
         transNotChooseButton = temp2;
-
         temp2 = userChoosedButton;
         userChoosedButton = userNotChooseButton;
         userNotChooseButton = temp2;
-
+        TextToSpeech.stopSpeaking();
         changeStyleLanguageButton();
     }
 
     @FXML
-    private void playUserTextSound(ActionEvent event){
+    private void playUserTextSound(ActionEvent event) {
         TextToSpeech.speakText(userText.getText(), voice(sourceLanguage));
     }
 
     @FXML
-    private void playTransTextSound(ActionEvent event){
+    private void playTransTextSound(ActionEvent event) {
         TextToSpeech.speakText(translateText.getText(), voice(targetLanguage));
     }
 
@@ -239,6 +237,7 @@ public class Translate {
     
     @FXML
     private void selectImage(ActionEvent event){
+        TextToSpeech.stopSpeaking();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Image");
         fileChooser.getExtensionFilters().add(new ExtensionFilter("ImageFile", "*.png", "*.jpg", "*.bmp"));

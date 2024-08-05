@@ -86,6 +86,15 @@ public class TextToSpeech {
         }
     }
 
+    public static void stopSpeaking() {
+        synchronized (playerLock) {
+            if (currentPlayer != null) {
+                currentPlayer.close();
+                currentPlayer = null;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         addVoice();
         speakText("Xin chào", "vi-vn");
