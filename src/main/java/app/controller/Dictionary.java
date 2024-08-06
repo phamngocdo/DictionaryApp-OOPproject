@@ -163,7 +163,7 @@ public class Dictionary {
         wordListView.setItems(items);
         notFound.setVisible(items.isEmpty());
         setupListViewCellFactory(wordListView);
-        adjustListViewHeight(wordListView, 514, 30);
+        adjustListViewHeight(wordListView, 35, 532, 30);
     }
 
     private void setupListViewCellFactory(ListView<Pair<Integer, String>> listView) {
@@ -234,14 +234,13 @@ public class Dictionary {
         ObservableList<Pair<Integer, String>> observableItems = FXCollections.observableArrayList(items);
         listView.setItems(observableItems);
         setupListViewCellFactory(listView);
-        adjustListViewHeight(listView, 200, 0);
+        adjustListViewHeight(listView, 26, 200, 0);
     }
 
-    private void adjustListViewHeight(ListView<?> listView, double maxHeight, double emptyHeight) {
+    private void adjustListViewHeight(ListView<?> listView, double itemHeight, double maxHeight, double emptyHeight) {
         Platform.runLater(() -> {
             int itemCount = listView.getItems().size();
             if (itemCount > 0) {
-                double itemHeight = 26;
                 double totalHeight = itemCount * itemHeight;
                 listView.setPrefHeight(Math.min(totalHeight, maxHeight));
             } 

@@ -31,7 +31,7 @@
             <Insets left="16.0" right="16.0" />
          </padding>
       </Label>
-      <TextArea fx:id="explainArea" editable="false" focusTraversable="false" layoutY="58.0" prefHeight="459.0" prefWidth="519.0" styleClass="explain-text-area">
+      <TextArea fx:id="explainArea" editable="false" focusTraversable="false" layoutY="58.0" prefHeight="456.0" prefWidth="519.0" styleClass="explain-text-area">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>

@@ -77,6 +77,18 @@
     -fx-cursor:hand;
 }
 
+.scroll-bar .increment-button:hover{
+    -fx-background-color:transparent;
+}
+
+.scroll-bar .decrement-button:hover{
+    -fx-background-color:transparent;
+}
+
+.list-view .corner{
+    -fx-background-color:transparent;
+}
+
 .list-cell:empty:hover {
     -fx-background-color: transparent;
     -fx-background-insets: 0;

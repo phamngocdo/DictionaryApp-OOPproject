@@ -1,6 +1,6 @@
 package app.controller;
 
-public class EditDictionary {
+public class AddWord {
 
     
 }

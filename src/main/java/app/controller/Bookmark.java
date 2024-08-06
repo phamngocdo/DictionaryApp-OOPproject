@@ -53,7 +53,7 @@ public class Bookmark {
         }
         ObservableList<Pair<Integer, String>> items = FXCollections.observableArrayList(list);
         wordList.setItems(items);
-        adjustListViewHeight(wordList, 484, 0);
+        adjustListViewHeight(wordList, 26, 484, 0);
     }
 
     private void handleListView() {
@@ -91,9 +91,8 @@ public class Bookmark {
         });
     }
 
-    private void adjustListViewHeight(ListView<?> listView, double maxHeight, double emptyHeight) {
+    private void adjustListViewHeight(ListView<?> listView, double itemHeight, double maxHeight, double emptyHeight) {
         Platform.runLater(() -> {
-            double itemHeight = 26;
             double totalHeight = Math.min(listView.getItems().size() * itemHeight, maxHeight);
             listView.setPrefHeight(totalHeight > 0 ? totalHeight : emptyHeight);
         });
