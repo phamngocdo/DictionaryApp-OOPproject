@@ -258,9 +258,4 @@ public class Dictionary {
         wordListView.setVisible(wordList);
         this.notFound.setVisible(notFound);
     }
-
-    @FunctionalInterface
-    private interface ListCellHandler {
-        void handle(ListCell<Pair<Integer, String>> cell, Pair<Integer, String> item);
-    }
 }

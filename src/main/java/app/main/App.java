@@ -98,5 +98,4 @@ public class App extends Application {
     public static ResourceBundle getBundle(){
         return bundle;
     }
-
 }

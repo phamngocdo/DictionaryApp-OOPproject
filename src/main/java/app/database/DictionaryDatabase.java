@@ -46,6 +46,7 @@ public class DictionaryDatabase {
     }
 
     public void addWord(Word word) {
+        word.setId(database.getNextId("words", "word_id", null));
         String value = "(" + word.getId() + ", '" + word.getWord() + "', '" + word.getPronounce() + "')";
         database.addTuple("words", "word_id, word, pronounce", value);
     }
@@ -79,6 +80,7 @@ public class DictionaryDatabase {
     }
 
     public void addExplain(Explain explain) {
+        explain.setId(database.getNextId("explains", "explain_id", "word_id = " + explain.getWordId()));
         String value = "(" + explain.getId() + ", " + explain.getWordId() + ", '" + explain.getType() + "', '" + explain.getMeaning() + "')";
         database.addTuple("explains", "explain_id, word_id, type, meaning", value);
     }
@@ -113,6 +115,7 @@ public class DictionaryDatabase {
     }
 
     public void addExample(Example example) {
+        example.setId(database.getNextId("examples", "example_id", "explain_id = " + example.getExplainId()));
         String value = "(" + example.getId() + ", " + example.getExplainId() + ", '" + example.getExample() + "', '" + example.getTranslate() + "')";
         database.addTuple("examples", "example_id, explain_id, example, translate", value);
     }

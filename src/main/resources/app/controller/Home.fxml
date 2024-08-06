@@ -6,7 +6,7 @@
 
 <Pane prefHeight="605.0" prefWidth="742.0" styleClass="function-screen-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Home">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="26.0" prefHeight="42.0" prefWidth="723.0" styleClass="general-text" text="%label.welcome" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+      <Label contentDisplay="CENTER" layoutX="10.0" layoutY="26.0" prefHeight="42.0" prefWidth="723.0" styleClass="general-text" text="%label.welcome" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

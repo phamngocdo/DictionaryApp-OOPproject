@@ -72,4 +72,21 @@ public class Database {
             e.printStackTrace();
         }
     }
+
+    public int getNextId(String tableName, String idColumn, String condition) {
+        int maxId = 0;
+        String query = "SELECT MAX(" + idColumn + ") AS max_id FROM " + tableName;
+        if (condition != null) {
+            query += "WHERE " + condition;
+        }
+        try (ResultSet resultSet = statement.executeQuery(query)) {
+            if (resultSet.next()) {
+                maxId = resultSet.getInt("max_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return maxId + 1;
+    }
+    
 }
