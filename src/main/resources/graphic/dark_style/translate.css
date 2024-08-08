@@ -20,12 +20,7 @@
 }
 
 .button-choose-language:hover{
-    -fx-background-color:#a75cec;
-    -fx-background-radius:16;
-    -fx-text-fill:white;
-    -fx-font-family:"Poppins";
-    -fx-font-weight:bold;
-    -fx-font-size:15;
+    -fx-background-color:#a75cec;;
 }
 
 .button-choosed-language{
@@ -39,11 +34,6 @@
 
 .button-choosed-language:hover{
     -fx-background-color:#a75cec;
-    -fx-background-radius:16;
-    -fx-text-fill:white;
-    -fx-font-family:"Poppins";
-    -fx-font-weight:bold;
-    -fx-font-size:15;
 }
 
 .user-text-area {

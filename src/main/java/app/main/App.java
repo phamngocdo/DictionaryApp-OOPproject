@@ -6,63 +6,65 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import app.api.TextToSpeech;
 import app.controller.Dictionary;
+import app.controller.MainScreen;
 
 public class App extends Application {
 
     private static Scene scene;
-
-    private final int WIDTH_SCENE = 907;
-    private final int HEIGHT_SCENE = 605;
-    private final String APP_NAME = "Dolingo";
-    private final Image APP_ICON = new Image(App.class.getResourceAsStream("/graphic/logo.png"));
-
     private static ResourceBundle bundle;
+    private static MainScreen mainScreen;
+
+    private static final int WIDTH_SCENE = 1024;
+    private static final int HEIGHT_SCENE = 633;
+    private static final String APP_NAME = "Dolingo";
+    private static final String ICON_PATH = "/graphic/logo.png";
+    private static final String CSS_PATH = "/graphic/dark_style/dark_style.css";
+    private static final String LANGUAGE_FILE = "src/main/resources/app/bundle/language_choosed.txt";
+    private static String language = "english";
 
     @SuppressWarnings("exports")
     @Override
     public void start(Stage stage) throws IOException {
         Dictionary.loadTrie();
         TextToSpeech.addVoice();
-        
-        boolean chooseEng = true;
-        String language;
-        try (FileInputStream fis = new FileInputStream("src/main/resources/app/bundle/language_choosed.txt");
+
+        try (FileInputStream fis = new FileInputStream(LANGUAGE_FILE);
             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            chooseEng = ois.readBoolean();
-        } catch (IOException e) {
+            language = ois.readBoolean() ? "english" : "vietnamese"; 
+        } 
+        catch (IOException e) {
             e.printStackTrace();
         }
-        if(chooseEng){
-            language = "english";
-        }
-        else{
-            language = "vietnamese";
-        }
-
         bundle = ResourceBundle.getBundle("app.bundle." + language, Locale.getDefault());
-        scene = new Scene(loadFXML("MainScreen", bundle), WIDTH_SCENE, HEIGHT_SCENE);
-
-        String cssPath = App.class.getResource("/graphic/dark_style/dark_style.css").toExternalForm();
-        scene.getStylesheets().add(cssPath);
-
+        loadMainScreen();
+        scene.getStylesheets().add(App.class.getResource(CSS_PATH).toExternalForm());
         stage.setTitle(APP_NAME);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.getIcons().add(APP_ICON);
+        stage.getIcons().add(new Image(App.class.getResourceAsStream(ICON_PATH)));
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    private void loadMainScreen() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/app/controller/MainScreen.fxml"), bundle);
+        Parent root = fxmlLoader.load();
+        mainScreen = fxmlLoader.getController();
+        scene = new Scene(root, WIDTH_SCENE, HEIGHT_SCENE);
+    }
+
+    public static MainScreen getMainScreen() {
+        return mainScreen;
+    }
+
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml, bundle));
     }
 
@@ -76,16 +78,11 @@ public class App extends Application {
         scene.getStylesheets().add(cssPath);
     }
 
-    public static String getSceneStyle(){
-        String result = "";
-        List<String> stylesheets = scene.getStylesheets();
-        for (String stylesheet : stylesheets) {
-            result += stylesheet;
-        }
-        return result;
+    public static String getSceneStyle() {
+        return String.join("", scene.getStylesheets());
     }
 
-    public static void setBundle(String language){
+    public static void setBundle(String language) {
         bundle = ResourceBundle.getBundle("app.bundle." + language, Locale.getDefault());
         try {
             Parent newRoot = loadFXML("MainScreen", bundle);
@@ -95,7 +92,15 @@ public class App extends Application {
         }
     }
 
-    public static ResourceBundle getBundle(){
+    public static ResourceBundle getBundle() {
         return bundle;
+    }
+
+    public static String getLanguage() {
+        return language;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

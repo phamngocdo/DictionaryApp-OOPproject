@@ -16,16 +16,11 @@
     -fx-text-fill:black;
     -fx-font-family:"Poppins";
     -fx-font-weight:bold;
-    -fx-font-size:14;
+    -fx-font-size:15;
 }
 
 .button-choose-language:hover{
     -fx-background-color:#777AFF;
-    -fx-background-radius:16;
-    -fx-text-fill:black;
-    -fx-font-family:"Poppins";
-    -fx-font-weight:bold;
-    -fx-font-size:14;
 }
 
 .button-choosed-language{
@@ -34,16 +29,11 @@
     -fx-text-fill:white;
     -fx-font-family:"Poppins";
     -fx-font-weight:bold;
-    -fx-font-size:14;
+    -fx-font-size:15;
 }
 
 .button-choosed-language:hover{
     -fx-background-color:#777AFF;
-    -fx-background-radius:16;
-    -fx-text-fill:white;
-    -fx-font-family:"Poppins";
-    -fx-font-weight:bold;
-    -fx-font-size:14;
 }
 
 .user-text-area {

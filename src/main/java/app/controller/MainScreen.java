@@ -24,7 +24,7 @@ public class MainScreen {
     private Button translateButton;
 
     @FXML
-    private Button editButton;
+    private Button addButton;
 
     @FXML
     private Button bookmarkButton;
@@ -56,49 +56,49 @@ public class MainScreen {
     }
 
     @FXML
-    void goToHomePage(ActionEvent event) {
+    private void goToHomePage(ActionEvent event) {
         goToFunction("Home", homeButton);
         currentClickedButton = homeButton;
     }
 
     @FXML
-    void goToDictionary(ActionEvent event) {
+    private void goToDictionary(ActionEvent event) {
         goToFunction("Dictionary", dictionaryButton);
         currentClickedButton = dictionaryButton;
     }
 
     @FXML
-    void goToTranslate(ActionEvent event) {
+    private void goToTranslate(ActionEvent event) {
         goToFunction("Translate", translateButton);
         currentClickedButton = translateButton;
     }
 
     @FXML
-    void goToEditWord(ActionEvent event) {
-        goToFunction("EditDictionary", editButton);
-        currentClickedButton = editButton;
+    private void goToAddWord(ActionEvent event) {
+        goToFunction("AddWord", addButton);
+        currentClickedButton = addButton;
     }
 
     @FXML
-    void goToBookmark(ActionEvent event) {
+    private void goToBookmark(ActionEvent event) {
         goToFunction("Bookmark", bookmarkButton);
         currentClickedButton = bookmarkButton;
     }
 
     @FXML
-    void goToGames(ActionEvent event) {
+    private void goToGames(ActionEvent event) {
         goToFunction("Games", gamesButton);
         currentClickedButton = gamesButton;
     }
 
     @FXML
-    void goToChatBot(ActionEvent event) {
+    private void goToChatBot(ActionEvent event) {
         goToFunction("ChatBot", chatBotButton);
         currentClickedButton = chatBotButton;
     }
 
     @FXML
-    void goToSettings(ActionEvent event) {
+    private void goToSettings(ActionEvent event) {
         goToFunction("Settings", settingsButton);
         currentClickedButton = settingsButton;
     }
@@ -115,6 +115,31 @@ public class MainScreen {
             currentClickedButton.getStyleClass().add("controll-button");
             button.getStyleClass().remove("controll-button");
             button.getStyleClass().add("controll-button-clicked");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void goToEditFunction() {
+        TextToSpeech.stopSpeaking();
+        Parent page;
+        ResourceBundle bundle = App.getBundle();
+        try {
+            page = FXMLLoader.load(App.class.getResource("/app/controller/EditWord.fxml"), bundle);
+            functionPane.getChildren().clear();
+            functionPane.getChildren().add(page);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void turnOffEditFunction(String previousFunction) {
+        Parent page;
+        ResourceBundle bundle = App.getBundle();
+        try {
+            page = FXMLLoader.load(App.class.getResource("/app/controller/" + previousFunction + ".fxml"), bundle);
+            functionPane.getChildren().clear();
+            functionPane.getChildren().add(page);
         } catch (IOException e) {
             e.printStackTrace();
         }

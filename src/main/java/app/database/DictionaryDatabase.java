@@ -11,10 +11,10 @@ import javafx.util.Pair;
 
 
 public class DictionaryDatabase {
-    private Database database;
+    private DataBaseProcess database;
 
     public DictionaryDatabase(String dbPath) {
-        database = new Database(dbPath);
+        database = new DataBaseProcess(dbPath);
     }
 
     public ArrayList<Pair<Integer, String>> getAllWords() {
@@ -60,6 +60,10 @@ public class DictionaryDatabase {
     }
 
     public void removeWord(Word word) {
+        ArrayList<Explain> explains = getAllExplainsFromWord(word.getId());
+        for (Explain explain : explains) {
+            removeExplain(explain);
+        }
         database.removeTuple("words", "word_id = " + word.getId());
     }
 
@@ -95,6 +99,10 @@ public class DictionaryDatabase {
     }
 
     public void removeExplain(Explain explain) {
+        ArrayList<Example> examples = getAllExamplesFromExplain(explain.getId());
+        for (Example example : examples) {
+            database.removeTuple("examples", "example_id = " + example.getId());
+        }
         database.removeTuple("explains", "explain_id = " + explain.getId());
     }
 

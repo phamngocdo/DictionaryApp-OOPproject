@@ -18,6 +18,14 @@
     -fx-image:url(icon/saved.png);
 }
 
+.edit-icon{
+    -fx-image:url(icon/edit.png);
+}
+
+.delete-icon{
+    -fx-image:url(icon/delete.png);
+}
+
 .search-bar{
     -fx-border-color:#c0c0c0;
     -fx-border-width:1;
@@ -45,24 +53,14 @@
 
 .word-list .list-cell:hover {
     -fx-background-color:#c0c0c0; 
-    -fx-text-fill: rgb(0, 0, 0); 
 }
 
 .explain-text-area {
     -fx-background-color:transparent;
-    -fx-text-fill:rgb(0, 0, 0);
+    -fx-text-fill:black;
     -fx-font-family:"Poppins";
     -fx-background-radius:15;
     -fx-line-spacing:5;
-}
-
-.explain-text-area:focused {
-    -fx-background-color: transparent;
-    -fx-text-fill: rgb(0, 0, 0);
-    -fx-font-family: "Poppins";
-    -fx-background-radius: 15;
-    -fx-line-spacing: 5;
-    -fx-font-size:15;
 }
 
 .explain-text-area .scroll-pane {
@@ -93,7 +91,6 @@
 
 .syn-ant-list .list-cell:hover {
     -fx-background-color:#dbdbdb; 
-    -fx-text-fill: black; 
 }
 
 .save-button{
@@ -108,12 +105,6 @@
 
 .save-button:hover{
     -fx-background-color:#dbdbdb;
-    -fx-font-family:"Poppins";
-    -fx-text-fill:white;
-    -fx-font-size:14; 
-    -fx-font-weight:bold;
-    -fx-border-radius:20;
-    -fx-border-color: white; 
 }
 
 .saved-button{
@@ -127,10 +118,4 @@
 
 .saved-button:hover{
     -fx-background-color:#777aff;
-    -fx-font-family:"Poppins";
-    -fx-text-fill:white;
-    -fx-font-size:14; 
-    -fx-border-radius:20;
-    -fx-background-radius:20;
-    -fx-font-weight:bold;
 }

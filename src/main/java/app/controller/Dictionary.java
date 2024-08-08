@@ -111,6 +111,11 @@ public class Dictionary {
         return trie;
     }
 
+    @SuppressWarnings("exports")
+    public static DictionaryDatabase getData() {
+        return data;
+    }
+
     private void setupEventHandlers() {
         Platform.runLater(() -> {
             search.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
@@ -146,11 +151,11 @@ public class Dictionary {
     private void handleWordSearch(String word) {
         Pair<Integer, String> result = trie.getWord(word);
         if (result == null) {
-            AlertScreen.showAlert(
-                AlertType.WARNING,
-                "Not Found",
-                "Your word is not in dictionary\nTừ của bạn không có trong từ điển");
-            setVisibility(false, false, false, true, false);
+            boolean isEnglish = App.getLanguage() == "english";
+            String title = isEnglish ? "Not Found" : "Không Tìm Thấy";
+            String message = isEnglish ?  "Your word is not in the dictionary" : "Từ của bạn không có trong từ điển";
+            AlertScreen.showAlert(AlertType.WARNING,title,message);
+            setVisibility(false, false, false, false, false);
         } 
         else {
             handleExplainPane(result);
@@ -234,7 +239,7 @@ public class Dictionary {
         ObservableList<Pair<Integer, String>> observableItems = FXCollections.observableArrayList(items);
         listView.setItems(observableItems);
         setupListViewCellFactory(listView);
-        adjustListViewHeight(listView, 26, 200, 0);
+        adjustListViewHeight(listView, 26, 226, 0);
     }
 
     private void adjustListViewHeight(ListView<?> listView, double itemHeight, double maxHeight, double emptyHeight) {

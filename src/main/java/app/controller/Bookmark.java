@@ -53,7 +53,7 @@ public class Bookmark {
         }
         ObservableList<Pair<Integer, String>> items = FXCollections.observableArrayList(list);
         wordList.setItems(items);
-        adjustListViewHeight(wordList, 26, 484, 0);
+        adjustListViewHeight(wordList, 26, 520, 0);
     }
 
     private void handleListView() {

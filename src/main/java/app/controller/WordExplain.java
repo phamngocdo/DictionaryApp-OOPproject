@@ -7,8 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import app.base.Explain;
 import app.database.DictionaryDatabase;
+import app.main.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -31,9 +31,6 @@ public class WordExplain {
     private Label pronounceLabel;
 
     @FXML
-    private Label notFound;
-
-    @FXML
     private TextArea explainArea;
 
     @FXML
@@ -47,6 +44,12 @@ public class WordExplain {
 
     @FXML
     private Button saved;
+
+    @FXML
+    private Button edit;
+
+    @FXML
+    private Button delete;
 
     private final String BOOKMARK_PATH = "src/main/resources/bookmark/bookmark.txt";
 
@@ -76,6 +79,24 @@ public class WordExplain {
     private void playUKPronounceSound(ActionEvent event) {
         TextToSpeech.stopSpeaking();
         TextToSpeech.speakText(wordLabel.getText(), "en-gb");
+    }
+
+    @FXML
+    private void goToEdit(ActionEvent event) {
+        App.getMainScreen().goToEditFunction();
+    }
+
+    @FXML
+    private void deleteWord(ActionEvent event) {
+        boolean isEnglish = App.getLanguage() == "english";
+        String title = isEnglish ? "Delete Word" : "Xóa Từ";
+        String message = isEnglish ?  "Are you sure you want to delete this word from the dictionary?" : "Bạn có chắc muốn xóa từ này khỏi từ điển không?";
+        String confirmText = isEnglish ? "Delete" : "Xóa";
+        boolean confirm = AlertScreen.showConfirmationAlert(title, message,confirmText);
+        if (confirm) {
+            data.removeWord(data.getWord(item.getKey()));
+            Dictionary.getTrie().removeVocabulary(item.getValue());
+        }
     }
 
     @FXML

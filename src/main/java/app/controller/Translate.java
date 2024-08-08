@@ -8,6 +8,7 @@ import java.net.URL;
 import app.api.GoogleTranslate;
 import app.api.ImageToText;
 import app.api.TextToSpeech;
+import app.main.App;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -61,7 +62,7 @@ public class Translate {
     @FXML
     private Label characterLimit;
 
-    private final int CHARACTER_LIMIT = 5000;
+    private final int CHARACTER_LIMIT = 2000;
 
     private final PauseTransition pause = new PauseTransition(Duration.millis(700));
 
@@ -88,11 +89,10 @@ public class Translate {
     @FXML
     private void translate() {
         if (userText.getLength() > CHARACTER_LIMIT) {
-            AlertScreen.showAlert(
-                AlertType.WARNING,
-                "Character Limit Exceeded",
-                "Please type no more than " + CHARACTER_LIMIT + " characters \n Vui lòng nhập không quá " + CHARACTER_LIMIT + " kí tự"
-            );
+            boolean isEnglish = App.getLanguage() == "english";
+            String title = isEnglish ? "Character Limit Exceeded" : "Số Kí Tự Vượt Quá Giới Hạn";
+            String message = isEnglish ? "Please type no more than " + CHARACTER_LIMIT + " characters" : "Vui lòng nhập không quá " + CHARACTER_LIMIT + " kí tự";
+            AlertScreen.showAlert(AlertType.WARNING,title,message);
         } 
         else if (!userText.getText().isEmpty()) {
             translateText.setText("");
@@ -107,16 +107,8 @@ public class Translate {
                 protected void succeeded() {
                     super.succeeded();
                     Platform.runLater(() -> {
-                        if(getValue() == "Error"){
-                            AlertScreen.showAlert(
-                                AlertType.ERROR, 
-                                "Network Connection Error",
-                                "Please check your internet connection\nVui lòng kiểm tra kết nối mạng");
-                        }
-                        else{
-                            translateText.setText(getValue());
-                            loadingTranslate.setVisible(false);
-                        }
+                        translateText.setText(getValue());
+                        loadingTranslate.setVisible(false);
                     });
                 }
    

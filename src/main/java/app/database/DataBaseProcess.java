@@ -2,11 +2,11 @@ package app.database;
 
 import java.sql.*;
 
-public class Database {
+public class DataBaseProcess {
     private Connection connection;
     private Statement statement;
 
-    public Database(final String dbPath) {
+    public DataBaseProcess(final String dbPath) {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
             statement = connection.createStatement();

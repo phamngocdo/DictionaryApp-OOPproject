@@ -28,10 +28,6 @@
 
 .controll-button:hover{
     -fx-background-color:#777AFF;
-    -fx-font-family:"Poppins";
-    -fx-text-fill:white;
-    -fx-font-size:14; 
-    -fx-font-weight:bold;
     -fx-border-color: white; 
     -fx-border-width: 0 0 0 2px; 
 }
@@ -55,8 +51,6 @@
 
 .general-button:hover{
     -fx-background-color:#dbdbdb;
-    -fx-background-radius:70;
-    -fx-border-radius:70;
 }
 
 .general-text{

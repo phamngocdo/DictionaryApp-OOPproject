@@ -4,9 +4,7 @@
 
 @import url(translate.css);
 
-@import url(bookmarks.css);
-
-@import url(edit.css);
+@import url(add_word.css);
 
 @import url(chatbot.css);
 

@@ -1,15 +1,13 @@
-@import url("general.css");
+@import url(general.css);
 
-@import url("dictionary.css");
+@import url(dictionary.css);
 
-@import url("translate.css");
+@import url(translate.css);
 
-@import url("edit.css");
+@import url(add_word.css);
 
-@import url("bookmarks.css");
+@import url(games.css);
 
-@import url("games.css");
+@import url(chatbot.css);
 
-@import url("chatbot.css");
-
-@import url("settings.css");
+@import url(settings.css);
