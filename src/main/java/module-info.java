@@ -9,8 +9,6 @@ module app {
     requires java.net.http;    
     requires tess4j;
     requires jlayer;
-    requires org.json;
-    
 
     opens app.main to javafx.fxml;
     opens app.base to javafx.fxml;
