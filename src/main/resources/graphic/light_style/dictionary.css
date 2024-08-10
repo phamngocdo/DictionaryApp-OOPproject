@@ -27,7 +27,7 @@
 }
 
 .search-bar{
-    -fx-border-color:#c0c0c0;
+    -fx-border-color:black;
     -fx-border-width:1;
     -fx-border-radius:5;
     -fx-background-color:transparent;
