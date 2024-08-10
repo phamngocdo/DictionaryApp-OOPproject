@@ -8,6 +8,6 @@
 
 .setting-pane{
     -fx-border-width:1;
-    -fx-border-color:#c0c0c0;
+    -fx-border-color:black;
     -fx-border-radius:8;
 }
