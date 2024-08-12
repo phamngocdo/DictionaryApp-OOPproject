@@ -26,7 +26,8 @@ public class ImageToText {
         String dataPath;
         try {
             dataPath = new File(tessDataUrl.toURI()).getAbsolutePath();
-        } catch (URISyntaxException e) {
+        } 
+        catch (URISyntaxException e) {
             e.printStackTrace();
             return result;
         }
@@ -36,7 +37,8 @@ public class ImageToText {
         File imageFile = new File(imagePath);
         try {
             result = tesseract.doOCR(imageFile);
-        } catch (TesseractException e) {
+        } 
+        catch (TesseractException e) {
             e.printStackTrace();
         }
         

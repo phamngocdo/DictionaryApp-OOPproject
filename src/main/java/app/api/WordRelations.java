@@ -53,12 +53,15 @@ public class WordRelations {
                     list.add(temp);
                 }
             }
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
-        } finally {
+        } 
+        finally {
             try {
                 client.close();
-            } catch (IOException e) {
+            } 
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -67,7 +70,7 @@ public class WordRelations {
 
     public static void main(String[] args) {
         ArrayList<Pair<Integer, String>> list = getSynonyms("good");
-        for(Pair<Integer, String> str : list){
+        for(Pair<Integer, String> str : list) {
             System.out.println(str.getValue());
         }
     }

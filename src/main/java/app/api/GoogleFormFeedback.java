@@ -23,7 +23,8 @@ public class GoogleFormFeedback {
             httpPost.setEntity(entity);
             httpClient.execute(httpPost);
             System.out.println("Feedback sent successfully to Google Forms!");
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
     }

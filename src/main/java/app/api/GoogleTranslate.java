@@ -13,8 +13,7 @@ import java.nio.charset.StandardCharsets;
 
 public class GoogleTranslate {
 
-    private static final String SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwB7oqgOY3384knBZ13uUJY4RUMwODlLZoy-SxBIntad7gBxE3OYUOVjC2EP3Ktofcu/exec";
-
+    private static final String SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfwrd_46ZVQMXMQH21Q2sORE-UYkYSNo1NWcMXzCYWbM-XmxQ4eqOl6luxyKEGMV6Y/exec";
     public static String translate(String text, String sourceLanguage, String targetLanguage) {
         try {
             String encodedText = URLEncoder.encode(text, StandardCharsets.UTF_8);
@@ -29,9 +28,16 @@ public class GoogleTranslate {
             finally {
                 response.close();
             }
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
             return "Error";
         }
+    }
+
+    public static void main(String[] args) {
+        String text = "Hello, how are you today?";
+        System.out.println(translate(text, "en", "vi"));
+
     }
 }

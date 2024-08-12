@@ -39,7 +39,8 @@ public class TextToSpeech {
         String encodedText;
         try {
             encodedText = URLEncoder.encode(text, "UTF-8");
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
             return;
         }
@@ -52,16 +53,20 @@ public class TextToSpeech {
             new Thread(() -> {
                 try {
                     playAudio(audio);
-                } catch (IOException | JavaLayerException e) {
+                } 
+                catch (IOException | JavaLayerException e) {
                     e.printStackTrace();
                 }
             }).start();
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
-        } finally {
+        } 
+        finally {
             try {
                 httpClient.close();
-            } catch (IOException e) {
+            } 
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -81,7 +86,8 @@ public class TextToSpeech {
                 currentPlayer = new Player(fis);
             }
             currentPlayer.play();
-        } finally {
+        } 
+        finally {
             Files.deleteIfExists(tempFile);
         }
     }
