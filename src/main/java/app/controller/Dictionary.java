@@ -168,7 +168,7 @@ public class Dictionary {
         wordListView.setItems(items);
         notFound.setVisible(items.isEmpty());
         setupListViewCellFactory(wordListView);
-        adjustListViewHeight(wordListView, 35, 532, 30);
+        adjustListViewHeight(wordListView, 32, 532, 32);
     }
 
     private void setupListViewCellFactory(ListView<Pair<Integer, String>> listView) {

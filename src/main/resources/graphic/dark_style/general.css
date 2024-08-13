@@ -1,9 +1,11 @@
 .main-pane{
     -fx-background-color:black;
+    -fx-background-radius:5;
 }
 
 .controll-pane{
     -fx-background-color:#8A2BE2;
+    -fx-background-radius:5;
 }
 
 .function-screen-pane{
@@ -23,6 +25,7 @@
     -fx-text-fill:white;
     -fx-font-size:14; 
     -fx-font-weight:bold;
+    -fx-cursor:hand;
 }
 
 .controll-button:hover{
@@ -46,10 +49,11 @@
     -fx-background-radius:70;
     -fx-border-radius:70;
     -fx-text-fill:white;
+    -fx-cursor:hand;
 }
 
 .general-button:hover{
-    -fx-background-color:#474747;
+    -fx-background-color:#a75cec;
 }
 
 .general-text{

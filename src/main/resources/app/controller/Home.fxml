@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="633.0" prefWidth="860.0" styleClass="function-screen-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Home">
    <children>
-      <Label contentDisplay="CENTER" layoutX="10.0" layoutY="26.0" prefHeight="42.0" prefWidth="844.0" styleClass="general-text" text="%label.welcome" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+      <Label contentDisplay="CENTER" layoutX="8.0" layoutY="25.0" prefHeight="42.0" prefWidth="844.0" styleClass="general-text" text="%label.welcome" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -32,4 +33,7 @@
          </font>
       </Label>
    </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
 </Pane>

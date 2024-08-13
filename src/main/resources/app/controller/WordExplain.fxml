@@ -12,7 +12,7 @@
 
 <Pane focusTraversable="true" prefHeight="550.0" prefWidth="628.0" styleClass="setting-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.WordExplain">
    <children>
-      <Button fx:id="saved" layoutX="534.0" layoutY="6.0" mnemonicParsing="false" onAction="#unsaveWord" styleClass="saved-button" text="%button.saved">
+      <Button fx:id="saved" layoutX="534.0" layoutY="7.0" mnemonicParsing="false" onAction="#unsaveWord" styleClass="saved-button" text="%button.saved">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="saved-icon" />
          </graphic>
@@ -79,7 +79,7 @@
             </Button>
          </children>
       </HBox>
-      <Button fx:id="save" layoutX="538.0" layoutY="6.0" mnemonicParsing="false" onAction="#saveWord" style="-fx-background-radius: 20;" styleClass="save-button" text="%button.save">
+      <Button fx:id="save" layoutX="538.0" layoutY="7.0" mnemonicParsing="false" onAction="#saveWord" style="-fx-background-radius: 20;" styleClass="save-button" text="%button.save">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="save-icon" />
          </graphic>
@@ -87,12 +87,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="edit" layoutX="432.0" layoutY="4.0" mnemonicParsing="false" onAction="#goToEdit" styleClass="general-button">
+      <Button fx:id="edit" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" onAction="#goToEdit" styleClass="general-button">
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="edit-icon" />
          </graphic>
       </Button>
-      <Button fx:id="delete" layoutX="485.0" layoutY="4.0" mnemonicParsing="false" onAction="#deleteWord" styleClass="general-button">
+      <Button fx:id="delete" layoutX="485.0" layoutY="5.0" mnemonicParsing="false" onAction="#deleteWord" styleClass="general-button">
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="delete-icon" />
          </graphic>

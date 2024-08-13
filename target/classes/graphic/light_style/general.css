@@ -1,10 +1,11 @@
 .main-pane{
     -fx-background-color:white;
+    -fx-background-radius:5;
 }
 
 .controll-pane{
     -fx-background-color:#5053E2;
-
+    -fx-background-radius:5;
 }
 
 .function-screen-pane{
@@ -50,7 +51,7 @@
 }
 
 .general-button:hover{
-    -fx-background-color:#dbdbdb;
+    -fx-background-color:#777AFF;
 }
 
 .general-text{

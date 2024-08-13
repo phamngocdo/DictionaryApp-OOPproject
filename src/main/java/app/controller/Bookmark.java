@@ -1,25 +1,31 @@
 package app.controller;
+import app.api.TextToSpeech;
+import app.main.App;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-import app.main.App;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
 
 public class Bookmark {
+
+    @FXML
+    private HBox columnName;
 
     @FXML
     private Pane explain;
@@ -29,17 +35,29 @@ public class Bookmark {
 
     private ArrayList<Pair<Integer, String>> list = new ArrayList<>();
 
+    @FXML
+    private Button backButton;
+
     private static final String BOOKMARK_PATH = "src/main/resources/bookmark/bookmark.txt";
 
     @FXML
     private void initialize() {
+        backButton.setVisible(false);
         explain.setVisible(false);
+        columnName.setVisible(true);
         loadList();
-        handleListView();
+        wordList.setVisible(true);
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) {
+        backButton.setVisible(false);
+        explain.setVisible(false);
+        columnName.setVisible(true);
+        wordList.setVisible(true);
     }
 
     private void loadList() {
-        list.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(BOOKMARK_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -52,49 +70,88 @@ public class Bookmark {
             e.printStackTrace();
         }
         ObservableList<Pair<Integer, String>> items = FXCollections.observableArrayList(list);
+        wordList.setCellFactory(listview -> new BookmarkItem());
         wordList.setItems(items);
-        adjustListViewHeight(wordList, 26, 520, 0);
+   
     }
 
-    private void handleListView() {
-        wordList.setCellFactory(view -> new ListCell<>() {
-            {
-                setOnMouseClicked(event -> {
-                    if (event.getClickCount() == 1 && !isEmpty()) {
-                        Pair<Integer, String> item = getItem();
-                        ResourceBundle bundle = App.getBundle();
-                        try {
-                            WordExplain.setItem(item);
-                            Parent page = FXMLLoader.load(Dictionary.class.getResource("/app/controller/WordExplain.fxml"), bundle);
-                            explain.getChildren().setAll(page);
-                            explain.setVisible(true);
-                            loadList();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+    private class BookmarkItem extends ListCell<Pair<Integer, String>> {
 
-                addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
-                    if (event.isPrimaryButtonDown()) {
-                        wordList.getSelectionModel().clearSelection();
-                        event.consume();
-                    }
-                });
+        private HBox hbox;
+        private Label word, pronouce;
+        private ImageView soundImage, infoImage;
+        private Button ukSound, usSound, fullExplainView;
+    
+        public BookmarkItem() {
+            hbox = new HBox();
+            hbox.getStyleClass().add("cell-hbox");
+
+            word = new Label();
+            word.getStyleClass().add("word");
+
+            pronouce = new Label();
+            pronouce.getStyleClass().add("pronounce");
+
+            usSound = new Button("US");
+            usSound.getStyleClass().add("general-button");
+            soundImage = new ImageView();
+            soundImage.getStyleClass().add("sound-icon");
+            usSound.setGraphic(soundImage);
+
+            ukSound = new Button("UK");
+            ukSound.getStyleClass().add("general-button");
+            soundImage = new ImageView();
+            soundImage.getStyleClass().add("sound-icon");
+            ukSound.setGraphic(soundImage);
+
+            fullExplainView = new Button();
+            fullExplainView.getStyleClass().add("general-button");
+            infoImage = new ImageView();
+            infoImage.getStyleClass().add("info-icon");
+            fullExplainView.setGraphic(infoImage);
+
+            hbox.getChildren().addAll(word, pronouce, usSound, ukSound, fullExplainView);
+        }
+    
+        @Override
+        protected void updateItem(Pair<Integer, String> item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty || item == null) {
+                setGraphic(null);
+            } 
+            else {
+                word.setText(item.getValue());
+                pronouce.setText("/" + Dictionary.getData().getWord(item.getKey()).getPronounce() + "/");
+                ukSound.setOnAction(event -> playUKSound(item.getValue()));
+                usSound.setOnAction(event -> playUSSound(item.getValue()));
+                fullExplainView.setOnAction(event -> seeFullExplain(item));
+                setGraphic(hbox);
             }
-
-            @Override
-            protected void updateItem(Pair<Integer, String> item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(item == null ? null : item.getValue());
+        }
+    
+        private void playUKSound(String word) {
+            TextToSpeech.speakText(word, "en-gb");
+        }
+    
+        private void playUSSound(String word) {
+            TextToSpeech.speakText(word, "en-us");
+        }
+    
+        private void seeFullExplain(Pair<Integer, String> item) {
+            try {
+                WordExplain.setItem(item);
+                Parent page;
+                page = FXMLLoader.load(Bookmark.class.getResource("/app/controller/WordExplain.fxml"), App.getBundle());
+                explain.getChildren().clear();
+                explain.getChildren().add(page);
+                explain.setVisible(true);
+                backButton.setVisible(true);
+                columnName.setVisible(false);
+                wordList.setVisible(false);
             }
-        });
-    }
-
-    private void adjustListViewHeight(ListView<?> listView, double itemHeight, double maxHeight, double emptyHeight) {
-        Platform.runLater(() -> {
-            double totalHeight = Math.min(listView.getItems().size() * itemHeight, maxHeight);
-            listView.setPrefHeight(totalHeight > 0 ? totalHeight : emptyHeight);
-        });
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

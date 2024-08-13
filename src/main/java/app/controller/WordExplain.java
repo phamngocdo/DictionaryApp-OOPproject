@@ -22,7 +22,7 @@ public class WordExplain {
 
     private static Pair<Integer, String> item;
 
-    private static DictionaryDatabase data = new DictionaryDatabase(Dictionary.class.getResource("/database/dictionary.db").getPath());
+    private static DictionaryDatabase data = Dictionary.getData();
 
     @FXML
     private Label wordLabel;
