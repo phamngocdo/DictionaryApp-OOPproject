@@ -1,5 +1,4 @@
 apple
 bad
-help
 better
 hello

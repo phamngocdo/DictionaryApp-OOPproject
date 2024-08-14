@@ -55,9 +55,11 @@ public class Bookmark {
         explain.setVisible(false);
         columnName.setVisible(true);
         wordList.setVisible(true);
+        loadList();
     }
 
     private void loadList() {
+        list.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader(BOOKMARK_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {

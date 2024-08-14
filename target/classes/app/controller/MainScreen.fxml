@@ -24,9 +24,9 @@
             </Pane>
             <VBox layoutX="1.0" layoutY="94.0" prefHeight="458.0" prefWidth="165.0" spacing="5.0">
                <children>
-                  <Button fx:id="homeButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.home" textAlignment="RIGHT">
+                  <Button fx:id="homeButton" alignment="BASELINE_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.home" textAlignment="RIGHT">
                      <graphic>
-                        <ImageView blendMode="ADD" fitHeight="24.0" fitWidth="24.0" opacity="0.67" pickOnBounds="true" preserveRatio="true">
+                        <ImageView blendMode="ADD" fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../graphic/general_icon/home.png" />
                            </image>
@@ -39,9 +39,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="dictionaryButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#goToDictionary" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.dictionary">
+                  <Button fx:id="dictionaryButton" alignment="BASELINE_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#goToDictionary" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.dictionary">
                      <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../graphic/general_icon/dictionary.png" />
                            </image>
@@ -59,7 +59,7 @@
                   </Button>
                   <Button fx:id="translateButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#goToTranslate" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.translate">
                      <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../graphic/general_icon/translate.png" />
                            </image>
@@ -74,7 +74,7 @@
                   </Button>
                   <Button fx:id="addButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#goToAddWord" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.addword">
                      <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../graphic/general_icon/add.png" />
                            </image>
@@ -87,9 +87,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="bookmarkButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#goToBookmark" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.bookmark">
+                  <Button fx:id="bookmarkButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#goToBookmark" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.bookmark">
                      <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../graphic/general_icon/bookmark.png" />
                            </image>
@@ -104,9 +104,9 @@
                   </Button>
                   <Button fx:id="gamesButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#goToGames" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.games">
                      <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../graphic/general_icon/games.png" />
+                              <Image url="@../../graphic/general_icon/game.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -119,7 +119,7 @@
                   </Button>
                   <Button fx:id="chatBotButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#goToChatBot" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.chatbot">
                      <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../graphic/general_icon/chatbot.png" />
                            </image>
@@ -139,9 +139,9 @@
             </VBox>
             <Button fx:id="settingsButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="1.0" layoutY="563.0" mnemonicParsing="false" onAction="#goToSettings" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.settings">
                <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../graphic/general_icon/setting.png" />
+                        <Image url="@../../graphic/general_icon/settings.png" />
                      </image>
                   </ImageView>
                </graphic>

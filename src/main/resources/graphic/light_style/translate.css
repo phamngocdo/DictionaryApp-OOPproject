@@ -1,5 +1,7 @@
 .sound-icon{
     -fx-image:url(icon/sound.png);
+    -fx-fit-width:24;
+    -fx-fit-height:24;
 }
 
 .swap-icon{
@@ -38,7 +40,7 @@
 
 .user-text-area {
     -fx-background-color:white;
-    -fx-text-fill:#c0c0c0;
+    -fx-text-fill:black;
     -fx-font-family:"Poppins";
     -fx-font-size:13px;
     -fx-background-radius:15;

@@ -4,9 +4,9 @@
 }
 
 .info-icon {
-    -fx-image: url(icon/information.png);
-    -fx-fit-width:24;
-    -fx-fit-height:24;
+    -fx-image: url(icon/infomation.png);
+    -fx-fit-width:20;
+    -fx-fit-height:20;
 }
 
 .bookmark-list{
