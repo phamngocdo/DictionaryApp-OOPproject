@@ -13,8 +13,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import app.api.TextToSpeech;
-import app.controller.Dictionary;
 import app.controller.MainScreen;
+import app.database.DictionaryDatabase;
 
 public class App extends Application {
 
@@ -33,7 +33,7 @@ public class App extends Application {
     @SuppressWarnings("exports")
     @Override
     public void start(Stage stage) throws IOException {
-        Dictionary.loadTrie();
+        DictionaryDatabase.loadData();
         TextToSpeech.addVoice();
 
         try (FileInputStream fis = new FileInputStream(LANGUAGE_FILE);

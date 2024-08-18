@@ -1,31 +1,19 @@
 package app.trie;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
+import app.database.DictionaryDatabase;
 import javafx.util.Pair;
 
 public class Trie {
-    private TrieNode root;
-    private int totalWords;
+    private static TrieNode root = new TrieNode();
 
-    public Trie() {
-        this.root = new TrieNode();
-        this.totalWords = 0;
-    }
-
-    public boolean isEmpty() {
+    public static boolean isEmpty() {
         return root == null;
     }
 
-    public int getTotalWords() {
-        return totalWords;
-    }
-
-    public TrieNode getRoot() {
-        return root;
-    }
-
-    public void insertWord(int wordId, String word) {
+    public static void insertWord(int wordId, String word) {
         if (root == null) {
             root = new TrieNode();
         }
@@ -39,11 +27,10 @@ public class Trie {
         if (!current.isEndOfWord()) {
             current.setEndOfWord(true);
             current.setWord(wordId, word);
-            totalWords++;
         }
     }
 
-    private TrieNode getEndNode(String word) {
+    private static TrieNode getEndNode(String word) {
         if (root == null) {
             return null;
         }
@@ -57,11 +44,11 @@ public class Trie {
         return current;
     }
 
-    public void removeVocabulary(String word) {
-        removeHelper(this.root, word, 0);
+    public static void removeVocabulary(String word) {
+        removeHelper(root, word, 0);
     }
 
-    private boolean removeHelper(TrieNode current, String word, int index) {
+    private static boolean removeHelper(TrieNode current, String word, int index) {
         if (index == word.length()) {
             if (!current.isEndOfWord()) {
                 return false;
@@ -85,7 +72,7 @@ public class Trie {
         return false;
     }
 
-    public ArrayList<Pair<Integer, String>> getAllVocabStartWith(String prefix) {
+    public static ArrayList<Pair<Integer, String>> getAllVocabStartWith(String prefix) {
         ArrayList<Pair<Integer, String>> list = new ArrayList<>();
         TrieNode current = getEndNode(prefix);
         if (current == null) {
@@ -95,7 +82,7 @@ public class Trie {
         return list;
     }
 
-    private void collectAllVocab(TrieNode current, ArrayList<Pair<Integer, String>> list) {
+    private static void collectAllVocab(TrieNode current, ArrayList<Pair<Integer, String>> list) {
         if (current == null) {
             return;
         }
@@ -107,11 +94,31 @@ public class Trie {
         }
     }
 
-    public Pair<Integer, String> getWord(String word){
+    public static Pair<Integer, String> getWord(String word){
         TrieNode current = getEndNode(word);
         if (current == null || !current.isEndOfWord()){
             return null;
         }
         return current.getWord();
+    }
+
+    public static void main(String[] args) {
+        DictionaryDatabase.loadData();
+        try (Scanner sc = new Scanner(System.in)) {
+            while (true) {
+                System.out.print("Enter prefix: ");
+                String prefix = sc.nextLine();
+              
+                ArrayList<Pair<Integer, String>> vocabList = getAllVocabStartWith(prefix);
+                if (vocabList.isEmpty()) {
+                    System.out.println("No words found with the given prefix.");
+                } 
+                else {
+                    for (Pair<Integer, String> e : vocabList) {
+                        System.out.println(e.getValue());
+                    }
+                }
+            }
+        }
     }
 }

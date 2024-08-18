@@ -44,4 +44,13 @@ public class ImageToText {
         
         return result;
     }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println(getText(null, null));
+        } 
+        catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 }

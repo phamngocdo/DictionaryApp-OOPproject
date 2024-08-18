@@ -12,7 +12,7 @@
 
 <Pane focusTraversable="true" prefHeight="550.0" prefWidth="628.0" styleClass="setting-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.WordExplain">
    <children>
-      <Button fx:id="saved" layoutX="534.0" layoutY="7.0" mnemonicParsing="false" onAction="#unsaveWord" styleClass="saved-button" text="%button.saved">
+      <Button fx:id="saved" layoutX="534.0" layoutY="7.0" mnemonicParsing="false" onAction="#unsaveFromBookmark" styleClass="saved-button" text="%button.saved">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="saved-icon" />
          </graphic>
@@ -31,7 +31,7 @@
             <Insets left="16.0" right="16.0" />
          </padding>
       </Label>
-      <TextArea fx:id="explainArea" editable="false" focusTraversable="false" layoutY="58.0" prefHeight="488.0" prefWidth="628.0" styleClass="explain-text-area">
+      <TextArea fx:id="explainArea" editable="false" layoutY="58.0" prefHeight="488.0" prefWidth="628.0" styleClass="explain-text-area">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -57,7 +57,7 @@
             </Label>
             <Button fx:id="usSound" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#playUSPronounceSound" styleClass="general-button" text="US">
                <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="sound-icon" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="speaker-icon" />
                </graphic>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -68,7 +68,7 @@
             </Button>
             <Button fx:id="ukSound" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#playUKPronounceSound" styleClass="general-button" text="UK">
                <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="sound-icon" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="speaker-icon" />
                </graphic>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -79,7 +79,7 @@
             </Button>
          </children>
       </HBox>
-      <Button fx:id="save" layoutX="538.0" layoutY="7.0" mnemonicParsing="false" onAction="#saveWord" style="-fx-background-radius: 20;" styleClass="save-button" text="%button.save">
+      <Button fx:id="save" layoutX="538.0" layoutY="7.0" mnemonicParsing="false" onAction="#saveToBookmark" style="-fx-background-radius: 20;" styleClass="save-button" text="%button.save">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="save-icon" />
          </graphic>
@@ -87,9 +87,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="edit" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" onAction="#goToEdit" styleClass="general-button">
+      <Button fx:id="edit" layoutX="432.0" layoutY="5.0" mnemonicParsing="false" onAction="#goToEdit" prefHeight="32.0" prefWidth="40.0" styleClass="general-button">
          <graphic>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="edit-icon" />
+            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" styleClass="edit-icon" />
          </graphic>
       </Button>
       <Button fx:id="delete" layoutX="485.0" layoutY="5.0" mnemonicParsing="false" onAction="#deleteWord" styleClass="general-button">

@@ -43,7 +43,7 @@
             <Button fx:id="viUserOption" mnemonicParsing="false" onAction="#chooseViForUser" styleClass="button-choose-language" text="%button.vi" />
             <Button fx:id="userTextSound" mnemonicParsing="false" onAction="#playUserTextSound" prefHeight="27.0" prefWidth="33.0" styleClass="general-button">
                <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="sound-icon" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="speaker-icon" />
                </graphic>
             </Button>
             <Button fx:id="addImage" mnemonicParsing="false" onAction="#selectImage" styleClass="general-button">
@@ -59,7 +59,7 @@
             <Button fx:id="viTransOption" mnemonicParsing="false" onAction="#chooseViForTrans" styleClass="button-choosed-language" text="%button.vi" />
             <Button fx:id="translateTextSound" mnemonicParsing="false" onAction="#playTransTextSound" prefHeight="27.0" prefWidth="29.0" styleClass="general-button">
                <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="sound-icon" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="speaker-icon" />
                </graphic>
             </Button>
          </children>

@@ -36,7 +36,6 @@
     -fx-font-size:17;
     -fx-pref-width:180;
     -fx-alignment: center; 
-    -fx-cursor:text;
 }
 
 .cell-hbox .pronounce {
@@ -46,5 +45,4 @@
     -fx-font-size:17;
     -fx-pref-width:230;
     -fx-alignment: center; 
-    -fx-cursor:text;
 }

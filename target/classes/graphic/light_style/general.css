@@ -48,6 +48,7 @@
     -fx-background-radius:70;
     -fx-border-radius:70;
     -fx-text-fill:black;
+    -fx-cursor:hand;
 }
 
 .general-button:hover{
@@ -57,7 +58,8 @@
 .general-text{
     -fx-font-family:"Poppins";
     -fx-text-fill:black;
-    -fx-text-weight:bold;
+    -fx-font-weight:bold;
+    -fx-font-size:15;
 }
 
 .scroll-bar {

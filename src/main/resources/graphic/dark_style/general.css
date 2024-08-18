@@ -59,7 +59,6 @@
 .general-text{
     -fx-font-family:"Poppins";
     -fx-text-fill:white;
-    -fx-text-weight:bold;
 }
 
 .scroll-bar {

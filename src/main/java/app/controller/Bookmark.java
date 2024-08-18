@@ -1,6 +1,8 @@
 package app.controller;
 import app.api.TextToSpeech;
+import app.database.DictionaryDatabase;
 import app.main.App;
+import app.trie.Trie;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -63,7 +65,7 @@ public class Bookmark {
         try (BufferedReader reader = new BufferedReader(new FileReader(BOOKMARK_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                Pair<Integer, String> word = Dictionary.getTrie().getWord(line);
+                Pair<Integer, String> word = Trie.getWord(line);
                 if (word != null) {
                     list.add(word);
                 }
@@ -97,13 +99,13 @@ public class Bookmark {
             usSound = new Button("US");
             usSound.getStyleClass().add("general-button");
             soundImage = new ImageView();
-            soundImage.getStyleClass().add("sound-icon");
+            soundImage.getStyleClass().add("speaker-icon");
             usSound.setGraphic(soundImage);
 
             ukSound = new Button("UK");
             ukSound.getStyleClass().add("general-button");
             soundImage = new ImageView();
-            soundImage.getStyleClass().add("sound-icon");
+            soundImage.getStyleClass().add("speaker-icon");
             ukSound.setGraphic(soundImage);
 
             fullExplainView = new Button();
@@ -123,7 +125,7 @@ public class Bookmark {
             } 
             else {
                 word.setText(item.getValue());
-                pronouce.setText("/" + Dictionary.getData().getWord(item.getKey()).getPronounce() + "/");
+                pronouce.setText("/" + DictionaryDatabase.getWord(item.getKey()).getPronounce() + "/");
                 ukSound.setOnAction(event -> playUKSound(item.getValue()));
                 usSound.setOnAction(event -> playUSSound(item.getValue()));
                 fullExplainView.setOnAction(event -> seeFullExplain(item));

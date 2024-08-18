@@ -22,8 +22,6 @@ public class WordExplain {
 
     private static Pair<Integer, String> item;
 
-    private static DictionaryDatabase data = Dictionary.getData();
-
     @FXML
     private Label wordLabel;
 
@@ -55,18 +53,7 @@ public class WordExplain {
 
     @FXML
     private void initialize() {
-        Word word = data.getWord(item.getKey());
-        wordLabel.setText(word.getWord());
-        pronounceLabel.setText("/" + word.getPronounce() + "/");
-        StringBuilder explainText = new StringBuilder();
-        for (Explain explain : data.getAllExplainsFromWord(item.getKey())) {
-            explainText.append(explain.getType()).append("\n\t■ ").append(explain.getMeaning()).append("\n");
-            for (Example example : data.getAllExamplesFromExplain(explain.getId())) {
-                explainText.append("\t\t- ").append(example.getExample()).append("\n\t\t  ").append(example.getTranslate()).append("\n");
-            }
-        }
-        explainArea.setText(explainText.toString());
-        handleSaveButton(wordLabel.getText());
+        load();
     }
 
     @FXML
@@ -83,6 +70,7 @@ public class WordExplain {
 
     @FXML
     private void goToEdit(ActionEvent event) {
+        EditWord.setWordToEdit(DictionaryDatabase.getWord(item.getKey()));
         App.getMainScreen().goToEditFunction();
     }
 
@@ -94,13 +82,12 @@ public class WordExplain {
         String confirmText = isEnglish ? "Delete" : "Xóa";
         boolean confirm = AlertScreen.showConfirmationAlert(title, message,confirmText);
         if (confirm) {
-            data.removeWord(data.getWord(item.getKey()));
-            Dictionary.getTrie().removeVocabulary(item.getValue());
+            DictionaryDatabase.removeWord(DictionaryDatabase.getWord(item.getKey()));
         }
     }
 
     @FXML
-    private void saveWord(ActionEvent event) {
+    private void saveToBookmark(ActionEvent event) {
         ArrayList<String> words = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(BOOKMARK_PATH))) {
             String line;
@@ -122,7 +109,7 @@ public class WordExplain {
     }
 
     @FXML
-    private void unsaveWord(ActionEvent event) {
+    private void unsaveFromBookmark(ActionEvent event) {
         ArrayList<String> lines = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(BOOKMARK_PATH))) {
             String line;
@@ -144,6 +131,29 @@ public class WordExplain {
         }
         handleSaveButton(wordLabel.getText());
     }
+
+    private void load() {
+        Word word = DictionaryDatabase.getWord(item.getKey());
+        wordLabel.setText(word.getWord());
+        pronounceLabel.setText("/" + word.getPronounce() + "/");
+        StringBuilder explainText = new StringBuilder();
+        ArrayList<Explain> explains = DictionaryDatabase.getAllExplainsFromWord(item.getKey());
+        ArrayList<String> processedTypes = new ArrayList<>();
+        for (Explain explain : explains) {
+            String type = explain.getType();
+            if (!processedTypes.contains(type)) {
+                explainText.append(type).append("\n");
+                processedTypes.add(type);
+            }
+            explainText.append("\t■ ").append(explain.getMeaning()).append("\n");
+            for (Example example : DictionaryDatabase.getAllExamplesFromExplain(explain.getId())) {
+                explainText.append("\t\t- ").append(example.getExample()).append("\n\t\t  ").append(example.getTranslate()).append("\n");
+            }
+        }
+        explainArea.setText(explainText.toString());
+        handleSaveButton(wordLabel.getText());
+    }
+    
 
     private void handleSaveButton(String word) {
         boolean isSaved = false;

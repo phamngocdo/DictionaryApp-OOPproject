@@ -3,10 +3,11 @@ package app.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 import app.api.WordRelations;
-import app.database.DictionaryDatabase;
 import app.main.App;
 import app.trie.Trie;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,9 +28,6 @@ import javafx.scene.layout.Pane;
 import javafx.util.Pair;
 
 public class Dictionary {
-    private static Trie trie = new Trie();
-
-    private static DictionaryDatabase data;
 
     @FXML
     private Pane explain;
@@ -101,21 +99,6 @@ public class Dictionary {
         wordListView.setVisible(false);
     }
 
-    public static void loadTrie() {
-        data = new DictionaryDatabase(Dictionary.class.getResource("/database/dictionary.db").getPath());
-        data.getAllWords().forEach(word -> trie.insertWord(word.getKey(), word.getValue()));
-    }
-
-    @SuppressWarnings("exports")
-    public static Trie getTrie() {
-        return trie;
-    }
-
-    @SuppressWarnings("exports")
-    public static DictionaryDatabase getData() {
-        return data;
-    }
-
     private void setupEventHandlers() {
         Platform.runLater(() -> {
             search.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
@@ -149,7 +132,7 @@ public class Dictionary {
     }
 
     private void handleWordSearch(String word) {
-        Pair<Integer, String> result = trie.getWord(word);
+        Pair<Integer, String> result = Trie.getWord(word);
         if (result == null) {
             boolean isEnglish = App.getLanguage() == "english";
             String title = isEnglish ? "Not Found" : "Không Tìm Thấy";
@@ -164,11 +147,11 @@ public class Dictionary {
     }
 
     private void handleWordListView(String prefix) {
-        ObservableList<Pair<Integer, String>> items = FXCollections.observableArrayList(trie.getAllVocabStartWith(prefix));
+        ObservableList<Pair<Integer, String>> items = FXCollections.observableArrayList(Trie.getAllVocabStartWith(prefix));
         wordListView.setItems(items);
         notFound.setVisible(items.isEmpty());
         setupListViewCellFactory(wordListView);
-        adjustListViewHeight(wordListView, 32, 532, 32);
+        adjustListViewHeight(wordListView, 33, 532, 36);
     }
 
     private void setupListViewCellFactory(ListView<Pair<Integer, String>> listView) {

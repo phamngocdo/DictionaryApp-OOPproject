@@ -14,7 +14,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import app.controller.Dictionary;
+import app.trie.Trie;
 import javafx.util.Pair;
 
 public class WordRelations {
@@ -48,7 +48,7 @@ public class WordRelations {
             JSONArray jsonArray = new JSONArray(jsonResponse);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
-                Pair<Integer, String> temp = Dictionary.getTrie().getWord(obj.getString("word"));
+                Pair<Integer, String> temp = Trie.getWord(obj.getString("word"));
                 if (temp != null){
                     list.add(temp);
                 }
@@ -69,6 +69,7 @@ public class WordRelations {
     }
 
     public static void main(String[] args) {
+        //Test
         ArrayList<Pair<Integer, String>> list = getSynonyms("good");
         for(Pair<Integer, String> str : list) {
             System.out.println(str.getValue());

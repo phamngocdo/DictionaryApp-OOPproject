@@ -14,8 +14,10 @@
     -fx-image:url(icon/saved.png);
 }
 
-.sound-icon{
-    -fx-image:url(icon/sound.png);
+.speaker-icon{
+    -fx-image:url(icon/speaker.png);
+    -fx-fit-width:24;
+    -fx-fit-height:24;
 }
 
 .edit-icon{
@@ -92,6 +94,7 @@
 
 .save-button{
     -fx-background-color:black;
+    -fx-background-radius:20;
     -fx-font-family:"Poppins";
     -fx-text-fill:white;
     -fx-font-size:14; 
@@ -101,7 +104,7 @@
 }
 
 .save-button:hover{
-    -fx-background-color:#474747;
+    -fx-background-color:#a75cec;
 }
 
 .saved-button{

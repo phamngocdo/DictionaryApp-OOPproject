@@ -75,7 +75,8 @@ public class MainScreen {
 
     @FXML
     private void goToAddWord(ActionEvent event) {
-        goToFunction("AddWord", addButton);
+        EditWord.setWordToEdit(null);
+        goToFunction("EditWord", addButton);
         currentClickedButton = addButton;
     }
 

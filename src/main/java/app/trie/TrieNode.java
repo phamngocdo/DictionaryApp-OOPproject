@@ -3,7 +3,7 @@ package app.trie;
 import java.util.HashMap;
 import javafx.util.Pair;
 
-public class TrieNode {
+class TrieNode {
     private HashMap<Character, TrieNode> childs;
     private boolean isWord;
     private Pair<Integer, String> word;

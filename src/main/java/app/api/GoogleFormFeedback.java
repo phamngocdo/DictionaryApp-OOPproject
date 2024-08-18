@@ -28,4 +28,9 @@ public class GoogleFormFeedback {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+        //Open this link to see your feedback: https://docs.google.com/spreadsheets/d/1raqIunsFg250b4H_RCYy-Y446UseQyDjm_9fhDZ4DM0/edit?usp=sharing
+        sendFeedback("");
+    }
 }

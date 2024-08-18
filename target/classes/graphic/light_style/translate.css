@@ -1,9 +1,3 @@
-.sound-icon{
-    -fx-image:url(icon/sound.png);
-    -fx-fit-width:24;
-    -fx-fit-height:24;
-}
-
 .swap-icon{
     -fx-image: url(icon/swap.png);
 }

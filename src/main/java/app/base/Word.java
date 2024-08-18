@@ -1,8 +1,5 @@
 package app.base;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class Word extends Base {
     private String word;
     private String pronounce;
@@ -11,13 +8,6 @@ public class Word extends Base {
         super(wordId);
         this.word = word;
         this.pronounce = pronounce;
-    }
-
-    @SuppressWarnings("exports")
-    public Word(ResultSet resultSet) throws SQLException {
-        this(resultSet.getInt("word_id"), 
-            resultSet.getString("word"), 
-            resultSet.getString("pronounce"));
     }
 
     public String getWord() {

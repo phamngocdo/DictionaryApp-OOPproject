@@ -2,7 +2,7 @@ package app.database;
 
 import java.sql.*;
 
-public class DataBaseProcess {
+class DataBaseProcess {
     private Connection connection;
     private Statement statement;
 
@@ -54,16 +54,7 @@ public class DataBaseProcess {
             e.printStackTrace();
         }
     }
-
-    public void updateTuple(String table, String value, String condition) {
-        String sql = "UPDATE " + table + " SET " + value + " WHERE " + condition;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     public void removeTuple(String table, String condition) {
         String sql = "DELETE FROM " + table + " WHERE " + condition;
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -73,12 +64,10 @@ public class DataBaseProcess {
         }
     }
 
-    public int getNextId(String tableName, String idColumn, String condition) {
+    public int getNextId(String tableName, String idColumn) {
         int maxId = 0;
         String query = "SELECT MAX(" + idColumn + ") AS max_id FROM " + tableName;
-        if (condition != null) {
-            query += "WHERE " + condition;
-        }
+        
         try (ResultSet resultSet = statement.executeQuery(query)) {
             if (resultSet.next()) {
                 maxId = resultSet.getInt("max_id");
@@ -88,5 +77,4 @@ public class DataBaseProcess {
         }
         return maxId + 1;
     }
-    
 }

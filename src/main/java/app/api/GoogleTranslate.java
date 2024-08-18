@@ -36,6 +36,7 @@ public class GoogleTranslate {
     }
 
     public static void main(String[] args) {
+        //Test here
         String text = "Hello, how are you today?";
         System.out.println(translate(text, "en", "vi"));
 

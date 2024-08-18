@@ -102,6 +102,7 @@ public class TextToSpeech {
     }
 
     public static void main(String[] args) {
+        //Test
         addVoice();
         speakText("Xin chào", "vi-vn");
     }
