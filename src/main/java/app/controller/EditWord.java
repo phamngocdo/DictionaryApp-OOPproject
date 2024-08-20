@@ -59,6 +59,16 @@ public class EditWord {
 
     @FXML
     private void saveEdition(ActionEvent event) {
+        boolean isEnglish = App.getLanguage() == "english";
+        String title = isEnglish ? "Save Word" : "Lưu Từ";
+        String message = isEnglish ?  "Are you sure you want to save this word to the dictionary?" : "Bạn có chắc muốn lưu từ này vào từ điển không?";
+        String confirmText = isEnglish ? "Save" : "Lưu";
+        boolean confirm = AlertScreen.showConfirmationAlert(title, message,confirmText);
+        if (confirm) {
+            saveWord();
+        }
+    }
+    private void saveWord() {
         String wordText = wordField.getText().trim();
         String pronounceText = pronounceField.getText().trim();
 
@@ -163,6 +173,7 @@ public class EditWord {
         label.setStyle("-fx-font-weight:bold;" + "-fx-font-size:15;");
 
         TextField typeField = new TextField();
+        typeField.setText(type);
         typeField.setPromptText(App.getBundle().getString("prompttext.type"));;
         typeField.getStyleClass().add("type-field");
 

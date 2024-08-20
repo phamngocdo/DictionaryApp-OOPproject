@@ -1,0 +1,10 @@
+.game-choice {
+    -fx-background-color:#8A2BE2;
+    -fx-border-radius:5;
+    -fx-background-radius:5;
+    -fx-cursor:hand;
+}
+
+.game-choice:hover {
+    -fx-background-color:#a75cec;
+}

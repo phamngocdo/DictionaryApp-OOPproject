@@ -37,7 +37,7 @@ public class Settings {
     @FXML
     private void initialize(){
         isDarkTheme = true;
-        try (FileInputStream fis = new FileInputStream("src/main/resources/app/bundle/language_choosed.txt");
+        try (FileInputStream fis = new FileInputStream("src/main/resources/bundle/language_choosed.txt");
             ObjectInputStream ois = new ObjectInputStream(fis)) {
             chooseEng = ois.readBoolean();
         } catch (IOException e) {
@@ -92,7 +92,7 @@ public class Settings {
     }
 
     private void setEnglish(boolean choosed){
-        try (FileOutputStream fos = new FileOutputStream("src/main/resources/app/bundle/language_choosed.txt");
+        try (FileOutputStream fos = new FileOutputStream("src/main/resources/bundle/language_choosed.txt");
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeBoolean(choosed);
         } catch (IOException e) {

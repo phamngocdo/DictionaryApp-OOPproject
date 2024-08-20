@@ -145,7 +145,7 @@ public class Bookmark {
             try {
                 WordExplain.setItem(item);
                 Parent page;
-                page = FXMLLoader.load(Bookmark.class.getResource("/app/controller/WordExplain.fxml"), App.getBundle());
+                page = FXMLLoader.load(Bookmark.class.getResource("/controller/WordExplain.fxml"), App.getBundle());
                 explain.getChildren().clear();
                 explain.getChildren().add(page);
                 explain.setVisible(true);

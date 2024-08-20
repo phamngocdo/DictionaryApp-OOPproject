@@ -27,7 +27,7 @@ public class App extends Application {
     private static final String APP_NAME = "Dolingo";
     private static final String ICON_PATH = "/graphic/logo.png";
     private static final String CSS_PATH = "/graphic/dark_style/dark_style.css";
-    private static final String LANGUAGE_FILE = "src/main/resources/app/bundle/language_choosed.txt";
+    private static final String LANGUAGE_FILE = "src/main/resources/bundle/language_choosed.txt";
     private static String language = "english";
 
     @SuppressWarnings("exports")
@@ -43,7 +43,7 @@ public class App extends Application {
         catch (IOException e) {
             e.printStackTrace();
         }
-        bundle = ResourceBundle.getBundle("app.bundle." + language, Locale.getDefault());
+        bundle = ResourceBundle.getBundle("bundle." + language, Locale.getDefault());
         loadMainScreen();
         scene.getStylesheets().add(App.class.getResource(CSS_PATH).toExternalForm());
         stage.setTitle(APP_NAME);
@@ -54,7 +54,7 @@ public class App extends Application {
     }
 
     private void loadMainScreen() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/app/controller/MainScreen.fxml"), bundle);
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/controller/MainScreen.fxml"), bundle);
         Parent root = fxmlLoader.load();
         mainScreen = fxmlLoader.getController();
         scene = new Scene(root, WIDTH_SCENE, HEIGHT_SCENE);
@@ -69,7 +69,7 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml, ResourceBundle bundle) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/app/controller/" + fxml + ".fxml"), bundle);
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/controller/" + fxml + ".fxml"), bundle);
         return fxmlLoader.load();
     }
 
@@ -83,7 +83,7 @@ public class App extends Application {
     }
 
     public static void setBundle(String language) {
-        bundle = ResourceBundle.getBundle("app.bundle." + language, Locale.getDefault());
+        bundle = ResourceBundle.getBundle("bundle." + language, Locale.getDefault());
         try {
             Parent newRoot = loadFXML("MainScreen", bundle);
             scene.setRoot(newRoot);

@@ -1,0 +1,1423 @@
+1. Which sentence is correctly punctuated?
+a) Java is, a programming language.
+b) Java is a programming, language.
+c) Java is a programming language.
+d) Java is a programming language?
+Answer: c
+
+2. Which verb tense is correct in the following sentence?
+"By the time the project __________, the team will have completed all the necessary tests."
+a) finished
+b) will finish
+c) has finished
+d) finishes
+Answer: d
+
+3. Identify the correct conditional form:
+"If the server __________, the users will not be able to access the website."
+a) crashes
+b) crashed
+c) would crash
+d) crashing
+Answer: a
+
+4. Which sentence is in the passive voice?
+a) The developer wrote the code.
+b) The code is written by the developer.
+c) The developer is writing the code.
+d) The code writes the developer.
+Answer: b
+
+5. Choose the correct form of the verb:
+"The IT department __________ many new software applications this year."
+a) has developed
+b) develop
+c) developed
+d) is developed
+Answer: a
+
+6. Which of the following sentences uses the correct article?
+a) A cloud computing is an efficient way to store data.
+b) An cloud computing is an efficient way to store data.
+c) Cloud computing is a efficient way to store data.
+d) Cloud computing is an efficient way to store data.
+Answer: d
+
+7. Which option best completes the sentence?
+"The data __________ into the database yesterday."
+a) was entered
+b) were entered
+c) is entered
+d) has been entered
+Answer: a
+
+8. Choose the correct relative pronoun:
+"The program __________ we developed is compatible with multiple operating systems."
+a) which
+b) where
+c) who
+d) whose
+Answer: a
+
+9. Identify the correct preposition:
+"This software is compatible __________ most operating systems."
+a) on
+b) with
+c) in
+d) at
+Answer: b
+
+10. Which sentence is correctly structured?
+a) Before submitting the report, it should be reviewed by the team leader.
+b) Before submitting the report, the team leader should review it.
+c) The report should be reviewed before submitting it by the team leader.
+d) By the team leader should be reviewed the report before submitting it.
+Answer: b
+
+11. When __________ the new software update will be released?
+a) is
+b) are
+c) was
+d) will
+Answer: a
+
+12. The team __________ a new algorithm for the database management system last week.
+a) develop
+b) developed
+c) develops
+d) developing
+Answer: b
+
+13. If we __________ the security protocol, the system would be more secure.
+a) update
+b) updated
+c) will update
+d) updating
+Answer: b
+
+14. Choose the correct sentence:
+a) The system need to be restarted.
+b) The system needs to be restarted.
+c) The system needed to be restarted.
+d) The system needing to be restarted.
+Answer: b
+
+15. By the end of the day, the developers __________ all the bugs in the application.
+a) will fix
+b) have fixed
+c) will have fixed
+d) fixes
+Answer: c
+
+16. Which option correctly completes the sentence?
+"The network __________ several times this month."
+a) has been interrupted
+b) has interrupted
+c) interrupted
+d) is interrupted
+Answer: a
+
+17. The software __________ by the company is known for its reliability.
+a) develop
+b) developed
+c) develops
+d) developing
+Answer: b
+
+18. Choose the correct verb form:
+"She __________ a new tool for data analysis right now."
+a) test
+b) testing
+c) tests
+d) is testing
+Answer: d
+
+19. The IT team __________ if the new software will be compatible with older systems.
+a) wondering
+b) wonders
+c) wonder
+d) is wondering
+Answer: d
+
+20. Which sentence is in the correct passive voice?
+a) The application will be tested by the QA team.
+b) The QA team tested the application.
+c) The QA team will test the application.
+d) The application tests by the QA team.
+Answer: a
+
+21. The IT department __________ the issue before the deadline.
+a) resolves
+b) resolve
+c) resolving
+d) resolved
+Answer: a
+
+22. Identify the correct relative pronoun:
+"The hardware __________ we use is state-of-the-art."
+a) who
+b) which
+c) where
+d) that
+Answer: b
+
+23. If the software __________, the system will function more efficiently.
+a) optimizes
+b) optimized
+c) will optimize
+d) optimizing
+Answer: b
+
+24. The developers __________ the new feature in the latest release.
+a) include
+b) includes
+c) included
+d) including
+Answer: c
+
+25. Which sentence is correctly punctuated?
+a) The application is fast, reliable and easy to use.
+b) The application is fast reliable, and easy to use.
+c) The application is fast, reliable, and easy to use.
+d) The application is fast reliable and easy to use.
+Answer: c
+
+26. The IT team will ensure that all systems __________ up to date.
+a) are
+b) be
+c) is
+d) was
+Answer: a
+
+27. Choose the correct verb form:
+"The IT specialist __________ the network issues as soon as possible."
+a) address
+b) addresses
+c) addressed
+d) addressing
+Answer: b
+
+28. The project manager __________ an update on the project's progress yesterday.
+a) gives
+b) give
+c) given
+d) gave
+Answer: d
+
+29. Which sentence uses the correct article?
+a) An application development process involves several stages.
+b) A application development process involves several stages.
+c) Application development process involves a several stages.
+d) The application development process involves several stages.
+Answer: d
+
+30. The team __________ working on the new update for the past month.
+a) has been
+b) have been
+c) had been
+d) will be
+Answer: a
+
+31. The software will not run unless it __________ installed correctly.
+a) is
+b) are
+c) was
+d) will be
+Answer: a
+
+32. Identify the correct form:
+"The system __________ major updates every six months."
+a) receive
+b) receiving
+c) receives
+d) received
+Answer: c
+
+33. The developer __________ a new feature into the application last week.
+a) integrated
+b) integrates
+c) integrating
+d) integrate
+Answer: a
+
+34. Which sentence is correct?
+a) I would appreciate if you could provide the latest version of the software.
+b) I would appreciate you could provide the latest version of the software.
+c) I would appreciate if you provide the latest version of the software.
+d) I would appreciate it if you could provide the latest version of the software.
+Answer: d
+
+35. Choose the correct verb form:
+"The application __________ by the end of this week."
+a) will complete
+b) completes
+c) will be completed
+d) has completed
+Answer: c
+
+36. The new security measures __________ by the IT department to enhance data protection.
+a) were implemented
+b) implemented
+c) are implementing
+d) implementing
+Answer: a
+
+37. Which sentence uses the correct preposition?
+a) The system is vulnerable to attacks due on outdated software.
+b) The system is vulnerable to attacks due with outdated software.
+c) The system is vulnerable for attacks due to outdated software.
+d) The system is vulnerable to attacks due to outdated software.
+Answer: d
+
+38. The software needs to __________ before it can be deployed.
+a) test
+b) tested
+c) be tested
+d) testing
+Answer: c
+
+39. Choose the correct form:
+"If you __________ the system now, it should be ready for the demo tomorrow."
+a) configure
+b) configured
+c) will configure
+d) configuring
+Answer: a
+
+40. The user manual __________ updated to include the latest changes.
+a) was
+b) is
+c) will be
+d) being
+Answer: c
+
+41. The developers __________ the database to improve performance.
+a) optimizing
+b) optimized
+c) optimizes
+d) optimize
+Answer: b
+
+42. The software update __________ to all users by the end of the month.
+a) is distributed
+b) was distributed
+c) distributed
+d) distributes
+Answer: a
+
+43. Identify the correct form:
+"The network __________ to handle increased traffic during peak hours."
+a) designed
+b) is designed
+c) design
+d) designs
+Answer: b
+
+44. The IT team will __________ the issue as soon as possible.
+a) resolve
+b) resolved
+c) resolves
+d) resolving
+Answer: a
+
+45. Which option best completes the sentence?
+"The server __________ down during the maintenance window."
+a) went
+b) going
+c) goes
+d) will go
+Answer: a
+
+46. Choose the correct form of the verb:
+"The company __________ a new software development methodology this year."
+a) adopt
+b) adopts
+c) adopted
+d) adopting
+Answer: c
+
+47. The new application __________ tested thoroughly before its release.
+a) was
+b) is
+c) will be
+d) being
+Answer: c
+
+48. Which sentence is correctly punctuated?
+a) The IT team has; successfully implemented the new system.
+b) The IT team has successfully implemented the new system.
+c) The IT team, has successfully implemented the new system.
+d) The IT team has successfully, implemented the new system.
+Answer: b
+
+49. The issue __________ with the application last week, but it was not resolved.
+a) reported
+b) was reported
+c) reports
+d) reporting
+Answer: b
+
+50. The developers __________ to fix the bugs before the software release.
+a) working
+b) worked
+c) are working
+d) work
+Answer: c
+
+51. If the server __________, please contact the support team immediately.
+a) fails
+b) failed
+c) will fail
+d) failing
+Answer: a
+
+52. Which of the following sentences uses the correct article?
+a) An database is an essential tool for data management.
+b) A database is a essential tool for data management.
+c) The database is an essential tool for data management.
+d) Database is the essential tool for data management.
+Answer: c
+
+53. Choose the correct preposition:
+"The application needs to be compatible __________ the latest operating systems."
+a) on
+b) with
+c) in
+d) for
+Answer: b
+
+54. The system __________ upgraded to support the new features.
+a) has been
+b) was
+c) is
+d) will be
+Answer: d
+
+55. The IT department __________ to ensure that all security protocols are followed.
+a) works
+b) working
+c) worked
+d) work
+Answer: a
+
+56. The new software __________ available for download next week.
+a) will be
+b) is
+c) has been
+d) being
+Answer: a
+
+57. Identify the correct conditional form:
+"If the application __________ too slow, we will need to optimize it."
+a) runs
+b) run
+c) running
+d) ran
+Answer: a
+
+58. The developer __________ the latest patch to fix the security vulnerability.
+a) released
+b) releases
+c) releasing
+d) release
+Answer: a
+
+59. The team __________ to address the feedback from the beta testing phase.
+a) will begin
+b) begin
+c) began
+d) beginning
+Answer: a
+
+60. Choose the correct verb form:
+"The system __________ errors if not properly configured."
+a) generates
+b) generating
+c) generated
+d) generate
+Answer: a
+
+61. The software __________ by the quality assurance team before it is released.
+a) is tested
+b) tests
+c) was tested
+d) testing
+Answer: a
+
+62. The new version __________ a lot of improvements over the previous one.
+a) contains
+b) containing
+c) contained
+d) contain
+Answer: a
+
+63. The application __________ by the end of the quarter.
+a) will be completed
+b) is completed
+c) completed
+d) will complete
+Answer: a
+
+64. Which sentence uses the correct relative pronoun?
+a) The user manual, which was updated, is available online.
+b) The user manual, that was updated, is available online.
+c) The user manual which updated is available online.
+d) The user manual, whose was updated, is available online.
+Answer: a
+
+65. The IT team __________ the issue before it became critical.
+a) resolved
+b) resolve
+c) resolving
+d) resolves
+Answer: a
+
+66. If the update __________ successful, we will notify all users.
+a) is
+b) will be
+c) was
+d) has been
+Answer: a
+
+67. The new feature __________ to improve user experience.
+a) designed
+b) designing
+c) is designed
+d) designs
+Answer: c
+
+68. Choose the correct form of the verb:
+"The technician __________ the hardware issues promptly."
+a) addressed
+b) addresses
+c) addressing
+d) address
+Answer: b
+
+69. The software __________ the latest security patches to ensure safety.
+a) includes
+b) include
+c) included
+d) including
+Answer: a
+
+70. Which sentence is correctly structured?
+a) After the system was upgraded, it started running smoothly.
+b) After upgrading the system, it started running smoothly.
+c) After upgrade the system, it started running smoothly.
+d) After the system upgrade, it started running smoothly.
+Answer: b
+
+71. The IT department __________ to resolve the network issues as soon as possible.
+a) working
+b) works
+c) worked
+d) will work
+Answer: d
+
+72. The server __________ several times this month due to maintenance.
+a) was rebooted
+b) has rebooted
+c) reboots
+d) rebooted
+Answer: a
+
+73. Which of the following sentences uses the correct preposition?
+a) The software update is crucial for the compatibility of the system.
+b) The software update is crucial to the compatibility for the system.
+c) The software update is crucial with the compatibility for the system.
+d) The software update is crucial in the compatibility of the system.
+Answer: a
+
+74. The code __________ by the development team before the release.
+a) will be reviewed
+b) reviews
+c) reviewed
+d) has reviewed
+Answer: a
+
+75. Choose the correct verb form:
+"The developers __________ the new features for the application last week."
+a) implemented
+b) implement
+c) implements
+d) implementing
+Answer: a
+
+76. The IT manager __________ the report on the server performance yesterday.
+a) submitted
+b) submits
+c) submitting
+d) will submit
+Answer: a
+
+77. If the application __________ correctly, it will enhance productivity.
+a) functions
+b) function
+c) will function
+d) functioning
+Answer: a
+
+78. The team __________ the project deadline by a week to accommodate additional testing.
+a) extended
+b) extends
+c) extend
+d) extending
+Answer: a
+
+79. The new feature __________ to improve the user interface significantly.
+a) is designed
+b) designed
+c) designs
+d) designing
+Answer: a
+
+80. Which sentence is in the correct passive voice?
+a) The software was tested by the QA team.
+b) The QA team will test the software.
+c) The QA team tested the software.
+d) The software tests by the QA team.
+Answer: a
+
+81. The server __________ to handle increased user traffic during peak hours.
+a) was upgraded
+b) is upgraded
+c) upgrade
+d) upgrading
+Answer: a
+
+82. Choose the correct verb form:
+"The IT team __________ an issue with the server earlier today."
+a) identified
+b) identifies
+c) identifying
+d) identify
+Answer: a
+
+83. The software __________ to ensure it meets all the required specifications.
+a) needs testing
+b) need testing
+c) is tested
+d) test
+Answer: a
+
+84. If the database __________ down, the users cannot access their information.
+a) goes
+b) going
+c) went
+d) gone
+Answer: a
+
+85. The technician __________ the network issue within a few hours.
+a) resolved
+b) resolve
+c) resolving
+d) resolves
+Answer: a
+
+86. The new software __________ to improve performance and reliability.
+a) is designed
+b) designed
+c) designs
+d) designing
+Answer: a
+
+87. The system __________ the latest updates to enhance security.
+a) receives
+b) receive
+c) receiving
+d) received
+Answer: a
+
+88. Which of the following sentences uses the correct preposition?
+a) The project is on schedule according with the timeline.
+b) The project is on schedule according to the timeline.
+c) The project is on schedule according for the timeline.
+d) The project is on schedule according at the timeline.
+Answer: b
+
+89. The new protocol __________ in place to improve data protection.
+a) is being implemented
+b) implementing
+c) will implement
+d) implements
+Answer: a
+
+90. The software __________ tested thoroughly before it is released to the public.
+a) is
+b) are
+c) was
+d) be
+Answer: a
+
+91. Choose the correct form of the verb:
+"The IT specialist __________ the issues with the network last week."
+a) addressed
+b) addresses
+c) addressing
+d) address
+Answer: a
+
+92. The application __________ a lot of new features in the latest update.
+a) includes
+b) include
+c) included
+d) including
+Answer: a
+
+93. If the code __________ errors, it will need to be reviewed.
+a) generates
+b) generated
+c) generate
+d) generating
+Answer: a
+
+94. The team __________ the system to ensure it meets all the requirements.
+a) tested
+b) tests
+c) test
+d) testing
+Answer: a
+
+95. The new software __________ to ensure it is compatible with all devices.
+a) needs to be tested
+b) need to be tested
+c) testing
+d) tested
+Answer: a
+
+96. Choose the correct relative pronoun:
+"The system __________ was implemented last year is performing well."
+a) which
+b) who
+c) whose
+d) where
+Answer: a
+
+97. The issue __________ as soon as possible to avoid any disruption.
+a) resolved
+b) resolving
+c) resolves
+d) be resolved
+Answer: d
+
+98. The update __________ to all users by the end of the month.
+a) will be distributed
+b) distributed
+c) distributes
+d) distributing
+Answer: a
+
+99. The application __________ frequent updates to improve its functionality.
+a) receives
+b) received
+c) receive
+d) receiving
+Answer: a
+
+100. The developers __________ the system's performance to ensure it meets the requirements.
+a) monitor
+b) monitored
+c) monitoring
+d) monitors
+Answer: b
+
+101. What is the word for "a device used to heat food quickly"?
+a. Microwave
+b. Oven
+c. Refrigerator
+d. Toaster
+Answer: a
+
+102. Who is the person responsible for maintaining a computer network in an office?
+a. Chef
+b. Network Administrator
+c. Teacher
+d. Driver
+Answer: b
+
+103. In summer, the weather is usually _____ and hot.
+a. Rainy
+b. Cold
+c. Warm
+d. Snowy
+Answer: c
+
+104. What is the term for "a piece of furniture used for sitting at a desk"?
+a. Chair
+b. Bed
+c. Sofa
+d. Shelf
+Answer: a
+
+105. What is the word for "a sweet food made from fruit or vegetables, often eaten with bread"?
+a. Jam
+b. Cheese
+c. Soup
+d. Salad
+Answer: a
+
+106. Who is the person who writes code for software applications?
+a. Architect
+b. Programmer
+c. Lawyer
+d. Accountant
+Answer: b
+
+107. An _____ is a tool that can be used to connect to the internet.
+a. Hammer
+b. Router
+c. Pen
+d. Book
+Answer: b
+
+108. What is the term for "a room where people work on computers and do office tasks"?
+a. Kitchen
+b. Office
+c. Gym
+d. Library
+Answer: b
+
+109. What is the word for "a small device used to control the cursor on a computer screen"?
+a. Keyboard
+b. Mouse
+c. Monitor
+d. Printer
+Answer: b
+
+110. What is the term for "a machine that prints documents from a computer"?
+a. Scanner
+b. Copier
+c. Printer
+d. Fax
+Answer: c
+
+111. What is the word for "a place where you can buy books, magazines, and newspapers"?
+a. Restaurant
+b. Library
+c. Market
+d. Bank
+Answer: b
+
+112. Who is the person who helps fix problems with computers in a company?
+a. Chef
+b. IT Support Specialist
+c. Mechanic
+d. Nurse
+Answer: b
+
+113. What is the word for "a type of food that is typically served hot and is made with meat and vegetables in a liquid"?
+a. Salad
+b. Soup
+c. Sandwich
+d. Pasta
+Answer: b
+
+114. What is the term for "a device used to view electronic documents"?
+a. Monitor
+b. Keyboard
+c. Mouse
+d. Speaker
+Answer: a
+
+115. Who is the person who manages the operations of a company or department?
+a. Manager
+b. Chef
+c. Driver
+d. Teacher
+Answer: a
+
+116. In winter, the weather is usually _____ and cold.
+a. Hot
+b. Sunny
+c. Rainy
+d. Snowy
+Answer: d
+
+117. What is the term for "a place where you can buy groceries"?
+a. Store
+b. Bank
+c. Office
+d. Gym
+Answer: a
+
+118. What is the word for "a device used to input text into a computer"?
+a. Monitor
+b. Keyboard
+c. Mouse
+d. Printer
+Answer: b
+
+119. Who is the person who designs buildings and structures?
+a. Architect
+b. Nurse
+c. Driver
+d. Chef
+Answer: a
+
+120. What is the term for "a small, handheld device used for communication and internet access"?
+a. Tablet
+b. Phone
+c. Laptop
+d. Printer
+Answer: b
+
+121. What is the word for "a large, covered building where people can watch sports events"?
+a. Theater
+b. Stadium
+c. Library
+d. Museum
+Answer: b
+
+122. What is the term for "a person who repairs vehicles"?
+a. Mechanic
+b. Accountant
+c. Teacher
+d. Nurse
+Answer: a
+
+123. What is the word for "a room where people sleep"?
+a. Kitchen
+b. Bathroom
+c. Bedroom
+d. Living room
+Answer: c
+
+124. Who is the person who helps people with their legal problems?
+a. Doctor
+b. Lawyer
+c. Teacher
+d. Accountant
+Answer: b
+
+125. What is the term for "a device used to project images onto a screen"?
+a. Projector
+b. Monitor
+c. Keyboard
+d. Mouse
+Answer: a
+
+126. What is the word for "a meal that is eaten in the morning"?
+a. Lunch
+b. Dinner
+c. Brunch
+d. Breakfast
+Answer: d
+
+127. Who is the person who helps to design and build websites?
+a. Chef
+b. Web Developer
+c. Driver
+d. Nurse
+Answer: b
+
+128. What is the term for "a small piece of paper that you use to write short notes or reminders"?
+a. Card
+b. Note
+c. Envelope
+d. Post-it
+Answer: d
+
+129. What is the word for "a large, flat screen used to watch TV or play games"?
+a. Monitor
+b. Keyboard
+c. Mouse
+d. Speaker
+Answer: a
+
+130. What is the term for "a place where you can see art and historical objects"?
+a. Library
+b. Museum
+c. Gym
+d. Bank
+Answer: b
+
+131. What is the word for "a device used to cool down food and drinks"?
+a. Oven
+b. Toaster
+c. Refrigerator
+d. Microwave
+Answer: c
+
+132. Who is the person who writes and edits content for websites or publications?
+a. Journalist
+b. Nurse
+c. Chef
+d. Accountant
+Answer: a
+
+133. What is the term for "a device used to make phone calls"?
+a. Computer
+b. Tablet
+c. Phone
+d. Printer
+Answer: c
+
+134. What is the word for "a small, usually rectangular, container used to hold food or drink"?
+a. Bottle
+b. Plate
+c. Cup
+d. Bowl
+Answer: c
+
+135. Who is the person who takes care of patients in a hospital?
+a. Doctor
+b. Teacher
+c. Nurse
+d. Chef
+Answer: c
+
+136. What is the term for "a device used to connect a computer to the internet wirelessly"?
+a. Router
+b. Mouse
+c. Monitor
+d. Keyboard
+Answer: a
+
+137. What is the word for "a place where you go to watch movies"?
+a. Cinema
+b. Gym
+c. Library
+d. Office
+Answer: a
+
+138. What is the term for "a person who manages a restaurant"?
+a. Waiter
+b. Chef
+c. Manager
+d. Customer
+Answer: c
+
+139. What is the word for "a person who helps customers in a store"?
+a. Cashier
+b. Driver
+c. Teacher
+d. Chef
+Answer: a
+
+140. What is the term for "a type of food that is made by mixing flour, water, and usually yeast"?
+a. Cake
+b. Bread
+c. Pasta
+d. Rice
+Answer: b
+
+141. Who is the person responsible for the security of information in a company?
+a. Security Guard
+b. IT Specialist
+c. Receptionist
+d. Driver
+Answer: b
+
+142. What is the term for "a device that amplifies sound"?
+a. Microphone
+b. Headphones
+c. Speaker
+d. Monitor
+Answer: c
+
+143. What is the word for "a type of exercise equipment that you use to lift weights"?
+a. Treadmill
+b. Dumbbell
+c. Bike
+d. Yoga Mat
+Answer: b
+
+144. What is the term for "a machine used to wash clothes"?
+a. Dryer
+b. Washer
+c. Iron
+d. Vacuum
+Answer: b
+
+145. What is the word for "a small device that stores data"?
+a. Hard Drive
+b. USB Flash Drive
+c. Printer
+d. Monitor
+Answer: b
+
+146. Who is the person who teaches students in a school?
+a. Teacher
+b. Principal
+c. Nurse
+d. Chef
+Answer: a
+
+147. What is the term for "a place where you go to get medical treatment"?
+a. Gym
+b. Hospital
+c. Library
+d. Bank
+Answer: b
+
+148. What is the word for "a device used to capture images or videos"?
+a. Camera
+b. Speaker
+c. Microphone
+d. Monitor
+Answer: a
+
+149. Who is the person who repairs and maintains vehicles?
+a. Electrician
+b. Mechanic
+c. Plumber
+d. Chef
+Answer: b
+
+150. What is the term for "a person who creates artistic works"?
+a. Artist
+b. Driver
+c. Chef
+d. Nurse
+Answer: a
+
+151. What is the word for "a type of food made from eggs, often eaten for breakfast"?
+a. Omelet
+b. Salad
+c. Soup
+d. Sandwich
+Answer: a
+
+152. What is the term for "a machine used to scan documents and convert them into digital format"?
+a. Printer
+b. Scanner
+c. Copier
+d. Fax
+Answer: b
+
+153. What is the word for "a large building where people live"?
+a. Apartment
+b. Hotel
+c. Office
+d. Theater
+Answer: a
+
+154. Who is the person who helps customers with their questions or problems in a store or business?
+a. Customer Service Representative
+b. Accountant
+c. Teacher
+d. Driver
+Answer: a
+
+155. What is the term for "a type of food made from ground meat, usually served in a bun"?
+a. Burger
+b. Pizza
+c. Pasta
+d. Salad
+Answer: a
+
+156. What is the word for "a device used to store and organize files"?
+a. Hard Drive
+b. Monitor
+c. Printer
+d. Keyboard
+Answer: a
+
+157. What is the term for "a person who studies and works with plants"?
+a. Botanist
+b. Geologist
+c. Architect
+d. Engineer
+Answer: a
+
+158. What is the word for "a place where you can borrow books"?
+a. Library
+b. Museum
+c. Restaurant
+d. Store
+Answer: a
+
+159. What is the term for "a small, hand-held tool used to cut paper or fabric"?
+a. Scissors
+b. Knife
+c. Hammer
+d. Screwdriver
+Answer: a
+
+160. Who is the person who helps to organize and plan events?
+a. Event Planner
+b. Mechanic
+c. Chef
+d. Accountant
+Answer: a
+
+161. What is the word for "a device used to print photos and documents"?
+a. Printer
+b. Scanner
+c. Monitor
+d. Keyboard
+Answer: a
+
+162. What is the term for "a device used to play music or audio"?
+a. Speaker
+b. Microphone
+c. Monitor
+d. Keyboard
+Answer: a
+
+163. What is the word for "a small appliance used to cook food quickly by using heat and pressure"?
+a. Slow Cooker
+b. Microwave
+c. Toaster
+d. Blender
+Answer: b
+
+164. What is the term for "a person who writes stories, articles, or books"?
+a. Author
+b. Engineer
+c. Chef
+d. Driver
+Answer: a
+
+165. Who is the person who repairs and maintains electrical systems in a building?
+a. Plumber
+b. Electrician
+c. Mechanic
+d. Carpenter
+Answer: b
+
+166. What is the word for "a small electronic device that displays time and can be worn on the wrist"?
+a. Watch
+b. Phone
+c. Calculator
+d. Camera
+Answer: a
+
+167. What is the term for "a large building where you can exercise and stay fit"?
+a. Gym
+b. Office
+c. Library
+d. Bank
+Answer: a
+
+168. What is the word for "a device used to help you type on a computer"?
+a. Mouse
+b. Keyboard
+c. Monitor
+d. Speaker
+Answer: b
+
+169. Who is the person who helps to plan and prepare meals in a restaurant?
+a. Chef
+b. Waiter
+c. Manager
+d. Customer
+Answer: a
+
+170. What is the term for "a place where you go to buy food and other necessities"?
+a. Store
+b. Library
+c. Theater
+d. Museum
+Answer: a
+
+171. What is the word for "a type of food that is made with dough and baked in an oven"?
+a. Bread
+b. Salad
+c. Soup
+d. Pasta
+Answer: a
+
+172. Who is the person responsible for creating and maintaining a company's financial records?
+a. Accountant
+b. Chef
+c. Nurse
+d. Teacher
+Answer: a
+
+173. What is the term for "a device that helps you communicate through video calls"?
+a. Webcam
+b. Microphone
+c. Speaker
+d. Monitor
+Answer: a
+
+174. What is the word for "a machine used to dry clothes after washing"?
+a. Washer
+b. Iron
+c. Dryer
+d. Vacuum
+Answer: c
+
+175. Who is the person who takes care of people's teeth?
+a. Dentist
+b. Pharmacist
+c. Chef
+d. Teacher
+Answer: a
+
+176. What is the term for "a device used to watch TV shows or movies"?
+a. Television
+b. Computer
+c. Phone
+d. Radio
+Answer: a
+
+177. What is the word for "a place where you can go to enjoy a meal"?
+a. Restaurant
+b. Bank
+c. Library
+d. Gym
+Answer: a
+
+178. What is the term for "a person who provides medical care in an emergency"?
+a. Doctor
+b. Nurse
+c. Paramedic
+d. Chef
+Answer: c
+
+179. What is the word for "a device used to measure temperature"?
+a. Thermometer
+b. Barometer
+c. Altimeter
+d. Speedometer
+Answer: a
+
+180. Who is the person who manages the daily operations of a business or office?
+a. Manager
+b. Accountant
+c. Teacher
+d. Nurse
+Answer: a
+
+181. What is the term for "a device that helps you listen to music or other audio"?
+a. Headphones
+b. Speaker
+c. Microphone
+d. Monitor
+Answer: a
+
+182. What is the word for "a place where you can see movies"?
+a. Cinema
+b. Gym
+c. Store
+d. Library
+Answer: a
+
+183. What is the term for "a machine used to make copies of documents"?
+a. Copier
+b. Scanner
+c. Printer
+d. Fax
+Answer: a
+
+184. Who is the person who helps to fix and maintain plumbing systems in a building?
+a. Electrician
+b. Plumber
+c. Mechanic
+d. Carpenter
+Answer: b
+
+185. What is the word for "a type of food made with meat and vegetables wrapped in pastry"?
+a. Pizza
+b. Pie
+c. Salad
+d. Soup
+Answer: b
+
+186. What is the term for "a device used to store digital information"?
+a. Hard Drive
+b. Monitor
+c. Printer
+d. Keyboard
+Answer: a
+
+187. Who is the person who takes care of animals in a zoo or farm?
+a. Veterinarian
+b. Gardener
+c. Chef
+d. Teacher
+Answer: a
+
+188. What is the word for "a machine that cooks food using hot air"?
+a. Oven
+b. Toaster
+c. Air Fryer
+d. Microwave
+Answer: c
+
+189. What is the term for "a person who studies and analyzes data"?
+a. Statistician
+b. Teacher
+c. Nurse
+d. Driver
+Answer: a
+
+190. What is the word for "a small, portable device used to access the internet"?
+a. Phone
+b. Laptop
+c. Tablet
+d. Printer
+Answer: c
+
+191. Who is the person who helps people with their computer-related issues at a company?
+a. IT Support Specialist
+b. Chef
+c. Mechanic
+d. Driver
+Answer: a
+
+192. What is the term for "a type of food made from grains, often eaten for breakfast"?
+a. Cereal
+b. Soup
+c. Salad
+d. Sandwich
+Answer: a
+
+193. What is the word for "a large container used to cook food slowly"?
+a. Slow Cooker
+b. Microwave
+c. Toaster
+d. Blender
+Answer: a
+
+194. What is the term for "a person who designs and creates software"?
+a. Programmer
+b. Accountant
+c. Teacher
+d. Chef
+Answer: a
+
+195. What is the word for "a small device that helps you connect to a computer wirelessly"?
+a. USB Drive
+b. Router
+c. Modem
+d. Mouse
+Answer: b
+
+196. Who is the person who helps people with their health and wellness needs?
+a. Nurse
+b. Chef
+c. Accountant
+d. Teacher
+Answer: a
+
+197. What is the term for "a machine that helps you clean your floor"?
+a. Vacuum Cleaner
+b. Iron
+c. Washing Machine
+d. Dryer
+Answer: a
+
+198. What is the word for "a device used to make and receive phone calls"?
+a. Tablet
+b. Phone
+c. Computer
+d. Speaker
+Answer: b
+
+199. Who is the person responsible for keeping a company’s records organized and accurate?
+a. Accountant
+b. Manager
+c. Chef
+d. Driver
+Answer: a
+
+200. What is the term for "a device that helps you to create and edit documents"?
+a. Computer
+b. Printer
+c. Scanner
+d. Monitor
+Answer: a

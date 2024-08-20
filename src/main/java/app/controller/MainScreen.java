@@ -109,7 +109,7 @@ public class MainScreen {
         Parent page;
         try {
             ResourceBundle bundle = App.getBundle();
-            page = FXMLLoader.load(App.class.getResource("/app/controller/" + name + ".fxml"), bundle);
+            page = FXMLLoader.load(App.class.getResource("/controller/" + name + ".fxml"), bundle);
             functionPane.getChildren().clear();
             functionPane.getChildren().add(page);
             currentClickedButton.getStyleClass().remove("controll-button-clicked");
@@ -126,7 +126,7 @@ public class MainScreen {
         Parent page;
         ResourceBundle bundle = App.getBundle();
         try {
-            page = FXMLLoader.load(App.class.getResource("/app/controller/EditWord.fxml"), bundle);
+            page = FXMLLoader.load(App.class.getResource("/controller/EditWord.fxml"), bundle);
             functionPane.getChildren().clear();
             functionPane.getChildren().add(page);
         } catch (IOException e) {
@@ -138,7 +138,7 @@ public class MainScreen {
         Parent page;
         ResourceBundle bundle = App.getBundle();
         try {
-            page = FXMLLoader.load(App.class.getResource("/app/controller/" + previousFunction + ".fxml"), bundle);
+            page = FXMLLoader.load(App.class.getResource("/controller/" + previousFunction + ".fxml"), bundle);
             functionPane.getChildren().clear();
             functionPane.getChildren().add(page);
         } catch (IOException e) {

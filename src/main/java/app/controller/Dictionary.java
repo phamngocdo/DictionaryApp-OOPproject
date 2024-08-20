@@ -186,7 +186,7 @@ public class Dictionary {
         ResourceBundle bundle = App.getBundle();
         try {
             WordExplain.setItem(item);
-            page = FXMLLoader.load(Dictionary.class.getResource("/app/controller/WordExplain.fxml"), bundle);
+            page = FXMLLoader.load(Dictionary.class.getResource("/controller/WordExplain.fxml"), bundle);
             explain.getChildren().clear();
             explain.getChildren().add(page);
         } catch (IOException e) {

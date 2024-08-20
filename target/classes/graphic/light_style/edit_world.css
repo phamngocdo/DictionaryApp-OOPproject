@@ -48,7 +48,7 @@
 }
 
 .type-hbox .type-field{
-    -fx-pref-width: 540;
+    -fx-pref-width: 546;
     -fx-border-color:black;
     -fx-background-color:transparent;
     -fx-border-radius:15;
@@ -60,13 +60,13 @@
 
 .explain-hbox {
     -fx-alignment: center-left;
-    -fx-padding: 0 0 0 20;
+    -fx-padding: 0 0 0 10;
     -fx-spacing: 10;
     -fx-pref-height: 34;
 }
 
 .explain-hbox .explain-field {
-    -fx-pref-width: 546;
+    -fx-pref-width: 564;
     -fx-border-color:black;
     -fx-background-color:transparent;
     -fx-border-radius:15;
