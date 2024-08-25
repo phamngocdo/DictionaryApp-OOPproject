@@ -11,7 +11,7 @@ public class AlertScreen {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
-        alert.showAndWait();
+        alert.show();
     }
 
     public static boolean showConfirmationAlert(String title, String message, String confirmText) {

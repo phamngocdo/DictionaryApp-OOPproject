@@ -62,7 +62,7 @@
 }
 
 .scroll-bar {
-    -fx-background-color: transparent; 
+    -fx-background-color: black; 
     -fx-background-insets: 0; 
 }
 

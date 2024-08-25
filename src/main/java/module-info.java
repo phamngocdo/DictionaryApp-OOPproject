@@ -12,7 +12,7 @@ module app {
     requires org.json;
 
     opens app.main to javafx.fxml;
-    opens app.base to javafx.fxml;
+    opens app.games to javafx.fxml;
     opens app.controller to javafx.fxml;
 
     exports app.base;

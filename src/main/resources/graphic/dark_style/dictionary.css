@@ -101,7 +101,8 @@
     -fx-font-size:14; 
     -fx-font-weight:bold;
     -fx-border-radius:20;
-    -fx-border-color: white; 
+    -fx-border-color: white;
+    -fx-cursor:hand; 
 }
 
 .save-button:hover{
@@ -115,6 +116,7 @@
     -fx-font-size:14; 
     -fx-background-radius:20;
     -fx-font-weight:bold;
+    -fx-cursor:hand; 
 }
 
 .saved-button:hover{

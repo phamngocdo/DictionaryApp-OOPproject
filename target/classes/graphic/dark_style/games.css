@@ -8,3 +8,85 @@
 .game-choice:hover {
     -fx-background-color:#a75cec;
 }
+
+.game-choice .game-name {
+    -fx-text-fill:white;
+    -fx-font-size:17;
+    -fx-font-family:"Poppins";
+    -fx-font-weight:bold;
+}
+
+.game-choice .game-decription {
+    -fx-text-fill:white;
+    -fx-font-size:14;
+    -fx-font-family:"Poppins";
+}
+
+/* quizz game */
+.choice-pane {
+    -fx-background-color:transparent;
+    -fx-background-radius:10;
+    -fx-border-color:white;
+    -fx-border-radius:10;
+    -fx-border-width:1;
+    -fx-cursor:hand;
+}
+
+.choice-pane:hover{
+    -fx-background-color:#a75cec;
+}
+
+.choice-pane-label{
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-font-size:15;
+}
+
+.choice-pane-choosed{
+    -fx-background-color:#8A2BE2;
+    -fx-background-radius:10;
+    -fx-border-color:white;
+    -fx-border-radius:10;
+    -fx-border-width:1;
+    -fx-cursor:hand;
+}
+
+.choice-pane:hover{
+    -fx-background-color:#a75cec;
+}
+
+.question-button {
+    -fx-background-color:transparent;
+    -fx-alignment:center;
+    -fx-pref-height:35;
+    -fx-pref-width:35;
+    -fx-border-color:white;
+    -fx-border-width:1;
+    -fx-background-radius:5;
+    -fx-border-radius:5;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-cursor:hand;
+}
+
+.question-button:hover{
+    -fx-background-color:#a75cec;
+}
+
+.question-button-choosed {
+    -fx-background-color:#8A2BE2;
+    -fx-alignment:center;
+    -fx-pref-height:35;
+    -fx-pref-width:35;
+    -fx-border-color:white;
+    -fx-border-width:1;
+    -fx-background-radius:5;
+    -fx-border-radius:5;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-cursor:hand;
+}
+
+.question-button-choosed:hover{
+    -fx-background-color:#a75cec;
+}

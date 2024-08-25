@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -39,8 +40,14 @@
       </Label>
       <HBox layoutX="61.0" layoutY="40.0" prefHeight="32.0" prefWidth="334.0" spacing="10.0">
          <children>
-            <Button fx:id="engUserOption" mnemonicParsing="false" onAction="#chooseEngForUser" styleClass="button-choosed-language" text="%button.eng" />
-            <Button fx:id="viUserOption" mnemonicParsing="false" onAction="#chooseViForUser" styleClass="button-choose-language" text="%button.vi" />
+            <Button fx:id="engUserOption" mnemonicParsing="false" onAction="#chooseEngForUser" styleClass="button-choosed-language" text="%button.eng">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="viUserOption" mnemonicParsing="false" onAction="#chooseViForUser" styleClass="button-choose-language" text="%button.vi">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button fx:id="userTextSound" mnemonicParsing="false" onAction="#playUserTextSound" prefHeight="27.0" prefWidth="33.0" styleClass="general-button">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="speaker-icon" />
@@ -55,8 +62,14 @@
       </HBox>
       <HBox layoutX="471.0" layoutY="40.0" prefHeight="32.0" prefWidth="334.0" spacing="10.0">
          <children>
-            <Button fx:id="engTransOption" mnemonicParsing="false" onAction="#chooseEngForTrans" styleClass="button-choose-language" text="%button.eng" />
-            <Button fx:id="viTransOption" mnemonicParsing="false" onAction="#chooseViForTrans" styleClass="button-choosed-language" text="%button.vi" />
+            <Button fx:id="engTransOption" mnemonicParsing="false" onAction="#chooseEngForTrans" styleClass="button-choose-language" text="%button.eng">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="viTransOption" mnemonicParsing="false" onAction="#chooseViForTrans" styleClass="button-choosed-language" text="%button.vi">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button fx:id="translateTextSound" mnemonicParsing="false" onAction="#playTransTextSound" prefHeight="27.0" prefWidth="29.0" styleClass="general-button">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="speaker-icon" />

@@ -96,16 +96,19 @@
 
 .save-button{
     -fx-background-color:transparent;
+    -fx-background-radius:20;
     -fx-font-family:"Poppins";
     -fx-text-fill:black;
     -fx-font-size:14; 
     -fx-font-weight:bold;
     -fx-border-radius:20;
     -fx-border-color: black; 
+    -fx-cursor:hand;
 }
 
 .save-button:hover{
-    -fx-background-color:#dbdbdb;
+    -fx-background-color:#777aff;
+    -fx-text-fill:white;
 }
 
 .saved-button{

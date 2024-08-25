@@ -53,12 +53,12 @@
 
 .general-button:hover{
     -fx-background-color:#777AFF;
+    -fx-text-fill:white;
 }
 
 .general-text{
     -fx-font-family:"Poppins";
     -fx-text-fill:black;
-    -fx-font-weight:bold;
     -fx-font-size:15;
 }
 
