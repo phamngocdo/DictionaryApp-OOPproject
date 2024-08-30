@@ -32,11 +32,8 @@
     -fx-cursor:hand;
 }
 
-.choice-pane:hover{
-    -fx-background-color:#777AFF;
-}
-
 .choice-pane-label{
+    -fx-background-color:transparent;
     -fx-text-fill:black;
     -fx-font-family:"Poppins";
     -fx-font-size:15;
@@ -57,7 +54,7 @@
     -fx-cursor:hand;
 }
 
-.choice-pane:hover{
+.choice-pane:hover, .choice-pane-choosed:hover{
     -fx-background-color:#777AFF;
 }
 
@@ -75,10 +72,6 @@
     -fx-cursor:hand;
 }
 
-.question-button:hover{
-    -fx-background-color:#777AFF;
-}
-
 .question-button-choosed {
     -fx-background-color:#5053E2;
     -fx-alignment:center;
@@ -93,6 +86,6 @@
     -fx-cursor:hand;
 }
 
-.question-button-choosed:hover{
+.question-button-choosed:hover, .question-button:hover{
     -fx-background-color:#777AFF;
 }

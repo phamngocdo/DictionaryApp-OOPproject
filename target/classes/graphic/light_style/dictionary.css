@@ -62,6 +62,7 @@
     -fx-font-family:"Poppins";
     -fx-background-radius:15;
     -fx-line-spacing:5;
+    -fx-font-size:15;
 }
 
 .explain-text-area .scroll-pane {
