@@ -1,6 +1,6 @@
 # Dolingo - English Learning Application
 
-![App Logo](src\main\resources\graphic\logo.png)
+![App Logo](\src\main\resources\graphic\logo.png)
 
 ## 1. Introduction
 
@@ -55,7 +55,7 @@ and one of the following IDE:
 
 Step 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repository/dolingo-app.git
+   git clone https://github.com/phamngocdo/DictionaryApp-OOPproject.git
    ```
 Step 2. **Run the application**:
    - Open the project in your preferred IDE.
