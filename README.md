@@ -1,6 +1,8 @@
 # Dolingo - English Learning Application
 
-![App Logo](/src/main/resources/graphic/logo.png)
+<p align="center">
+  <img src="/src/main/resources/graphic/logo.png" alt="App Logo">
+</p>
 
 ## 1. Introduction
 
