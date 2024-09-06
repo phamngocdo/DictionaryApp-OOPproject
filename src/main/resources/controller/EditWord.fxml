@@ -27,9 +27,9 @@
          <padding>
             <Insets left="10.0" right="10.0" />
          </padding></TextField>
-      <Button fx:id="save" graphicTextGap="8.0" layoutX="666.0" layoutY="22.0" mnemonicParsing="false" onAction="#saveEdition" styleClass="save-button" text="%button.save">
+      <Button fx:id="save" graphicTextGap="8.0" layoutX="638.0" layoutY="22.0" mnemonicParsing="false" onAction="#saveEdition" prefHeight="34.0" prefWidth="136.0" styleClass="save-button" text="%button.save">
          <graphic>
-            <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="save-edition-icon" />
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="save-edition-icon" />
          </graphic>
          <font>
             <Font name="System Bold" size="14.0" />

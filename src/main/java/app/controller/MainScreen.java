@@ -15,39 +15,13 @@ import javafx.scene.layout.Pane;
 public class MainScreen {
 
     @FXML
-    private Button homeButton;
+    private Button homeButton, dictionaryButton, translateButton, addButton, bookmarkButton, gamesButton, settingsButton;
 
     @FXML
-    private Button dictionaryButton;
+    private Pane functionPane, mainPane, controllPane;
 
-    @FXML
-    private Button translateButton;
-
-    @FXML
-    private Button addButton;
-
-    @FXML
-    private Button bookmarkButton;
-
-    @FXML
-    private Button gamesButton;
-
-    @FXML
-    private Button chatBotButton;
-
-    @FXML
-    private Button settingsButton;
-
+    
     private Button currentClickedButton;
-
-    @FXML
-    private Pane functionPane;
-
-    @FXML
-    private Pane mainPane;
-
-    @FXML
-    private Pane controllPane;
 
     @FXML
     private void initialize(){
@@ -90,12 +64,6 @@ public class MainScreen {
     private void goToGames(ActionEvent event) {
         goToFunction("Games", gamesButton);
         currentClickedButton = gamesButton;
-    }
-
-    @FXML
-    private void goToChatBot(ActionEvent event) {
-        goToFunction("ChatBot", chatBotButton);
-        currentClickedButton = chatBotButton;
     }
 
     @FXML

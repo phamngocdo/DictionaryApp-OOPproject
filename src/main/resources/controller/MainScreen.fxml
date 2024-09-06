@@ -22,7 +22,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <VBox layoutX="1.0" layoutY="94.0" prefHeight="458.0" prefWidth="165.0" spacing="5.0">
+            <VBox layoutX="1.0" layoutY="94.0" prefHeight="458.0" prefWidth="165.0" spacing="10.0">
                <children>
                   <Button fx:id="homeButton" alignment="BASELINE_LEFT" graphicTextGap="8.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.home" textAlignment="RIGHT">
                      <graphic>
@@ -107,21 +107,6 @@
                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../graphic/general_icon/game.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets bottom="16.0" left="24.0" right="24.0" top="16.0" />
-                     </padding>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="chatBotButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#goToChatBot" prefHeight="52.0" prefWidth="163.0" styleClass="controll-button" text="%button.chatbot">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../graphic/general_icon/chatbot.png" />
                            </image>
                         </ImageView>
                      </graphic>

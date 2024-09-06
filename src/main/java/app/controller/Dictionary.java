@@ -30,40 +30,23 @@ import javafx.util.Pair;
 public class Dictionary {
 
     @FXML
-    private Pane explain;
-
-    @FXML
-    private Pane synonymsPane;
-
-    @FXML
-    private Pane antonymsPane;
+    private Pane explain, synonymsPane, antonymsPane;
 
     @FXML
     private TextField search;
 
     @FXML
-    private Button searchButton;
-
-    @FXML
-    private Button remove;
+    private Button searchButton, removeButton;
 
     @FXML
     private Label notFound;
 
-    @FXML
-    private ListView<Pair<Integer, String>> wordListView;
 
     @FXML
-    private ListView<Pair<Integer, String>> synonyms;
+    private ListView<Pair<Integer, String>> wordListView, synonyms, antonyms;
 
     @FXML
-    private ListView<Pair<Integer, String>> antonyms;
-
-    @FXML
-    private ProgressIndicator synProgress;
-
-    @FXML
-    private ProgressIndicator antProgress;
+    private ProgressIndicator synProgress, antProgress;
 
     private String currentWord;
 
@@ -112,7 +95,7 @@ public class Dictionary {
         });
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             boolean isEmpty = newValue == null || newValue.trim().isEmpty();
-            remove.setVisible(!isEmpty);
+            removeButton.setVisible(!isEmpty);
             notFound.setVisible(false);
             wordListView.setVisible(!isEmpty);
             if (!isEmpty) {
