@@ -19,17 +19,17 @@
                <children>
                   <Label contentDisplay="RIGHT" prefHeight="34.0" prefWidth="207.0" styleClass="general-text" text="%label.theme">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
                   <Label contentDisplay="RIGHT" prefHeight="34.0" prefWidth="207.0" styleClass="general-text" text="%label.language">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
                   <Label prefHeight="26.0" prefWidth="185.0" styleClass="general-text" text="%label.feedback">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
                </children>
