@@ -10,12 +10,12 @@
 
 ### Team Members
 
-| Student ID  | Name           | GitHub Profile                              |
-|-------------|----------------|---------------------------------------------|
-| 22022154    | Pham Ngoc Do    | [GitHub](https://github.com/phamngocdo)         |
-| 002         | Member 2        | [GitHub](https://github.com/member2)        |
-| 003         | Member 3        | [GitHub](https://github.com/member3)        |
-| 004         | Member 4        | [GitHub](https://github.com/member4)        |
+| Student ID  | Name           | GitHub Profile             |
+|-------------|----------------|----------------------------|
+| 22022154    | Pham Ngoc Do    | https://github.com/phamngocdo |
+| 002         | Member 2        | https://github.com/member2 |
+| 003         | Member 3        | https://github.com/member3 |
+| 004         | Member 4        | https://github.com/member4 |
 
 ### Key Features
 
