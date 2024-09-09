@@ -40,7 +40,7 @@ The following technologies are utilized to build Dolingo:
 
 ## 3. Database
 
-Dolingo uses an SQLite database to store vocabulary, translations, and user data. The database schema can be found [here](https://github.com/png261/english-vietnamese-database/) for reference.
+Dolingo uses an SQLite database to store vocabularies and their explainations, examples. The database schema can be found [here](https://github.com/png261/english-vietnamese-database/) for reference.
 
 ---
 
