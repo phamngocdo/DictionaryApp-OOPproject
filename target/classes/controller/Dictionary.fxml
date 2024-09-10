@@ -39,7 +39,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="remove" layoutX="741.0" layoutY="6.0" mnemonicParsing="false" onAction="#removeAllCharacter" style="-fx-background-color: transparent;">
+            <Button fx:id="removeButton" layoutX="741.0" layoutY="6.0" mnemonicParsing="false" onAction="#removeAllCharacter" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" styleClass="remove-icon" />
                </graphic>

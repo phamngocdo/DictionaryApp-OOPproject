@@ -16,7 +16,7 @@ public class GoogleFormFeedback {
     public static void sendFeedback(String feedback) {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpPost httpPost = new HttpPost(GOOGLE_FORM_URL);
-            String encodedFeedback = URLEncoder.encode(feedback, StandardCharsets.UTF_8.toString());
+            String encodedFeedback = URLEncoder.encode(feedback, StandardCharsets.UTF_8);
             String payload = String.format("%s=%s", FEEDBACK_ENTRY_ID, encodedFeedback);
             StringEntity entity = new StringEntity(payload, "UTF-8");
             httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
