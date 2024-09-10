@@ -1,0 +1,78 @@
+.swap-icon{
+    -fx-image: url(icon/swap.png);
+}
+
+.add-photo{
+    -fx-image:url(icon/camera.png);
+}
+
+.button-choose-language{
+    -fx-background-color:transparent;
+    -fx-background-radius:16;
+    -fx-text-fill:black;
+    -fx-font-family:"Poppins";
+    -fx-font-weight:bold;
+    -fx-font-size:15;
+}
+
+.button-choose-language:hover{
+    -fx-background-color:#777AFF;
+}
+
+.button-choosed-language{
+    -fx-background-color:#5053E2;
+    -fx-background-radius:16;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-font-weight:bold;
+    -fx-font-size:15;
+}
+
+.button-choosed-language:hover{
+    -fx-background-color:#777AFF;
+}
+
+.user-text-area {
+    -fx-background-color:white;
+    -fx-text-fill:black;
+    -fx-font-family:"Poppins";
+    -fx-font-size:13px;
+    -fx-background-radius:15;
+    -fx-border-radius:15;
+    -fx-border-color:#c0c0c0;
+    -fx-border-width:1;
+    -fx-line-spacing:5;
+}
+
+.user-text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.user-text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.user-text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.trans-text-area {
+    -fx-background-color:#e0e0e0;
+    -fx-text-fill:black;
+    -fx-font-family:"Poppins";
+    -fx-font-size:13px;
+    -fx-background-radius:15;
+    -fx-line-spacing:5;
+}
+
+.trans-text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.trans-text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.trans-text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}

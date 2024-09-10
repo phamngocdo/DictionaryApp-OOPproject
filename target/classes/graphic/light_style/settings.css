@@ -1,0 +1,13 @@
+.send-feedback-icon{
+    -fx-image:url(icon/send.png);
+}
+
+.switch-theme-icon{
+    -fx-image:url(icon/switch_theme.png);
+}
+
+.setting-pane{
+    -fx-border-width:1;
+    -fx-border-color:black;
+    -fx-border-radius:8;
+}

@@ -1,0 +1,92 @@
+.save-edition-icon {
+    -fx-image: url(icon/disk.png);
+}
+
+.add-icon {
+    -fx-image: url(icon/add.png);
+    -fx-fit-width:20;
+    -fx-fit-height:20;
+}
+
+.minus-icon {
+    -fx-image: url(icon/minus.png);
+    -fx-fit-width:20;
+    -fx-fit-height:20;
+}
+
+.reset-icon {
+    -fx-image: url(icon/reset.png);
+}
+
+.root-vbox {
+    -fx-background-color:black;
+}
+
+.edit-text-field {
+    -fx-border-color:white;
+    -fx-background-color:transparent;
+    -fx-border-radius:15;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:15;
+}
+
+.pronounce-text-field {
+    -fx-border-color:white;
+    -fx-background-color:transparent;
+    -fx-border-radius:15;
+    -fx-font-family:"Times New Roman";
+    -fx-text-fill:white;
+    -fx-font-size:15;
+}
+
+.type-hbox {
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 0;
+    -fx-spacing: 10;
+    -fx-pref-height: 34;
+}
+
+.type-hbox .type-field{
+    -fx-pref-width: 546;
+    -fx-border-color:white;
+    -fx-background-color:transparent;
+    -fx-border-radius:15;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:15;
+}
+
+.explain-hbox {
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 10;
+    -fx-spacing: 10;
+    -fx-pref-height: 34;
+}
+
+.explain-hbox .explain-field {
+    -fx-pref-width: 564;
+    -fx-border-color:white;
+    -fx-background-color:transparent;
+    -fx-border-radius:15;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:15;
+}
+
+.example-hbox {
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 40;
+    -fx-spacing: 10;
+    -fx-pref-height: 34;
+}
+
+.example-hbox .example-field {
+    -fx-pref-width: 300;
+    -fx-border-color:white;
+    -fx-background-color:transparent;
+    -fx-border-radius:15;
+    -fx-font-family:"Poppins";
+    -fx-text-fill:white;
+    -fx-font-size:15;
+}

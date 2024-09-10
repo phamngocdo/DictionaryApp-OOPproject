@@ -1,0 +1,132 @@
+.game-choice {
+    -fx-background-color:#5053E2;
+    -fx-border-radius:5;
+    -fx-background-radius:5;
+    -fx-cursor:hand;
+}
+
+.game-choice:hover {
+    -fx-background-color:#777AFF;
+}
+
+.game-choice .game-name {
+    -fx-text-fill:white;
+    -fx-font-size:17;
+    -fx-font-family:"Poppins";
+    -fx-font-weight:bold;
+}
+
+.game-choice .game-decription {
+    -fx-background-color:transparent;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-font-size:15;
+    -fx-border-radius:15;
+    -fx-line-spacing:5;
+}
+
+
+/* quizz game */
+.choice-pane {
+    -fx-background-color:transparent;
+    -fx-background-radius:10;
+    -fx-border-color:black;
+    -fx-border-radius:10;
+    -fx-border-width:1;
+    -fx-cursor:hand;
+}
+
+.choice-pane-label{
+    -fx-background-color:transparent;
+    -fx-text-fill:black;
+    -fx-font-family:"Poppins";
+    -fx-font-size:15;
+}
+
+.choice-pane-label:hover{
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-font-size:15;
+}
+
+.choice-pane-choosed{
+    -fx-background-color:#5053E2;
+    -fx-background-radius:10;
+    -fx-border-color:black;
+    -fx-border-radius:10;
+    -fx-border-width:1;
+    -fx-cursor:hand;
+}
+
+.choice-pane:hover, .choice-pane-choosed:hover{
+    -fx-background-color:#777AFF;
+}
+
+.question-button {
+    -fx-background-color:transparent;
+    -fx-alignment:center;
+    -fx-pref-height:35;
+    -fx-pref-width:35;
+    -fx-border-color:black;
+    -fx-border-width:1;
+    -fx-background-radius:5;
+    -fx-border-radius:5;
+    -fx-text-fill:black;
+    -fx-font-family:"Poppins";
+    -fx-cursor:hand;
+}
+
+.question-button-choosed {
+    -fx-background-color:#5053E2;
+    -fx-alignment:center;
+    -fx-pref-height:35;
+    -fx-pref-width:35;
+    -fx-border-color:white;
+    -fx-border-width:1;
+    -fx-background-radius:5;
+    -fx-border-radius:5;
+    -fx-text-fill:white;
+    -fx-font-family:"Poppins";
+    -fx-cursor:hand;
+}
+
+.question-button-choosed:hover, .question-button:hover, .keycap:hover{
+    -fx-background-color:#777AFF;
+}
+
+/* hangman */
+.keycap {
+    -fx-background-color:transparent;
+    -fx-alignment:center;
+    -fx-pref-height:64;
+    -fx-pref-width:64;
+    -fx-border-color:black;
+    -fx-border-width:1;
+    -fx-background-radius:5;
+    -fx-border-radius:5;
+    -fx-text-fill:black;
+    -fx-font-family:"Poppins";
+    -fx-font-size:17;
+    -fx-font-weight:bold;
+    -fx-cursor:hand;
+}
+
+.styled-line {
+    -fx-stroke:black;
+    -fx-stroke-width: 5; 
+    -fx-stroke-line-cap: round; 
+}
+
+.styled-circle {
+    -fx-stroke: black; 
+    -fx-stroke-width: 5; 
+    -fx-fill: white; 
+}
+
+/* word hunt */
+.matrix-character {
+    -fx-text-fill:black;
+   -fx-font-family:"Poppins";
+   -fx-font-size:17;
+   -fx-font-weight:bold;
+}

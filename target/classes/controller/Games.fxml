@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="functionPane" prefHeight="633.0" prefWidth="860" styleClass="function-screen-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Games">
+   <children>
+      <HBox layoutX="46.0" layoutY="63.0" prefHeight="507.0" prefWidth="769.0" spacing="50.0">
+         <children>
+            <Pane fx:id="wordHunt" onMouseClicked="#goToWordHunt" prefHeight="460.0" prefWidth="223.0" styleClass="game-choice">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="67.0" layoutX="67.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../graphic/general_icon/wordhunt.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="67.0" layoutY="90.0" styleClass="game-name" text="Word Hunt" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Text fill="WHITE" layoutX="7.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game-decription" text="%text.wordhuntdescription" textAlignment="JUSTIFY" wrappingWidth="208.13671875">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="quizzGame" onMouseClicked="#goToQuizzGame" prefHeight="460.0" prefWidth="223.0" styleClass="game-choice">
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="82.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../graphic/general_icon/quiz.png" />
+                     </image>
+                  </ImageView>
+                  <Label focusTraversable="false" layoutX="64.0" layoutY="87.0" styleClass="game-name" text="Quizz Game" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Text fill="WHITE" layoutX="7.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game-decription" text="%text.quizzdescription" textAlignment="JUSTIFY" wrappingWidth="208.13671875" />
+               </children>
+            </Pane>
+            <Pane fx:id="hangman" onMouseClicked="#goToHangman" prefHeight="460.0" prefWidth="223.0" styleClass="game-choice">
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="67.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../graphic/general_icon/hangman.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="60.0" layoutY="90.0" styleClass="game-name" text="Hangman" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Text fill="WHITE" layoutX="7.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game-decription" text="%text.hangmandescription" textAlignment="JUSTIFY" wrappingWidth="208.13671875" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
+</Pane>

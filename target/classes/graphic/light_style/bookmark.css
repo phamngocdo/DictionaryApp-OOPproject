@@ -1,0 +1,48 @@
+.back-icon{
+    -fx-image: url(icon/back.png);
+    -fx-fit-width:24;
+}
+
+.info-icon {
+    -fx-image: url(icon/infomation.png);
+    -fx-fit-width:20;
+    -fx-fit-height:20;
+}
+
+.bookmark-list{
+    -fx-border-width:1;
+    -fx-border-color:black;
+    -fx-border-radius:10;
+    -fx-background-color:white;
+}
+
+.bookmark-list .list-cell{
+    -fx-background-color:transparent;
+}
+
+.bookmark-list .scroll-pane {
+    -fx-hbar-policy: never;
+}
+
+.cell-hbox {
+    -fx-background-color: transparent; 
+    -fx-alignment:center;
+    -fx-spacing:10;
+}
+
+.cell-hbox .word {
+    -fx-font-family:"Poppins";
+    -fx-text-fill:black;
+    -fx-font-size:17;
+    -fx-pref-width:180;
+    -fx-alignment: center; 
+}
+
+.cell-hbox .pronounce {
+    -fx-font-family:"Times New Roman";
+    -fx-font-style:italic;
+    -fx-text-fill:black;
+    -fx-font-size:17;
+    -fx-pref-width:230;
+    -fx-alignment: center; 
+}
