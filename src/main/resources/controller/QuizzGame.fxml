@@ -53,7 +53,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="answerBPane" onMouseClicked="#chooseAnswerA" prefHeight="54.0" prefWidth="756.0">
+                  <Pane fx:id="answerBPane" onMouseClicked="#chooseAnswerB" prefHeight="54.0" prefWidth="756.0">
                      <children>
                         <Label fx:id="answerB" layoutX="6.0" layoutY="4.0" prefHeight="46.0" prefWidth="745.0" styleClass="choice-pane-label" text="Label">
                            <font>
@@ -65,7 +65,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="answerCPane" onMouseClicked="#chooseAnswerA" prefHeight="54.0" prefWidth="756.0">
+                  <Pane fx:id="answerCPane" onMouseClicked="#chooseAnswerC" prefHeight="54.0" prefWidth="756.0">
                      <children>
                         <Label fx:id="answerC" layoutX="6.0" layoutY="4.0" prefHeight="46.0" prefWidth="745.0" styleClass="choice-pane-label" text="Label">
                            <font>
@@ -77,7 +77,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="answerDPane" onMouseClicked="#chooseAnswerA" prefHeight="54.0" prefWidth="756.0">
+                  <Pane fx:id="answerDPane" onMouseClicked="#chooseAnswerD" prefHeight="54.0" prefWidth="756.0">
                      <children>
                         <Label fx:id="answerD" layoutX="6.0" layoutY="4.0" prefHeight="46.0" prefWidth="745.0" styleClass="choice-pane-label" text="Label">
                            <font>

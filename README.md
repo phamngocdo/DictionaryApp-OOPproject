@@ -62,4 +62,3 @@ Step 1. **Clone the repository**:
 Step 2. **Run the application**:
    - Open the project in your preferred IDE.
    - Navigate to package src\main\java\app\main\ and run the RunApp class to start the application.  
-

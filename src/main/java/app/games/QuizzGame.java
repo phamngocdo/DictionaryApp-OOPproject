@@ -136,12 +136,9 @@ public class QuizzGame {
     }
 
     private void loadGame() {
-        submitButton.setVisible(true);
         playAgainButton.setVisible(false);
-        answerA.setDisable(false);
-        answerB.setDisable(false);
-        answerC.setDisable(false);
-        answerD.setDisable(false);
+        scoreLabel.setVisible(false);
+        playPane.setVisible(true);
         TimeCountDown.initialize(TIME_SECONDS, 
             () -> {
                 timeLabel.setText(TimeCountDown.getFormattedTime());
