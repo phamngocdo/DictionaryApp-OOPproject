@@ -11,7 +11,7 @@
 
 .game-choice .game-name {
     -fx-text-fill:white;
-    -fx-font-size:17;
+    -fx-font-size:20;
     -fx-font-family:"Poppins";
     -fx-font-weight:bold;
 }
