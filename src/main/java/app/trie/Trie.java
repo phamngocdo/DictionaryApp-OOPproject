@@ -9,10 +9,6 @@ import javafx.util.Pair;
 public class Trie {
     private static TrieNode root = new TrieNode();
 
-    public static boolean isEmpty() {
-        return root == null;
-    }
-
     public static void insertWord(int wordId, String word) {
         if (root == null) {
             root = new TrieNode();
@@ -44,7 +40,7 @@ public class Trie {
         return current;
     }
 
-    public static void removeVocabulary(String word) {
+    public static void removeWord(String word) {
         removeHelper(root, word, 0);
     }
 
@@ -72,17 +68,17 @@ public class Trie {
         return false;
     }
 
-    public static ArrayList<Pair<Integer, String>> getAllVocabStartWith(String prefix) {
+    public static ArrayList<Pair<Integer, String>> getAllWordStartWith(String prefix) {
         ArrayList<Pair<Integer, String>> list = new ArrayList<>();
         TrieNode current = getEndNode(prefix);
         if (current == null) {
             return list;
         }
-        collectAllVocab(current, list);
+        collectAllWord(current, list);
         return list;
     }
 
-    private static void collectAllVocab(TrieNode current, ArrayList<Pair<Integer, String>> list) {
+    private static void collectAllWord(TrieNode current, ArrayList<Pair<Integer, String>> list) {
         if (current == null) {
             return;
         }
@@ -90,7 +86,7 @@ public class Trie {
             list.add(current.getWord());
         }
         for (char ch : current.getAllChilds().keySet()) {
-            collectAllVocab(current.getChild(ch), list);
+            collectAllWord(current.getChild(ch), list);
         }
     }
 
@@ -103,20 +99,20 @@ public class Trie {
     }
 
     public static void main(String[] args) {
+        //Test
         DictionaryDatabase.loadData();
-        try (Scanner sc = new Scanner(System.in)) {
-            while (true) {
-                System.out.print("Enter prefix: ");
-                String prefix = sc.nextLine();
+        while (true) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter prefix: ");
+            String prefix = sc.nextLine();
               
-                ArrayList<Pair<Integer, String>> vocabList = getAllVocabStartWith(prefix);
-                if (vocabList.isEmpty()) {
-                    System.out.println("No words found with the given prefix.");
-                } 
-                else {
-                    for (Pair<Integer, String> e : vocabList) {
+            ArrayList<Pair<Integer, String>> vocabList = getAllWordStartWith(prefix);
+            if (vocabList.isEmpty()) {
+                System.out.println("No words found with the given prefix.");
+            }
+            else {
+                for (Pair<Integer, String> e : vocabList) {
                         System.out.println(e.getValue());
-                    }
                 }
             }
         }

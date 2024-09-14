@@ -2,6 +2,7 @@ package app.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import app.api.WordRelations;
@@ -23,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
@@ -30,7 +33,7 @@ import javafx.util.Pair;
 public class Dictionary {
 
     @FXML
-    private Pane explain, synonymsPane, antonymsPane;
+    private Pane explainPane, synonymsPane, antonymsPane;
 
     @FXML
     private TextField search;
@@ -41,9 +44,11 @@ public class Dictionary {
     @FXML
     private Label notFound;
 
-
     @FXML
     private ListView<Pair<Integer, String>> wordListView, synonyms, antonyms;
+
+    @FXML
+    private ImageView noInternetImage1, noInternetImage2;
 
     @FXML
     private ProgressIndicator synProgress, antProgress;
@@ -53,15 +58,15 @@ public class Dictionary {
     @FXML
     private void initialize() {
         currentWord = null;
-        setVisibility(false, false, false, false, false);
+        explainPane.setVisible(false);
+        synonymsPane.setVisible(false);
+        antonymsPane.setVisible(false);
+        wordListView.setVisible(false);
+        notFound.setVisible(false);
         search.getStyleClass().add("search-bar");
         search.setOnKeyPressed(event -> {
-            switch (event.getCode()) {
-                case ENTER:
-                    searchWord(new ActionEvent());
-                    break;
-                default:
-                    break;
+            if (Objects.requireNonNull(event.getCode()) == KeyCode.ENTER) {
+                searchWord(new ActionEvent());
             }
         });
         setupEventHandlers();
@@ -83,16 +88,14 @@ public class Dictionary {
     }
 
     private void setupEventHandlers() {
-        Platform.runLater(() -> {
-            search.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
-                if (!search.getBoundsInParent().contains(event.getSceneX(), event.getSceneY()) &&
-                    !wordListView.getBoundsInParent().contains(event.getSceneX(), event.getSceneY()) &&
-                    !isChildOf(wordListView, (Node) event.getTarget())) {
-                    wordListView.setVisible(false);
-                    notFound.setVisible(false);
-                }
-            });
-        });
+        Platform.runLater(() -> search.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
+            if (!search.getBoundsInParent().contains(event.getSceneX(), event.getSceneY()) &&
+                !wordListView.getBoundsInParent().contains(event.getSceneX(), event.getSceneY()) &&
+                !isChildOf(wordListView, (Node) event.getTarget())) {
+                wordListView.setVisible(false);
+                notFound.setVisible(false);
+            }
+        }));
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             boolean isEmpty = newValue == null || newValue.trim().isEmpty();
             removeButton.setVisible(!isEmpty);
@@ -117,11 +120,14 @@ public class Dictionary {
     private void handleWordSearch(String word) {
         Pair<Integer, String> result = Trie.getWord(word);
         if (result == null) {
-            boolean isEnglish = App.getLanguage() == "english";
-            String title = isEnglish ? "Not Found" : "Không Tìm Thấy";
-            String message = isEnglish ?  "Your word is not in the dictionary" : "Từ của bạn không có trong từ điển";
+            String title = App.getBundle().getString("title.warning");
+            String message = App.getBundle().getString("message.notfoundword");
             AlertScreen.showAlert(AlertType.WARNING,title,message);
-            setVisibility(false, false, false, false, false);
+            explainPane.setVisible(false);
+            synonymsPane.setVisible(false);
+            antonymsPane.setVisible(false);
+            wordListView.setVisible(false);
+            notFound.setVisible(false);
         } 
         else {
             handleExplainPane(result);
@@ -130,7 +136,7 @@ public class Dictionary {
     }
 
     private void handleWordListView(String prefix) {
-        ObservableList<Pair<Integer, String>> items = FXCollections.observableArrayList(Trie.getAllVocabStartWith(prefix));
+        ObservableList<Pair<Integer, String>> items = FXCollections.observableArrayList(Trie.getAllWordStartWith(prefix));
         wordListView.setItems(items);
         notFound.setVisible(items.isEmpty());
         setupListViewCellFactory(wordListView);
@@ -169,34 +175,44 @@ public class Dictionary {
         ResourceBundle bundle = App.getBundle();
         try {
             WordExplain.setItem(item);
-            page = FXMLLoader.load(Dictionary.class.getResource("/controller/WordExplain.fxml"), bundle);
-            explain.getChildren().clear();
-            explain.getChildren().add(page);
+            page = FXMLLoader.load(Objects.requireNonNull(Dictionary.class.getResource("/controller/WordExplain.fxml")), bundle);
+            explainPane.getChildren().clear();
+            explainPane.getChildren().add(page);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     private void handleSynAnt(String word) {
-        setVisibility(true, true, true, false, false);
+        explainPane.setVisible(true);
+        synonymsPane.setVisible(true);
+        antonymsPane.setVisible(true);
+        wordListView.setVisible(false);
+        notFound.setVisible(false);
+
         synonyms.setVisible(false);
         antonyms.setVisible(false);
+
         synProgress.setVisible(true);
         antProgress.setVisible(true);
+        noInternetImage1.setVisible(false);
+        noInternetImage2.setVisible(false);
         new Thread(() -> {
             try {
                 ArrayList<Pair<Integer, String>> syns = WordRelations.getSynonyms(word);
                 ArrayList<Pair<Integer, String>> ants = WordRelations.getAntonyms(word);
                 Platform.runLater(() -> {
                     updateListView(synonyms, syns);
-                    synProgress.setVisible(false);
                     synonyms.setVisible(true);
                     updateListView(antonyms, ants);
                     antProgress.setVisible(false);
-                    antonyms.setVisible(true);
                 });
             } catch (Exception e) {
-                e.printStackTrace();
+                noInternetImage1.setVisible(true);
+                noInternetImage2.setVisible(true);
+            } finally {
+                synProgress.setVisible(false);
+                antProgress.setVisible(false);
             }
         }).start();
     }
@@ -219,13 +235,5 @@ public class Dictionary {
                 listView.setPrefHeight(emptyHeight);
             }
         });
-    }
-    
-    private void setVisibility(boolean explain, boolean synonyms, boolean antonyms, boolean wordList, boolean notFound) {
-        this.explain.setVisible(explain);
-        this.synonymsPane.setVisible(synonyms);
-        this.antonymsPane.setVisible(antonyms);
-        wordListView.setVisible(wordList);
-        this.notFound.setVisible(notFound);
     }
 }

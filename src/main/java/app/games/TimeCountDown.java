@@ -50,13 +50,6 @@ class TimeCountDown {
         }
     }
 
-    public static void reset(int initialTimeSeconds) {
-        timeLeft = initialTimeSeconds;
-        if (timeline != null) {
-            timeline.stop();
-        }
-    }
-
     public static String getFormattedTime() {
         int minutes = timeLeft / 60;
         int seconds = timeLeft % 60;

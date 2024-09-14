@@ -82,9 +82,8 @@ public class WordsHunt {
             () -> {
                 finishGame();
                 Platform.runLater(() -> {
-                   boolean isEnglish = App.getLanguage() == "english";
-                    String title = isEnglish ? "Time out" : "Hết thời gian";
-                    String message = isEnglish ?  "Time's up! The game has ended." : "Đã hết thời gian";
+                    String title = "";
+                    String message = App.getBundle().getString("message.endgame");
                     AlertScreen.showAlert(AlertType.INFORMATION, title, message);
                 });
             });
@@ -214,7 +213,7 @@ public class WordsHunt {
     private void checkCorrectWord() {
         String word = currentWord.get().replaceAll(" ", "");
         word = word.toLowerCase();
-        if (!wordSet.contains(word) && word.length() != 0) {
+        if (!wordSet.contains(word) && !word.isEmpty()) {
             if (word.length() > 1 && Trie.getWord(word) != null) {
                 score += 10;
                 wordSet.add(word);

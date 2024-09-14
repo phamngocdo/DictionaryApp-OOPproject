@@ -1,76 +1,107 @@
 package app.database;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import app.base.Example;
 import app.base.Explain;
-import app.base.Word;
 import app.trie.Trie;
+import app.base.Word;
+
+import java.sql.*;
+import java.util.ArrayList;
 import javafx.util.Pair;
 
-
 public class DictionaryDatabase {
-    private static DataBaseProcess data;
+    private static Connection connection;
+    private static Statement statement;
 
-    public static void loadData() {
-        data = new DataBaseProcess(DictionaryDatabase.class.getResource("/database/dictionary.db").getPath());
-        getAllWords().forEach(word -> Trie.insertWord(word.getKey(), word.getValue()));
-    }
+    private static final String DB_PATH = "src/main/resources/database/dictionary.db";
 
-    public static void close() {
-        data.close();
+    public static  void loadData() {
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
+            statement = connection.createStatement();
+            getAllWords().forEach(word -> Trie.insertWord(word.getKey(), word.getValue()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static ArrayList<Pair<Integer, String>> getAllWords() {
         ArrayList<Pair<Integer, String>> list = new ArrayList<>();
-        ResultSet resultSet = data.getResultSet("words", null);
         try {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM words");
             while (resultSet.next()) {
                 String word = resultSet.getString("word");
                 int wordId = resultSet.getInt("word_id");
-                list.add(new Pair<Integer,String>(wordId, word));
+                list.add(new Pair<>(wordId, word));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return list;
     }
 
     public static Word getWord(int wordId) {
-        ResultSet resultSet = data.getResultSet("words", "word_id = " + wordId);
-        Word word = null;
+        Word word;
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * ");
+        query.append("FROM words ");
+        query.append("WHERE word_id = ?");
         try {
-            if (resultSet.next()) {
-                word = new Word(wordId, resultSet.getString("word"), resultSet.getString("pronounce")); 
-            }
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement.setString(1, String.valueOf(wordId));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            word = new Word(wordId, resultSet.getString("word"), resultSet.getString("pronounce"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return word;
     }
 
     public static void addWord(Word word) {
-        word.setId(data.getNextId("words", "word_id"));
-        String value = "(" + word.getId() + ", '" + word.getWord() + "', '" + word.getPronounce() + "')";
-        data.addTuple("words", "word_id, word, pronounce", value);
-        Trie.insertWord(word.getId(), word.getWord());
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO words (word_id, word, pronounce) ");
+        query.append("VALUES (?, ?, ?)");
+        word.setId(getNextId("words", "word_id"));
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement.setString(1, String.valueOf(word.getId()));
+            preparedStatement.setString(2, word.getWord());
+            preparedStatement.setString(3, word.getPronounce());
+            preparedStatement.executeUpdate();
+            Trie.insertWord(word.getId(), word.getWord());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void removeWord(Word word) {
-        ArrayList<Explain> explains = getAllExplainsFromWord(word.getId());
-        for (Explain explain : explains) {
-            removeExplain(explain);
+        StringBuilder query = new StringBuilder();
+        query.append("DELETE FROM words ");
+        query.append("WHERE word_id = ? ");
+        try {
+            ArrayList<Explain> explains = getAllExplainsFromWord(word.getId());
+            for (Explain explain : explains) {
+                removeExplain(explain);
+            }
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement.setString(1, String.valueOf(word.getId()));
+            preparedStatement.executeUpdate();
+            Trie.removeWord(word.getWord());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        data.removeTuple("words", "word_id = " + word.getId());
-        Trie.removeVocabulary(word.getWord());
     }
 
     public static ArrayList<Explain> getAllExplainsFromWord(int wordId) {
         ArrayList<Explain> list = new ArrayList<>();
-        ResultSet resultSet = data.getResultSet("explains", "word_id = " + wordId);
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * ");
+        query.append("FROM explains ");
+        query.append("WHERE word_id = ? ");
         try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement.setString(1, String.valueOf(wordId));
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int explainId = resultSet.getInt("explain_id");
                 String type = resultSet.getString("type");
@@ -78,42 +109,55 @@ public class DictionaryDatabase {
                 list.add(new Explain(explainId, wordId, type, meaning));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return list;
     }
 
-    public static Explain getExplain(int explainId) {
-        ResultSet resultSet = data.getResultSet("explains", "explain_id = " + explainId);
-        Explain explain = null;
+    public static void addExplain(Explain explain) {
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO explains (explain_id, word_id, type, meaning) ");
+        query.append("VALUES (?, ?, ?, ?)");
+        explain.setId(getNextId("explains", "explain_id"));
         try {
-            if (resultSet.next()) {
-                explain = new Explain(explainId, resultSet.getInt("explain_id"), resultSet.getString("type"), resultSet.getString("meaning")); 
-            }
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement.setString(1, String.valueOf(explain.getId()));
+            preparedStatement.setString(2, String.valueOf(explain.getWordId()));
+            preparedStatement.setString(3, explain.getType());
+            preparedStatement.setString(4, explain.getMeaning());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return explain;
     }
 
-    public static void addExplain(Explain explain) {
-        explain.setId(data.getNextId("explains", "explain_id"));
-        String value = "(" + explain.getId() + ", " + explain.getWordId() + ", '" + explain.getType() + "', '" + explain.getMeaning() + "')";
-        data.addTuple("explains", "explain_id, word_id, type, meaning", value);
-    }
-    
     public static void removeExplain(Explain explain) {
-        ArrayList<Example> examples = getAllExamplesFromExplain(explain.getId());
-        for (Example example : examples) {
-            removeExample(example);
+        StringBuilder query = new StringBuilder();
+        query.append("DELETE FROM explains ");
+        query.append("WHERE explain_id = ? ");
+        try {
+            ArrayList<Example> examples = getAllExamplesFromExplain(explain.getId());
+            for (Example example : examples) {
+                removeExample(example);
+            }
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement.setString(1, String.valueOf(explain.getId()));
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        data.removeTuple("explains", "explain_id = " + explain.getId());
     }
 
     public static ArrayList<Example> getAllExamplesFromExplain(int explainId) {
         ArrayList<Example> list = new ArrayList<>();
-        ResultSet resultSet = data.getResultSet("examples", "explain_id = " + explainId);
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * ");
+        query.append("FROM examples ");
+        query.append("WHERE explain_id = ?");
         try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement.setString(1, String.valueOf(explainId));
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int exampleId = resultSet.getInt("example_id");
                 String example = resultSet.getString("example");
@@ -121,38 +165,58 @@ public class DictionaryDatabase {
                 list.add(new Example(exampleId, explainId, example, translate));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return list;
     }
 
-    public static Example getExample(int exampleId) {
-        ResultSet resultSet = data.getResultSet("examples", "example_id = " + exampleId);
-        Example example = null;
-        try {
-            if (resultSet.next()) {
-                example = new Example(exampleId, resultSet.getInt("explain_id"), resultSet.getString("example"), resultSet.getString("translate")); 
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return example;
-    }
-
     public static void addExample(Example example) {
-        example.setId(data.getNextId("examples", "example_id"));
-        String value = "(" + example.getId() + ", " + example.getExplainId() + ", '" + example.getExample() + "', '" + example.getTranslate() + "')";
-        data.addTuple("examples", "example_id, explain_id, example, translate", value);
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT TO examples (example_id, explain_id, example, translate");
+        query.append("VALUES (?, ?, ?, ?");
+        example.setId(getNextId("examples", "example_id"));
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement.setString(1, String.valueOf(example.getId()));
+            preparedStatement.setString(2, String.valueOf(example.getExplainId()));
+            preparedStatement.setString(3, example.getExample());
+            preparedStatement.setString(4, example.getTranslate());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void removeExample(Example example) {
-        data.removeTuple("examples", "example_id = " + example.getId());
+        StringBuilder query = new StringBuilder();
+        query.append("DELETE FROM examples ");
+        query.append("WHERE example_id = ? ");
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query.toString());
+            preparedStatement.setString(1, String.valueOf(example.getId()));
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static int getNextId(String tableName, String idColumn) {
+        int maxId = 0;
+        String query = "SELECT MAX(" + idColumn + ") AS max_id FROM " + tableName;
+
+        try (ResultSet resultSet = statement.executeQuery(query)) {
+            if (resultSet.next()) {
+                maxId = resultSet.getInt("max_id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return maxId + 1;
     }
 
     public static void main(String[] args) {
         loadData();
         //Test
         System.out.println();
-        close();
     }
 }

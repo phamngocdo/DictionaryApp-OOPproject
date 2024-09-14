@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -71,7 +72,7 @@ public class Bookmark {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw  new RuntimeException(e);
         }
         ObservableList<Pair<Integer, String>> items = FXCollections.observableArrayList(list);
         wordList.setCellFactory(listview -> new BookmarkItem());
@@ -134,18 +135,26 @@ public class Bookmark {
         }
     
         private void playUKSound(String word) {
-            TextToSpeech.speakText(word, "en-gb");
+            try {
+                TextToSpeech.speakText(word, "en-gb");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     
         private void playUSSound(String word) {
-            TextToSpeech.speakText(word, "en-us");
+            try {
+                TextToSpeech.speakText(word, "en-us");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     
         private void seeFullExplain(Pair<Integer, String> item) {
             try {
                 WordExplain.setItem(item);
                 Parent page;
-                page = FXMLLoader.load(Bookmark.class.getResource("/controller/WordExplain.fxml"), App.getBundle());
+                page = FXMLLoader.load(Objects.requireNonNull(Bookmark.class.getResource("/controller/WordExplain.fxml")), App.getBundle());
                 explain.getChildren().clear();
                 explain.getChildren().add(page);
                 explain.setVisible(true);
@@ -154,7 +163,7 @@ public class Bookmark {
                 wordList.setVisible(false);
             }
             catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }

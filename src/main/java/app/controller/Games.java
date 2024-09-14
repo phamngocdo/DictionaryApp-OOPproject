@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import app.main.App;
@@ -43,12 +44,12 @@ public class Games {
         Parent page;
         ResourceBundle bundle = App.getBundle();
         try {
-            page = FXMLLoader.load(Games.class.getResource("/controller/" + game + ".fxml"), bundle);
+            page = FXMLLoader.load(Objects.requireNonNull(Games.class.getResource("/controller/" + game + ".fxml")), bundle);
             functionPane.getChildren().clear();
             functionPane.getChildren().add(page);
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 }

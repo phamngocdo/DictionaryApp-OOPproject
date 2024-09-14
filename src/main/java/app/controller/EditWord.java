@@ -28,16 +28,13 @@ public class EditWord {
     private TextField pronounceField;
 
     @FXML
-    private Button reset;
+    private Button resetButton, saveButton;
 
     @FXML
-    private Button save;
+    private Button addTypeButton;
 
     @FXML
-    private Button addTypeOfExplain;
-
-    @FXML
-    private VBox editVbox;
+    private VBox editionVbox;
 
     private static Word word = null;
 
@@ -59,15 +56,25 @@ public class EditWord {
 
     @FXML
     private void saveEdition(ActionEvent event) {
-        boolean isEnglish = App.getLanguage() == "english";
-        String title = isEnglish ? "Save Word" : "Lưu Từ";
-        String message = isEnglish ?  "Are you sure you want to save this word to the dictionary?" : "Bạn có chắc muốn lưu từ này vào từ điển không?";
-        String confirmText = isEnglish ? "Save" : "Lưu";
+        String title = App.getBundle().getString("title.confirmation");
+        String message = App.getBundle().getString("message.saveconfirm");
+        String confirmText = App.getBundle().getString("button.submit");
         boolean confirm = AlertScreen.showConfirmationAlert(title, message,confirmText);
         if (confirm) {
             saveWord();
         }
     }
+
+    @FXML
+    private void resetEdition(ActionEvent event) {
+        loadWord();
+    }
+
+    @FXML
+    private void onClickAddType(ActionEvent event) {
+        addType(null, null);
+    }
+
     private void saveWord() {
         String wordText = wordField.getText().trim();
         String pronounceText = pronounceField.getText().trim();
@@ -86,63 +93,53 @@ public class EditWord {
         String currentType = "";
         int currentExplainId = -1;
 
-        for (int i = 0; i < editVbox.getChildren().size(); i++) {
-            HBox node = (HBox) editVbox.getChildren().get(i);
-            if (infoList.get(i).equals("type")) {
-                currentType = ((TextField) node.getChildren().get(2)).getText().trim();
-                if (currentType.isEmpty()) {
-                    showNullTextFieldAlert();
-                    return;
+        for (int i = 0; i < editionVbox.getChildren().size(); i++) {
+            HBox node = (HBox) editionVbox.getChildren().get(i);
+            switch (infoList.get(i)) {
+                case "type" -> {
+                    currentType = ((TextField) node.getChildren().get(2)).getText().trim();
+                    if (currentType.isEmpty()) {
+                        showNullTextFieldAlert();
+                        return;
+                    }
                 }
-            }
-            else if (infoList.get(i).equals("explain")) {
-                String meaningText = ((TextField) node.getChildren().get(2)).getText().trim();
-                if (meaningText.isEmpty()) {
-                    showNullTextFieldAlert();
-                    return;
+                case "explain" -> {
+                    String meaningText = ((TextField) node.getChildren().get(2)).getText().trim();
+                    if (meaningText.isEmpty()) {
+                        showNullTextFieldAlert();
+                        return;
+                    }
+                    Explain explain = new Explain(0, word.getId(), currentType, meaningText);
+                    DictionaryDatabase.addExplain(explain);
+                    currentExplainId = explain.getId();
                 }
-                Explain explain = new Explain(0, word.getId(), currentType, meaningText);
-                DictionaryDatabase.addExplain(explain);
-                currentExplainId = explain.getId();
-            }
-            else if (infoList.get(i).equals("example")){
-                String exampleText = ((TextField) node.getChildren().get(1)).getText().trim();
-                String translateText = ((TextField) node.getChildren().get(2)).getText().trim();
-                if (exampleText.isEmpty() || translateText.isEmpty()) {
-                    showNullTextFieldAlert();
-                    return;
+                case "example" -> {
+                    String exampleText = ((TextField) node.getChildren().get(1)).getText().trim();
+                    String translateText = ((TextField) node.getChildren().get(2)).getText().trim();
+                    if (exampleText.isEmpty() || translateText.isEmpty()) {
+                        showNullTextFieldAlert();
+                        return;
+                    }
+                    Example example = new Example(0, currentExplainId, exampleText, translateText);
+                    DictionaryDatabase.addExample(example);
                 }
-                Example example = new Example(0, currentExplainId, exampleText, translateText);
-                DictionaryDatabase.addExample(example);
             }
         }
     } 
 
     private void showNullTextFieldAlert() {
-        boolean isEnglish = App.getLanguage().equals("english");
-        String title = isEnglish ? "Incomplete Information" : "Thông tin chưa đầy đủ";
-        String message = isEnglish ? "Please fill in all required fields." : "Vui lòng điền đầy đủ các ô cần thiết.";
+        String title = App.getBundle().getString("title.warning");
+        String message = App.getBundle().getString("message.fillfulltext");
         AlertScreen.showAlert(AlertType.WARNING, title, message);
     }
 
-    @FXML
-    private void resetEdition(ActionEvent event) {
-        loadWord();
-    }
-
-    @FXML
-    private void onClickAddType(ActionEvent event) {
-        addType(null, null);
-    }
-
     private void loadWord() {
-        editVbox.getChildren().clear();
+        editionVbox.getChildren().clear();
         if (word != null) {
             wordField.setText(word.getWord());
             pronounceField.setText(word.getPronounce());
             ArrayList<Explain> explains = DictionaryDatabase.getAllExplainsFromWord(word.getId());
             HashMap<String, ArrayList<Explain>> map = new HashMap<>();
-
             for (Explain explain : explains) {
                 String type = explain.getType();
                 if (!map.containsKey(type)) {
@@ -150,9 +147,8 @@ public class EditWord {
                 }
                 map.get(type).add(explain);
             }
-
             for (Map.Entry<String, ArrayList<Explain>> entry : map.entrySet()) {
-                addType(entry.getKey(), explains);
+                addType(entry.getKey(), entry.getValue());
             }
         }  
     }
@@ -174,7 +170,7 @@ public class EditWord {
 
         TextField typeField = new TextField();
         typeField.setText(type);
-        typeField.setPromptText(App.getBundle().getString("prompttext.type"));;
+        typeField.setPromptText(App.getBundle().getString("prompttext.type"));
         typeField.getStyleClass().add("type-field");
 
         Button delete = new Button();
@@ -185,25 +181,25 @@ public class EditWord {
         delete.getStyleClass().add("general-button");
 
         parent.getChildren().addAll(add, label, typeField, delete);
-        editVbox.getChildren().add(parent);
+        editionVbox.getChildren().add(parent);
         infoList.add("type");
 
         add.setOnAction(event -> {
-            int index = editVbox.getChildren().indexOf(parent);
-            addExlain(null, index + 1);
+            int index = editionVbox.getChildren().indexOf(parent);
+            addExplain(null, index + 1);
         });
 
         if (explains != null) {
             for (Explain explain : explains) {
-                addExlain(explain, -1);
+                addExplain(explain, -1);
             }
         }
         else {
-            addExlain(null, -1);
+            addExplain(null, -1);
         }
     }
 
-    private void addExlain(Explain explain, int i) {
+    private void addExplain(Explain explain, int index) {
         HBox parent = new HBox();
         parent.getStyleClass().add("explain-hbox");
     
@@ -237,18 +233,18 @@ public class EditWord {
         delete.getStyleClass().add("general-button");
     
         parent.getChildren().addAll(add, label, meaningField, delete);
-        if (i == -1) {
-            editVbox.getChildren().add(parent);
+        if (index == -1) {
+            editionVbox.getChildren().add(parent);
             infoList.add("explain");
         }
         else {
-            editVbox.getChildren().add(i, parent);
-            infoList.add(i,"explain");
+            editionVbox.getChildren().add(index, parent);
+            infoList.add(index,"explain");
         }
 
         add.setOnAction(event -> {
-            int index = editVbox.getChildren().indexOf(parent);
-            addExample(null, index + 1);
+            int indexChild = editionVbox.getChildren().indexOf(parent);
+            addExample(null, indexChild + 1);
         });
     
         if (explain != null) {
@@ -258,7 +254,7 @@ public class EditWord {
         }
     }
     
-    private void addExample(Example example, int i) {
+    private void addExample(Example example, int index) {
         HBox parent = new HBox();
         parent.getStyleClass().add("example-hbox");
 
@@ -271,7 +267,7 @@ public class EditWord {
         exampleField.getStyleClass().add("example-field");
 
         TextField translateField = new TextField();
-        translateField.setPromptText(App.getBundle().getString("prompttext.example"));
+        translateField.setPromptText(App.getBundle().getString("prompttext.translate"));
         translateField.getStyleClass().add("example-field");
 
         if (example != null) {
@@ -291,41 +287,42 @@ public class EditWord {
         delete.getStyleClass().add("general-button");
 
         parent.getChildren().addAll(label, exampleField, translateField, delete);
-        if (i == -1) {
-            editVbox.getChildren().add(parent);
+        if (index == -1) {
+            editionVbox.getChildren().add(parent);
             infoList.add("example");
         }
         else {
-            editVbox.getChildren().add(i, parent);
-            infoList.add(i,"example");
+            editionVbox.getChildren().add(index, parent);
+            infoList.add(index,"example");
         }
     }
 
     private void deleteHbox(HBox hbox) {
-        int index = editVbox.getChildren().indexOf(hbox);
-        if (infoList.get(index).equals("type")) {
-            editVbox.getChildren().remove(index);
-            infoList.remove(index);
-            while (index < infoList.size() && !infoList.get(index).equals("type")) {
-                if (infoList.get(index).equals("explain")) {
-                    editVbox.getChildren().remove(index);
-                    infoList.remove(index);
-                    while (index < infoList.size() && infoList.get(index).equals("example")) {
-                        editVbox.getChildren().remove(index);
+        int index = editionVbox.getChildren().indexOf(hbox);
+        switch (infoList.get(index)) {
+            case "type" -> {
+                editionVbox.getChildren().remove(index);
+                infoList.remove(index);
+                while (index < infoList.size() && !infoList.get(index).equals("type")) {
+                    if (infoList.get(index).equals("explain")) {
+                        do {
+                            editionVbox.getChildren().remove(index);
+                            infoList.remove(index);
+                        } while (index < infoList.size() && infoList.get(index).equals("example"));
+                    } else {
+                        editionVbox.getChildren().remove(index);
                         infoList.remove(index);
                     }
-                } 
-                else {
-                    editVbox.getChildren().remove(index);
-                    infoList.remove(index);
                 }
             }
-        }
-        else if (infoList.get(index).equals("explain")) {
-            editVbox.getChildren().remove(index);
-            infoList.remove(index);
-            while (index < infoList.size() && infoList.get(index).equals("example")) {
-                editVbox.getChildren().remove(index);
+            case "explain" -> {
+                do {
+                    editionVbox.getChildren().remove(index);
+                    infoList.remove(index);
+                } while (index < infoList.size() && infoList.get(index).equals("example"));
+            }
+            case "example" -> {
+                editionVbox.getChildren().remove(index);
                 infoList.remove(index);
             }
         }

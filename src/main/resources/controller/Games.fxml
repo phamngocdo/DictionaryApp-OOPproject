@@ -10,7 +10,7 @@
 
 <Pane fx:id="functionPane" prefHeight="633.0" prefWidth="860" styleClass="function-screen-pane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Games">
    <children>
-      <HBox layoutX="53.0" layoutY="112.0" prefHeight="409.0" prefWidth="769.0" spacing="50.0">
+      <HBox layoutX="53.0" layoutY="112.0" prefHeight="419.0" prefWidth="769.0" spacing="50.0">
          <children>
             <Pane fx:id="wordHunt" onMouseClicked="#goToWordHunt" prefHeight="460.0" prefWidth="223.0" styleClass="game-choice">
                <children>
@@ -24,7 +24,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Text fill="WHITE" layoutX="7.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game-decription" text="%text.wordhuntdescription" textAlignment="JUSTIFY" wrappingWidth="208.13671875">
+                  <Text fill="WHITE" layoutX="7.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game-decription" text="%text.wordhuntdescription" wrappingWidth="208.13671875">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -43,7 +43,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Text fill="WHITE" layoutX="7.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game-decription" text="%text.quizzdescription" textAlignment="JUSTIFY" wrappingWidth="208.13671875" />
+                  <Text fill="WHITE" layoutX="7.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game-decription" text="%text.quizzdescription" wrappingWidth="208.13671875" />
                </children>
             </Pane>
             <Pane fx:id="hangman" onMouseClicked="#goToHangman" prefHeight="460.0" prefWidth="223.0" styleClass="game-choice">
@@ -58,7 +58,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Text fill="WHITE" layoutX="7.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game-decription" text="%text.hangmandescription" textAlignment="JUSTIFY" wrappingWidth="208.13671875" />
+                  <Text fill="WHITE" layoutX="7.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="game-decription" text="%text.hangmandescription" wrappingWidth="208.13671875" />
                </children>
             </Pane>
          </children>

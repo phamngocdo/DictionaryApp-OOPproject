@@ -5,28 +5,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Objects;
 
 import app.api.GoogleFormFeedback;
 import app.main.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 public class Settings {
     
     @FXML
-    private Button changeThemeButton;
-
-    private boolean isDarkTheme;
-
-    @FXML
-    private Button viButton;
-
-    @FXML
-    private Button engButton;
-
-    private boolean chooseEng;
+    private Button changeThemeButton, viButton, engButton;
 
     @FXML
     private TextArea feedbackArea;
@@ -34,16 +26,19 @@ public class Settings {
     @FXML
     private Button feedbackSendButton;
 
+    private boolean isDarkTheme;
+    private boolean isEnglish;
+
     @FXML
     private void initialize(){
         isDarkTheme = true;
         try (FileInputStream fis = new FileInputStream("src/main/resources/bundle/language_choosed.txt");
             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            chooseEng = ois.readBoolean();
+            isEnglish = ois.readBoolean();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
-        if(chooseEng){
+        if(isEnglish){
             engButton.getStyleClass().remove("button-choose-language");
             engButton.getStyleClass().add("button-choosed-language");
             viButton.getStyleClass().remove("button-choosed-language");
@@ -61,10 +56,10 @@ public class Settings {
         isDarkTheme = !isDarkTheme;
         String cssPath;
         if(isDarkTheme){
-            cssPath = getClass().getResource("/graphic/dark_style/dark_style.css").toExternalForm();
+            cssPath = Objects.requireNonNull(Settings.class.getResource("/graphic/dark_style/dark_style.css")).toExternalForm();
         }
         else{
-            cssPath = getClass().getResource("/graphic/light_style/light_style.css").toExternalForm();
+            cssPath = Objects.requireNonNull(Settings.class.getResource("/graphic/light_style/light_style.css")).toExternalForm();
         }
         App.setSceneStyle(cssPath);
     }
@@ -78,16 +73,25 @@ public class Settings {
     @FXML
     private void changeToVi(ActionEvent event){
         App.setBundle("vietnamese");
-        chooseEng = false;
+        isEnglish = false;
         setEnglish(false);
     }
 
     @FXML
     private void sendFeedback(ActionEvent event){
         String userFeedback = feedbackArea.getText();
-        if(userFeedback != ""){
+        if(!Objects.equals(userFeedback, "")){
             System.out.println("Feedback: " + userFeedback);
-            GoogleFormFeedback.sendFeedback(userFeedback);
+            try {
+                GoogleFormFeedback.sendFeedback(userFeedback);
+                String title = "";
+                String message = App.getBundle().getString("message.sendfeedbacksuccess");
+                AlertScreen.showAlert(Alert.AlertType.INFORMATION,title,message);
+            } catch (IOException e) {
+                String title = "";
+                String message = App.getBundle().getString("message.nointernet");
+                AlertScreen.showAlert(Alert.AlertType.WARNING,title,message);
+            }
         }
     }
 
@@ -96,7 +100,7 @@ public class Settings {
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeBoolean(choosed);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 }

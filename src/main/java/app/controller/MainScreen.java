@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import app.api.TextToSpeech;
@@ -77,7 +78,7 @@ public class MainScreen {
         Parent page;
         try {
             ResourceBundle bundle = App.getBundle();
-            page = FXMLLoader.load(App.class.getResource("/controller/" + name + ".fxml"), bundle);
+            page = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("/controller/" + name + ".fxml")), bundle);
             functionPane.getChildren().clear();
             functionPane.getChildren().add(page);
             currentClickedButton.getStyleClass().remove("controll-button-clicked");
@@ -85,7 +86,7 @@ public class MainScreen {
             button.getStyleClass().remove("controll-button");
             button.getStyleClass().add("controll-button-clicked");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
@@ -94,23 +95,11 @@ public class MainScreen {
         Parent page;
         ResourceBundle bundle = App.getBundle();
         try {
-            page = FXMLLoader.load(App.class.getResource("/controller/EditWord.fxml"), bundle);
+            page = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("/controller/EditWord.fxml")), bundle);
             functionPane.getChildren().clear();
             functionPane.getChildren().add(page);
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void turnOffEditFunction(String previousFunction) {
-        Parent page;
-        ResourceBundle bundle = App.getBundle();
-        try {
-            page = FXMLLoader.load(App.class.getResource("/controller/" + previousFunction + ".fxml"), bundle);
-            functionPane.getChildren().clear();
-            functionPane.getChildren().add(page);
-        } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 }

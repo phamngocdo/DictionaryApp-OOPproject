@@ -73,10 +73,9 @@ public class QuizzGame {
 
     @FXML
     private void submitGame(ActionEvent event) {
-        boolean isEnglish = App.getLanguage() == "english";
-        String title = isEnglish ? "Submit confirm" : "Xác nhận nộp bài";
-        String message = isEnglish ?  "Are you to submit?" : "Bạn có chắc muốn nộp bài không?";
-        String confirmText = isEnglish ? "Submit" : "Xác nhận";
+        String title = App.getBundle().getString("title.confirmation");
+        String message = App.getBundle().getString("message.submit");
+        String confirmText = App.getBundle().getString("confirmtext.submit");
         boolean confirm = AlertScreen.showConfirmationAlert(title, message,confirmText);
         if (confirm) {
             finishGame();
@@ -146,16 +145,15 @@ public class QuizzGame {
             () -> {
                 finishGame();
                 Platform.runLater(() -> {
-                    boolean isEnglish = App.getLanguage() == "english";
-                    String title = isEnglish ? "Time out" : "Hết thời gian";
-                    String message = isEnglish ?  "Time's up! The quizz has ended." : "Đã hết thời gian làm bài quizz";
+                    String title = "";
+                    String message = App.getBundle().getString("message.endgame");
                     AlertScreen.showAlert(AlertType.INFORMATION, title, message);
                 });
             });
         timeLabel.setText(TimeCountDown.getFormattedTime());
         TimeCountDown.start();
 
-        loadRandomQuestion(QUESTIONS_TOTAL);
+        loadRandomQuestion();
         currentQuestion = 0;
         
         userAnswer.clear();
@@ -235,11 +233,11 @@ public class QuizzGame {
         }
     }
     
-    private void loadRandomQuestion(int numberOfQuestions) {
+    private void loadRandomQuestion() {
         randQuestions.clear();
         Set<Integer> randomNumbers = new HashSet<>();
         Random random = new Random();
-        while (randomNumbers.size() < numberOfQuestions) {
+        while (randomNumbers.size() < QUESTIONS_TOTAL) {
             int number = random.nextInt(allQuestions.size()); 
             randomNumbers.add(number); 
         }
@@ -275,7 +273,7 @@ public class QuizzGame {
             }
         } 
         catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

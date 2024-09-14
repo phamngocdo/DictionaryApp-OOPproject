@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import app.api.TextToSpeech;
@@ -28,28 +29,27 @@ public class App extends Application {
     private static final String ICON_PATH = "/graphic/logo.png";
     private static final String CSS_PATH = "/graphic/dark_style/dark_style.css";
     private static final String LANGUAGE_FILE = "src/main/resources/bundle/language_choosed.txt";
-    private static String language = "english";
 
     @SuppressWarnings("exports")
     @Override
     public void start(Stage stage) throws IOException {
         DictionaryDatabase.loadData();
         TextToSpeech.addVoice();
-
+        String language;
         try (FileInputStream fis = new FileInputStream(LANGUAGE_FILE);
-            ObjectInputStream ois = new ObjectInputStream(fis)) {
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
             language = ois.readBoolean() ? "english" : "vietnamese"; 
         } 
         catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         bundle = ResourceBundle.getBundle("bundle." + language, Locale.getDefault());
         loadMainScreen();
-        scene.getStylesheets().add(App.class.getResource(CSS_PATH).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(App.class.getResource(CSS_PATH)).toExternalForm());
         stage.setTitle(APP_NAME);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.getIcons().add(new Image(App.class.getResourceAsStream(ICON_PATH)));
+        stage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream(ICON_PATH))));
         stage.show();
     }
 
@@ -64,12 +64,8 @@ public class App extends Application {
         return mainScreen;
     }
 
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml, bundle));
-    }
-
-    private static Parent loadFXML(String fxml, ResourceBundle bundle) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/controller/" + fxml + ".fxml"), bundle);
+    private static Parent loadFXML(ResourceBundle bundle) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/controller/" + "MainScreen" + ".fxml"), bundle);
         return fxmlLoader.load();
     }
 
@@ -78,26 +74,18 @@ public class App extends Application {
         scene.getStylesheets().add(cssPath);
     }
 
-    public static String getSceneStyle() {
-        return String.join("", scene.getStylesheets());
-    }
-
     public static void setBundle(String language) {
         bundle = ResourceBundle.getBundle("bundle." + language, Locale.getDefault());
         try {
-            Parent newRoot = loadFXML("MainScreen", bundle);
+            Parent newRoot = loadFXML(bundle);
             scene.setRoot(newRoot);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     public static ResourceBundle getBundle() {
         return bundle;
-    }
-
-    public static String getLanguage() {
-        return language;
     }
 
     public static void main(String[] args) {

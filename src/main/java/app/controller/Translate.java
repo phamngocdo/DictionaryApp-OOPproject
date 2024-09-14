@@ -1,9 +1,11 @@
 package app.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Objects;
 
 import app.api.GoogleTranslate;
 import app.api.ImageToText;
@@ -26,48 +28,22 @@ import javafx.util.Duration;
 public class Translate {
 
     @FXML
-    private TextArea userText;
+    private TextArea userText, translateText;
 
     @FXML
-    private TextArea translateText;
+    private Button viUserOption, engUserOption, viTransOption,  engTransOption;
+
+    @FXML
+    private Button swapButton, userTextSound, translateTextSound, imageButton;
+
+    @FXML
+    private Label characterLimit, loadingTranslate;
 
     private String targetLanguage, sourceLanguage;
-
-    @FXML
-    private Button viUserOption;
-    
-    @FXML
-    private Button engUserOption; 
-    
-    @FXML
-    private Button viTransOption;
-    
-    @FXML
-    private Button engTransOption;
-
     private Button userChoosedButton, userNotChooseButton, transChoosedButton, transNotChooseButton;
 
-    @FXML
-    private Button swap;
-
-    @FXML
-    private Button userTextSound;
-
-    @FXML
-    private Button translateTextSound;
-
-    @FXML
-    private Button addImage;
-
-    @FXML
-    private Label characterLimit;
-
     private final int CHARACTER_LIMIT = 2000;
-
-    private final PauseTransition pause = new PauseTransition(Duration.millis(700));
-
-    @FXML
-    private Label loadingTranslate;
+    private final PauseTransition PAUSE = new PauseTransition(Duration.millis(700));
 
     @FXML
     void initialize(){
@@ -80,49 +56,10 @@ public class Translate {
         targetLanguage = "vi";
         userText.textProperty().addListener((observable,oldValue, newValue)->{
             characterLimit.setText(newValue.length() + "/" + CHARACTER_LIMIT);
-            pause.setOnFinished(event -> translate());
-            pause.playFromStart();
+            PAUSE.setOnFinished(event -> translate());
+            PAUSE.playFromStart();
         }
         );
-    }
-
-    @FXML
-    private void translate() {
-        if (userText.getLength() > CHARACTER_LIMIT) {
-            boolean isEnglish = App.getLanguage() == "english";
-            String title = isEnglish ? "Character Limit Exceeded" : "Số Kí Tự Vượt Quá Giới Hạn";
-            String message = isEnglish ? "Please type no more than " + CHARACTER_LIMIT + " characters" : "Vui lòng nhập không quá " + CHARACTER_LIMIT + " kí tự";
-            AlertScreen.showAlert(AlertType.WARNING,title,message);
-        } 
-        else if (!userText.getText().isEmpty()) {
-            translateText.setText("");
-            loadingTranslate.setVisible(true);
-            Task<String> translateTask = new Task<>() {
-                @Override
-                protected String call() throws Exception {
-                    return GoogleTranslate.translate(userText.getText(), sourceLanguage, targetLanguage);
-                }
-   
-                @Override
-                protected void succeeded() {
-                    super.succeeded();
-                    Platform.runLater(() -> {
-                        translateText.setText(getValue());
-                        loadingTranslate.setVisible(false);
-                    });
-                }
-   
-                @Override
-                protected void failed() {
-                    super.failed();
-                    Platform.runLater(() -> {
-                    translateText.setText("Failed");
-                    loadingTranslate.setVisible(false);
-                    });
-                }
-            };
-          new Thread(translateTask).start();
-        }
     }
 
     @FXML
@@ -210,23 +147,26 @@ public class Translate {
 
     @FXML
     private void playUserTextSound(ActionEvent event) {
-        TextToSpeech.speakText(userText.getText(), voice(sourceLanguage));
+        try {
+            TextToSpeech.speakText(userText.getText(), voice(sourceLanguage));
+        } catch (IOException e) {
+            String title = App.getBundle().getString("title.warning");
+            String message = App.getBundle().getString("message.nointernet");
+            AlertScreen.showAlert(AlertType.WARNING,title,message);
+        }
     }
 
     @FXML
     private void playTransTextSound(ActionEvent event) {
-        TextToSpeech.speakText(translateText.getText(), voice(targetLanguage));
+        try {
+            TextToSpeech.speakText(translateText.getText(), voice(targetLanguage));
+        } catch (IOException e) {
+            String title = App.getBundle().getString("title.warning");
+            String message = App.getBundle().getString("message.nointernet");
+            AlertScreen.showAlert(AlertType.WARNING,title,message);
+        }
     }
 
-    private String voice(String language){
-        if (language == "en"){
-            return "en-us";
-        }
-        else {
-            return "vi-vn";
-        }
-    }
-    
     @FXML
     private void selectImage(ActionEvent event){
         TextToSpeech.stopSpeaking();
@@ -241,13 +181,60 @@ public class Translate {
                 String text = ImageToText.getText(imageUrl, sourceLanguage);
                 userText.setText(text);
             } catch (MalformedURLException e) {
-                e.printStackTrace();
                 System.out.println("The URL for the image file is malformed.");
             }
             catch (URISyntaxException e) {
-                e.printStackTrace();
                 System.out.println("An error occurred while processing the image.");
             }
+        }
+    }
+
+    private void translate() {
+        if (userText.getLength() > CHARACTER_LIMIT) {
+            String title = App.getBundle().getString("title.warning");
+            String message = App.getBundle().getString("message.characterlimit");
+            message += " " + CHARACTER_LIMIT + " " + App.getBundle().getString("characters");
+            AlertScreen.showAlert(AlertType.WARNING,title,message);
+        }
+        else if (!userText.getText().isEmpty()) {
+            translateText.setText("");
+            loadingTranslate.setVisible(true);
+            Task<String> translateTask = new Task<>() {
+                @Override
+                protected String call() throws IOException {
+                    return GoogleTranslate.translate(userText.getText(), sourceLanguage, targetLanguage);
+                }
+
+                @Override
+                protected void succeeded() {
+                    super.succeeded();
+                    Platform.runLater(() -> {
+                        translateText.setText(getValue());
+                        loadingTranslate.setVisible(false);
+                    });
+                }
+
+                @Override
+                protected void failed() {
+                    super.failed();
+                    Platform.runLater(() -> {
+                        String title = App.getBundle().getString("title.warning");
+                        String message = App.getBundle().getString("message.nointernet");
+                        AlertScreen.showAlert(AlertType.WARNING,title,message);
+                        loadingTranslate.setVisible(false);
+                    });
+                }
+            };
+            new Thread(translateTask).start();
+        }
+    }
+
+    private String voice(String language){
+        if (Objects.equals(language, "en")){
+            return "en-us";
+        }
+        else {
+            return "vi-vn";
         }
     }
 }

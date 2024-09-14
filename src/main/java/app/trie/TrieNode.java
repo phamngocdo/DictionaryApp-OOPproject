@@ -16,9 +16,7 @@ class TrieNode {
 
 
     public void addChild(Character character){
-        if (childs.get(character) == null){
-            childs.put(character, new TrieNode());
-        }
+        childs.computeIfAbsent(character, k -> new TrieNode());
     }
 
     public TrieNode getChild(Character character){

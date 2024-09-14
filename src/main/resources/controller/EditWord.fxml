@@ -27,14 +27,14 @@
          <padding>
             <Insets left="10.0" right="10.0" />
          </padding></TextField>
-      <Button fx:id="save" graphicTextGap="8.0" layoutX="638.0" layoutY="22.0" mnemonicParsing="false" onAction="#saveEdition" prefHeight="34.0" prefWidth="136.0" styleClass="save-button" text="%button.save">
+      <Button fx:id="saveButton" graphicTextGap="8.0" layoutX="613.0" layoutY="22.0" mnemonicParsing="false" onAction="#saveEdition" prefHeight="34.0" prefWidth="114.0" styleClass="save-button" text="%button.saveedition">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="save-edition-icon" />
          </graphic>
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <Button fx:id="reset" graphicTextGap="8.0" layoutX="747.0" layoutY="22.0" mnemonicParsing="false" onAction="#resetEdition" prefHeight="34.0" prefWidth="99.0" style="-fx-font-weight: bold;" styleClass="save-button" text="%button.reset">
+      <Button fx:id="resetButton" graphicTextGap="8.0" layoutX="747.0" layoutY="22.0" mnemonicParsing="false" onAction="#resetEdition" prefHeight="34.0" prefWidth="99.0" style="-fx-font-weight: bold;" styleClass="save-button" text="%button.reset">
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="reset-icon" />
          </graphic>
@@ -53,10 +53,10 @@
       </Label>
       <ScrollPane focusTraversable="false" hbarPolicy="NEVER" layoutX="40.0" layoutY="137.0" prefHeight="464.0" prefWidth="780.0" style="-fx-background-color: transparent;">
          <content>
-            <VBox fx:id="editVbox" minHeight="462.0" prefWidth="780.0" spacing="20.0" styleClass="root-vbox" />
+            <VBox fx:id="editionVbox" minHeight="462.0" prefWidth="780.0" spacing="20.0" styleClass="root-vbox" />
          </content>
       </ScrollPane>
-      <Button fx:id="addTypeOfExplain" focusTraversable="false" layoutX="41.0" layoutY="91.0" mnemonicParsing="false" onAction="#onClickAddType" prefHeight="34.0" prefWidth="140.0" styleClass="save-button" text="%button.addtype">
+      <Button fx:id="addTypeButton" focusTraversable="false" layoutX="41.0" layoutY="91.0" mnemonicParsing="false" onAction="#onClickAddType" prefHeight="34.0" prefWidth="140.0" styleClass="save-button" text="%button.addtype">
          <font>
             <Font size="15.0" />
          </font>

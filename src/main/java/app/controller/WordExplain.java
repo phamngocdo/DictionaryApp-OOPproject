@@ -11,6 +11,7 @@ import app.database.DictionaryDatabase;
 import app.main.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -23,31 +24,13 @@ public class WordExplain {
     private static Pair<Integer, String> item;
 
     @FXML
-    private Label wordLabel;
-
-    @FXML
-    private Label pronounceLabel;
+    private Label wordLabel, pronounceLabel;
 
     @FXML
     private TextArea explainArea;
 
     @FXML
-    private Button usSound;
-
-    @FXML
-    private Button ukSound;
-
-    @FXML
-    private Button save;
-
-    @FXML
-    private Button saved;
-
-    @FXML
-    private Button edit;
-
-    @FXML
-    private Button delete;
+    private Button usSound, ukSound, saveButton, savedButton, editButton, deleteButton;
 
     private final String BOOKMARK_PATH = "src/main/resources/bookmark/bookmark.txt";
 
@@ -59,13 +42,25 @@ public class WordExplain {
     @FXML
     private void playUSPronounceSound(ActionEvent event) {
         TextToSpeech.stopSpeaking();
-        TextToSpeech.speakText(wordLabel.getText(), "en-us");
+        try {
+            TextToSpeech.speakText(wordLabel.getText(), "en-us");
+        } catch (IOException e) {
+            String title = App.getBundle().getString("title.warning");
+            String message = App.getBundle().getString("message.nointernet");
+            AlertScreen.showAlert(Alert.AlertType.WARNING,title,message);
+        }
     }
 
     @FXML
     private void playUKPronounceSound(ActionEvent event) {
         TextToSpeech.stopSpeaking();
-        TextToSpeech.speakText(wordLabel.getText(), "en-gb");
+        try {
+            TextToSpeech.speakText(wordLabel.getText(), "en-gb");
+        } catch (IOException e) {
+            String title = App.getBundle().getString("title.warning");
+            String message = App.getBundle().getString("message.nointernet");
+            AlertScreen.showAlert(Alert.AlertType.WARNING,title,message);
+        }
     }
 
     @FXML
@@ -76,10 +71,9 @@ public class WordExplain {
 
     @FXML
     private void deleteWord(ActionEvent event) {
-        boolean isEnglish = App.getLanguage() == "english";
-        String title = isEnglish ? "Delete Word" : "Xóa Từ";
-        String message = isEnglish ?  "Are you sure you want to delete this word from the dictionary?" : "Bạn có chắc muốn xóa từ này khỏi từ điển không?";
-        String confirmText = isEnglish ? "Delete" : "Xóa";
+        String title = App.getBundle().getString("title.confirmation");
+        String message = App.getBundle().getString("message.deleteword");
+        String confirmText = App.getBundle().getString("button.delete");
         boolean confirm = AlertScreen.showConfirmationAlert(title, message,confirmText);
         if (confirm) {
             DictionaryDatabase.removeWord(DictionaryDatabase.getWord(item.getKey()));
@@ -95,7 +89,7 @@ public class WordExplain {
                 words.add(line.trim());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(BOOKMARK_PATH, true))) {
             if (words.add(wordLabel.getText().trim())) {
@@ -103,7 +97,7 @@ public class WordExplain {
                 writer.newLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         handleSaveButton(wordLabel.getText());
     }
@@ -119,7 +113,7 @@ public class WordExplain {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(BOOKMARK_PATH))) {
             for (String line : lines) {
@@ -127,7 +121,7 @@ public class WordExplain {
                 writer.newLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         handleSaveButton(wordLabel.getText());
     }
@@ -165,14 +159,14 @@ public class WordExplain {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         if (isSaved) {
-            saved.setVisible(true);
-            save.setVisible(false);
+            savedButton.setVisible(true);
+            saveButton.setVisible(false);
         } else {
-            saved.setVisible(false);
-            save.setVisible(true);
+            savedButton.setVisible(false);
+            saveButton.setVisible(true);
         }
     }
 

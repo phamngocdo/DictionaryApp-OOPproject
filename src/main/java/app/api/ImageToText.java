@@ -14,7 +14,7 @@ public class ImageToText {
         imagePath = new File(imageUrl.toURI()).getAbsolutePath();
         URL tessDataUrl = ImageToText.class.getResource("/tessdata/");
         if (tessDataUrl == null) {
-            System.err.println("Tessdata directory not found.");
+            System.out.println("Tess data directory not found.");
             return result;
         }
         if (sourceLanguage.equals("en")){
@@ -24,13 +24,7 @@ public class ImageToText {
             sourceLanguage += "e";
         }
         String dataPath;
-        try {
-            dataPath = new File(tessDataUrl.toURI()).getAbsolutePath();
-        } 
-        catch (URISyntaxException e) {
-            e.printStackTrace();
-            return result;
-        }
+        dataPath = new File(tessDataUrl.toURI()).getAbsolutePath();
         Tesseract tesseract = new Tesseract();
         tesseract.setDatapath(dataPath);
         tesseract.setLanguage(sourceLanguage); 
@@ -39,7 +33,7 @@ public class ImageToText {
             result = tesseract.doOCR(imageFile);
         } 
         catch (TesseractException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         
         return result;
@@ -50,7 +44,7 @@ public class ImageToText {
             System.out.println(getText(null, null));
         } 
         catch (URISyntaxException e) {
-            e.printStackTrace();
+            System.out.println("Please check your image path");
         }
     }
 }

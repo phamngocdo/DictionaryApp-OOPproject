@@ -45,13 +45,10 @@ public class Hangman {
     private Line body, leftArm, rightArm, leftLeg, rightLeg;
 
     private String topic, nextBodyPart, currentWord;
-
     private int score, currentWordIndex;
-
     private ArrayList<String> wordList = new ArrayList<>();
 
     private final int TIME_SECONDS = 300;
-
     private final String TOPIC_PATH = "src/main/resources/games/hangman_words.txt";
 
 
@@ -137,9 +134,8 @@ public class Hangman {
             () -> {
                 finishGame();
                 Platform.runLater(() -> {
-                    boolean isEnglish = App.getLanguage() == "english";
-                    String title = isEnglish ? "Time out" : "Hết thời gian";
-                    String message = isEnglish ?  "Time's up! The game has ended." : "Đã hết thời gian";
+                    String title = "";
+                    String message = App.getBundle().getString("message.endgame");
                     AlertScreen.showAlert(AlertType.INFORMATION, title, message);
                 });
             });
@@ -160,13 +156,13 @@ public class Hangman {
                     }
                 } 
                 else if (isTopicFound && !line.isEmpty()) {
-                    line.toUpperCase();
+                    line = line.toUpperCase();
                     wordList.add(line);
                 }
             }
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw  new RuntimeException(e);
         }
         Collections.shuffle(wordList);
 
@@ -236,7 +232,6 @@ public class Hangman {
             drawHangman();
             score -= 2;
             scoreLabel1.setText(String.valueOf(score));
-            correctGuess = false;
         }
         if (correctGuess) {
             score += 2;
