@@ -8,15 +8,6 @@
 
 **Dolingo** is an interactive English learning app designed to help users improve their vocabulary, grammar, and speaking skills. The app provides various engaging features such as games, a dictionary, text-to-speech functionality, and translation tools to enhance the learning experience.
 
-### Team Members
-
-| Student ID  | Name           | GitHub Profile             |
-|-------------|----------------|----------------------------|
-| 22022154    | Pham Ngoc Do    | https://github.com/phamngocdo |
-| 002         | Member 2        | https://github.com/member2 |
-| 003         | Member 3        | https://github.com/member3 |
-| 004         | Member 4        | https://github.com/member4 |
-
 ### Key Features
 
 - **Dictionary**: Search for word definitions by using Trie algorithm.
